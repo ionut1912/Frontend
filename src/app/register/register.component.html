@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Creare cont</div>
+    <div class="content">
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nume</span>
+            <input type="text" name="name" required [(ngModel)]="form.name" required minlength="3" maxlength="20"
+              #name="ngModel" placeholder="Numele">
+            <div class="alert-danger" *ngIf="name.errors && f.submitted">
+              <div *ngIf="name.errors.required">Introduceti numele</div>
+              <div *ngIf="name.errors.minlength">
+                Numele trebuie sa aiba minim 3 caractere
+              </div>
+              <div *ngIf="name.errors.maxlength">
+                Numele trebuie sa aiba maxim 20 de caractere
+              </div>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name="email" required email [(ngModel)]="form.email" #email="ngModel"
+              placeholder="Email">
+            <div class="alert-danger" *ngIf="email.errors && f.submitted">
+              <div *ngIf="email.errors.required">Introduceti email-ul</div>
+              <div *ngIf="email.errors.email">
+                Email-ul trebuie sa contina '@'
+              </div>
+            </div>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" name="username" required [(ngModel)]="form.username" #username="ngModel"
+              placeholder="Username">
+            <div class="alert-danger" *ngIf="username.errors && f.submitted">
+              <div *ngIf="username.errors.required">Introduceti numele de utilizator.</div>
+
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" name="password" required [(ngModel)]="form.password" required minlength="10"
+              #password="ngModel" placeholder="Parola">
+            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+              <div *ngIf="password.errors.required">Introduceti parola</div>
+              <div *ngIf="password.errors.minlength">
+                Parola trebuie sa aoba minim 10 caractere
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+        <p>Aveti cont? <a (click)="openLogin()">Logati-va</a></p>
+        <button mat-flat-button color="warn"(click)="closeModal()" >Iesire</button>
+
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Eroare la crearea contului!<br />{{ errorMessage }}
+        </div>
+      </form>
+
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Inregistrare realizata cu succes!
+      </div>
+      <div>
+        <a class="login" (click)="openLogin()">Logati-va</a>
+      </div>
+
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

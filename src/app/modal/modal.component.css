@@ -1,0 +1,44 @@
+
+#modal-content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(1fr, 3);
+
+}
+
+#modal-title {
+    font-size: 22px;
+ 
+}
+
+#modal-footer {
+    justify-self: right;
+    align-self: center;
+}
+
+
+#modal-cancel-button{
+    background-color: black;
+    color: white;
+}
+.col {
+    float: left;
+    width: 100%;
+text-align: center;
+
+font-size: 20px;
+font-family:'Poppins',sans-serif;
+padding-left: 30px;
+  }
+  li{ 
+    list-style: none; 
+} 
+
+
+li::before{ 
+
+
+    content: "\00BB"; 
+    color: green;
+} 

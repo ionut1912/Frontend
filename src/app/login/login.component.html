@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Logare</div>
+    <div class="content">
+    <form  *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+        <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text"  name="username" required  [(ngModel)]="form.username"  #username="ngModel" placeholder="Username" >
+            <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors.required">Introduceti numele de utilizator.</div>
+
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" name="password" required  [(ngModel)]="form.password"
+            required
+         
+            #password="ngModel"  placeholder="Parola" >
+            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+              <div *ngIf="password.errors.required">Introduceti parola</div>
+     
+              </div>
+              </div>
+        
+
+
+
+        <div class="button">
+          <input type="submit" value="LogIn">
+        </div>
+        <p>Nu aveti cont? <a class="create" (click)="openRegister()">Creati unul</a></p>
+        <button mat-flat-button color="warn"(click)="closeModal()" >Iesire</button>
+
+        <div>
+          <a class="forgot">Am uitat parola</a>
+        </div>
+
+
+
+      </form>
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        Logare realizata cu succes
+
+      </div>
+      <div *ngIf="roles=='ROLE_USER'" >
+        <button class="user" (click)="goToUser()">Vreau sa mi vad profilul</button>
+             </div>
+             <div *ngIf="roles=='ROLE_ADMIN'">
+              <button class="admin" (click)="goToAdmin()">Vreau sa mi vad profilul</button>
+          
+                     </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
