@@ -1,3 +1,5 @@
+import { RoomImage } from './../clases/RoomImage';
+import { ImageService } from './../_services/ImageService.service';
 import { RoomDetails } from './../clases/RoomDetails';
 import { ActivatedRoute } from '@angular/router';
 import { RoomDetailsService } from './../_services/RoomDetailsService.service';
@@ -13,9 +15,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RoominfoComponent implements OnInit {
   room!: RoomDetails[];
+  images!: RoomImage[];
 @Input()  checkin!: Date;
  @Input() checkout!: Date;
-  constructor(private roomDetailsService:RoomDetailsService,private route:ActivatedRoute) {
+  constructor(private roomDetailsService:RoomDetailsService,private roomImageService:ImageService) {
 
    }
 
@@ -29,8 +32,11 @@ export class RoominfoComponent implements OnInit {
 
 
     });
+    this.roomImageService.getRoomImage().subscribe(image=>{
+this.images=image;
+
+    });
 
   }
 
 }
-``
