@@ -4,10 +4,7 @@
   {{item.name}}
 
   {{item.roomdetails}}
-
+  <div *ngFor="let image of images">
+    {{image.imagepath}}
+    </div>
 </div>
-
-<div *ngFor="let image of images">
-  {{image.imagepath}}
-<div>
-

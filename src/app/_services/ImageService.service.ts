@@ -13,8 +13,8 @@ private baseURL = "http://localhost:8081/room";
 constructor(private httpclient:HttpClient){
 
 }
-getRoomImage():Observable<RoomImage[]>
+getRoomImageById(id:number):Observable<RoomImage[]>
 {
-    return this.httpclient.get<RoomImage[]>(`${this.baseURL}/images`);
+    return this.httpclient.get<RoomImage[]>(`${this.baseURL}/images/${id}`);
 }
 }
