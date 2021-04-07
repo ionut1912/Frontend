@@ -30,15 +30,17 @@ export class RoominfoComponent implements OnInit {
 
     this.roomDetailsService.getRoomInfo(this.checkin,this.checkout).subscribe(info=>{
       this.room=info;
-      
       this.id=this.room.map(a=>a.roomid);
-        for(let i=0;i<this.id.length;i++)
+      
+      for(let i=0;i<this.id.length;i++)
       {this.roomImageService.getRoomImageById(this.id[i]).subscribe(image=>{
       this.images=image;
       });
       
         }
     });
+     
+   
 
 
   }
