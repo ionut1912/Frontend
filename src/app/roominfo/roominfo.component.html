@@ -1,12 +1,11 @@
-
 <div *ngFor="let item of room">
 
-  {{item.name}}
+	{{item.name}}
 
-  {{item.roomdetails}}
+	{{item.roomdetails}}
 
-  
-    </div>
-    <div *ngFor="let image of images">
-      {{image.imageid}}
-    </div>
+	<div *ngFor="let image of item.images">
+		{{image.imageid}}
+	</div>
+
+</div>
