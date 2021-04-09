@@ -1,11 +1,24 @@
-<div *ngFor="let item of room">
+<div class="info" *ngFor="let item of room">
+	
+		<div class="image">
+		<img class="room" src="{{item.images[0].imagepath}}">
+		</div>	
+		<div class="name">
+			{{item.name}}
+		</div>
 
-	{{item.name}}
+	<div class="name">
 
-	{{item.roomdetails}}
-
-
-	<img src="{{item.images[0].imagepath}}">
+		{{item.roomdetails}}
 	</div>
+	
+	<div class="button">
+	
+		<button  routerLink="/room/{{item.roomid}}"  type="button" class="btn btn-dark" >Rezerva</button>
+	</div>
+		
+	</div>
+	
+
 
 

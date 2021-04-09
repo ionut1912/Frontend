@@ -28,6 +28,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { LoginComponent } from './login/login.component';
 import { RoominfoComponent } from './roominfo/roominfo.component';
+import { RoomReservationComponent } from './room-reservation/room-reservation.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RoominfoComponent } from './roominfo/roominfo.component';
     BoardUserComponent,
     LoginComponent,
     NavbarComponent,
-    RoominfoComponent ],
+    RoominfoComponent,
+    RoomReservationComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
