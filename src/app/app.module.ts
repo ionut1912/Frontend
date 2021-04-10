@@ -1,5 +1,5 @@
 import { NavbarComponent } from './navbar/navbar.component';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -29,6 +29,8 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { LoginComponent } from './login/login.component';
 import { RoominfoComponent } from './roominfo/roominfo.component';
 import { RoomReservationComponent } from './room-reservation/room-reservation.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,9 @@ import { RoomReservationComponent } from './room-reservation/room-reservation.co
     LoginComponent,
     NavbarComponent,
     RoominfoComponent,
-    RoomReservationComponent ],
-  imports: [
+    RoomReservationComponent 
+  ] ,
+  imports:[
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -62,11 +65,17 @@ MatCheckboxModule,
  MatCardModule,
  MatInputModule,
 MatFormFieldModule,
+MatDialogModule,
+MatDatepickerModule,
+MatNativeDateModule,
 HttpClientModule
+
   ],
 
-  providers: [],
+  providers: [MatDatepickerModule],
+  
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [ModalComponent]
 })
 export class AppModule {

@@ -8,8 +8,12 @@ import { Observable } from 'rxjs';
   export class RoomService{
 private baseURL = "http://localhost:8081/room";
 constructor(private httpclient:HttpClient){}
-findAll():Observable<Room[]>{
+findAll():Observable<Room[]>
+{
     return this.httpclient.get<Room[]>(`${this.baseURL}`);
 }
-
+findAllById(id:number):Observable<Room>
+{
+  return this.httpclient.get<Room>(`${this.baseURL}/${id}`);
+}
 }

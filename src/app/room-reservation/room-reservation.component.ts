@@ -1,7 +1,9 @@
+import { RoomService } from './../_services/RoomService.service';
 import { RoomImage } from './../clases/RoomImage';
 import { ImageService } from './../_services/ImageService.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Room } from '../clases/Room';
 
 
 @Component({
@@ -11,8 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RoomReservationComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private ImageService:ImageService) { }
+  constructor(private route:ActivatedRoute,private ImageService:ImageService,private roomService:RoomService) { }
   roomid!: number;
+  rooms!: Room;
   roomimage!: RoomImage[];
   ngOnInit(): void {
 
@@ -21,6 +24,9 @@ export class RoomReservationComponent implements OnInit {
 this.roomimage=image;
     });
     
+    this.roomService.findAllById(this.roomid).subscribe(room=>{
+      this.rooms=room;
+    })
 
   }
 

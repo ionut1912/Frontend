@@ -4,5 +4,11 @@
 }
 .carousel{
     width: 450px;
-    padding: 10px 10px 10px 10px;
+
+}
+.details{
+  text-align: center;
+ font-size: 30px;
+ transform: translate(-50px, -300px);
+
 }

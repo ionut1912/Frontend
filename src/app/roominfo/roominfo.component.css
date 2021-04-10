@@ -5,6 +5,7 @@
 }
 .image{
 width: 25%;
+float: left;
 }
 .room{
     width: 300px;
@@ -13,12 +14,14 @@ width: 25%;
 .name{
     width: 25%;
     justify-content: center;
+    float: left;
 }
 .button{
     width: 25%;
+    float: left;
 }
-@media screen and (max-width: 1000px) {
-    info{
+@media screen and (max-width:1000px) {
+    .info{
         
 width: 100%;
 
