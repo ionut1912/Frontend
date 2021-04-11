@@ -1,7 +1,17 @@
 <div class="info" *ngFor="let item of room">
 	
 		<div class="image">
-		<img class="room" src="{{item.images[0].imagepath}}">
+	
+<ngb-carousel class="carousel" >
+
+    <ng-template ngbSlide *ngFor="let image of item.images">
+      <div class="picsum-img-wrapper">
+        <img class="imgcar" src="{{image.imagepath}}" >
+      </div>
+
+    </ng-template>
+
+  </ngb-carousel>
 		</div>	
 		<div class="name">
 			{{item.name}}
@@ -13,12 +23,13 @@
 	</div>
 	
 	<div class="button">
-	
-		<button  routerLink="/room/{{item.roomid}}"  type="button" class="btn btn-dark" >Rezerva</button>
-	</div>
-		
-	</div>
+
+		<button  routerLink="/room/{{item.roomid}}" type="button" class="btn btn-dark" >Rezerva</button> 
 	
 
+		
+	
+	</div>
+	
 
 

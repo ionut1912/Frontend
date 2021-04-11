@@ -16,6 +16,14 @@ float: left;
     justify-content: center;
     float: left;
 }
+.imgcar{
+    width: 450px;
+    height: 350px;
+}
+.carousel{
+    width: 450px;
+
+}
 .button{
     width: 25%;
     float: left;

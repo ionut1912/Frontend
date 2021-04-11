@@ -1,14 +1,4 @@
-.imgcar{
-    width: 450px;
-    height: 350px;
-}
-.carousel{
-    width: 450px;
-
-}
-.details{
-  text-align: center;
- font-size: 30px;
- transform: translate(-50px, -300px);
-
+.info{
+    text-align: center;
+ font-size: 25px;
 }

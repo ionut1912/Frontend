@@ -1,3 +1,5 @@
+import { TransferService } from './../_services/TransferService.service';
+
 
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -13,7 +15,7 @@ export class RezervationComponent implements OnInit {
   };
   submitted = false;
 diplay=false;
-  constructor() { }
+  constructor(private transferService:TransferService) { }
 
   ngOnInit() {
      
@@ -22,9 +24,17 @@ diplay=false;
   }
   onSubmit(){
     this.submitted=true;
+    this.setData();
   
   }
 myfunc(){
 this.diplay=true;
 }
+
+setData():void{
+  this.transferService.checkin=this.form.checkin;
+  this.transferService.checkout=this.form.checkout;
+  
+}
+
 }
