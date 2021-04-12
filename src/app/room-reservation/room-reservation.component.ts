@@ -39,33 +39,34 @@ export class RoomReservationComponent implements OnInit {
       this.rooms=room;
     });
  
-   this.date1=new FormControl(new Date(this.getCheckin()));
-  this.date2=new FormControl(new Date(this.getCheckout()));
-  this.noofrooms=this.getnoofroms();
-  this.noofadults=this.getnoofadults();
-  this.noofchildrens=this.getnoofchildrens();
+this.date1=new FormControl(new Date(this.getCheckin()));
+this.date2=new FormControl(new Date(this.getCheckout()));
+this.noofrooms=this.getnoofroms();
+this.noofadults=this.getnoofadults();
+this.noofchildrens=this.getnoofchildrens();
 console.log(this.noofrooms);
   }
  
 
  getCheckin():Date{
-  this.checkin=this.TransferService.checkin;
+  this.checkin=JSON.parse(localStorage.getItem("checkin")||'{}');
   return this.checkin;
 }
 getCheckout():Date{
-  this.checkout=this.TransferService.checkout;
+  this.checkout=JSON.parse(localStorage.getItem("checkout")||'{}');
   return this.checkout;
 }
 getnoofroms():number{
-this.noofrooms=this.TransferService.noofrooms;
+  this.noofrooms=JSON.parse(localStorage.getItem("noofrooms")||'{}');
 return this.noofrooms;
 }
 getnoofadults():number{
-  this.noofadults=this.TransferService.noofadults;
+  this.noofadults=JSON.parse(localStorage.getItem("noofadults")||'{}');
   return this.noofadults;
 }
 getnoofchildrens():number{
-  this.noofchildrens=this.TransferService.noofchildrens;
+  this.noofchildrens=JSON.parse(localStorage.getItem("noofchildrens")||'{}');
   return this.noofchildrens;
 }
+
 }
