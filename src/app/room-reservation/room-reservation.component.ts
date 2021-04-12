@@ -24,6 +24,9 @@ export class RoomReservationComponent implements OnInit {
   rooms!: Room;
   checkin!: Date;
   checkout!: Date;
+  noofrooms!:number;
+  noofadults!:number;
+  noofchildrens!:number;
   date1!: FormControl;
   date2!: FormControl;
 
@@ -38,6 +41,10 @@ export class RoomReservationComponent implements OnInit {
  
    this.date1=new FormControl(new Date(this.getCheckin()));
   this.date2=new FormControl(new Date(this.getCheckout()));
+  this.noofrooms=this.getnoofroms();
+  this.noofadults=this.getnoofadults();
+  this.noofchildrens=this.getnoofchildrens();
+console.log(this.noofrooms);
   }
  
 
@@ -48,5 +55,17 @@ export class RoomReservationComponent implements OnInit {
 getCheckout():Date{
   this.checkout=this.TransferService.checkout;
   return this.checkout;
+}
+getnoofroms():number{
+this.noofrooms=this.TransferService.noofrooms;
+return this.noofrooms;
+}
+getnoofadults():number{
+  this.noofadults=this.TransferService.noofadults;
+  return this.noofadults;
+}
+getnoofchildrens():number{
+  this.noofchildrens=this.TransferService.noofchildrens;
+  return this.noofchildrens;
 }
 }
