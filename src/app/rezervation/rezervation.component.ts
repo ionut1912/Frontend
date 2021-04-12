@@ -1,4 +1,3 @@
-import { TransferService } from './../_services/TransferService.service';
 
 
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +15,7 @@ export class RezervationComponent implements OnInit {
   };
   submitted = false;
 diplay=false;
-  constructor(private transferService:TransferService) { }
+  constructor() { }
 
   ngOnInit() {
      

@@ -1,5 +1,5 @@
 import { FormControl } from '@angular/forms';
-import { TransferService } from './../_services/TransferService.service';
+
 
 import { RoomService } from './../_services/RoomService.service';
 
@@ -19,7 +19,7 @@ import { FnParam } from '@angular/compiler/src/output/output_ast';
 })
 export class RoomReservationComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private roomService:RoomService,private TransferService:TransferService) { }
+  constructor(private route:ActivatedRoute,private roomService:RoomService) { }
   roomid!: number;
   rooms!: Room;
   checkin!: Date;
