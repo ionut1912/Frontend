@@ -17,28 +17,22 @@ export class RoominfoComponent implements OnInit {
 
     @Input() checkin!: Date;
     @Input() checkout!: Date;
-   
+
     constructor(private roomDetailsService: RoomDetailsService, private roomImageService: ImageService ) {
 
     }
-              
+
     ngOnInit(): void {
 
 
         this.roomDetailsService.getRoomInfo(this.checkin, this.checkout).subscribe(info => {
             this.room = info;
-        
-            for (let i = 0; i < this.room.length; i++) {
-             
-                this.roomImageService.getRoomImageById(this.room[i].roomid).subscribe(image =>  {
-               
-                    this.room[i].images = image;
-                
-                });
-                   
-               
-                
-            }
+
+            for (let i = 0; i < this.room.length; i++) this.roomImageService.getRoomImageById(this.room[i].roomid).subscribe(image => {
+
+              this.room[i].images = image;
+
+            });
         });
 
 

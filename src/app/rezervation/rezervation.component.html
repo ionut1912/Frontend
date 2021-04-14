@@ -58,7 +58,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<span  class="form-label">Camere</span>
-							<select name="noofrooms" class="form-control">
+							<select name="noofrooms" class="form-control" [(ngModel)]="form.noofrooms">
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -69,7 +69,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<span class="form-label">Adulti</span>
-							<select name="noofadults" class="form-control">
+							<select name="noofadults" class="form-control" [(ngModel)]="form.noofadults">
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -80,7 +80,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<span  class="form-label">Copii</span>
-							<select name="noofchildrens" class="form-control">
+							<select name="noofchildrens" class="form-control" [(ngModel)]="form.noofchildrens">
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
