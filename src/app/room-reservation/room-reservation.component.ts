@@ -7,10 +7,8 @@ import { ImageService } from './../_services/ImageService.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Room } from '../clases/Room';
-import { FnParam } from '@angular/compiler/src/output/output_ast';
-
-
-
+import {RoomImage} from "../clases/RoomImage";
+import {templateJitUrl} from "@angular/compiler";
 
 @Component({
   selector: 'app-room-reservation',
@@ -19,16 +17,23 @@ import { FnParam } from '@angular/compiler/src/output/output_ast';
 })
 export class RoomReservationComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private roomService:RoomService) { }
+  constructor(private route:ActivatedRoute,private roomService:RoomService,private imageService:ImageService) { }
+
   roomid!: number;
   rooms!: Room;
   checkin!: Date;
   checkout!: Date;
   noofrooms!:number;
+  image!: RoomImage[];
   noofadults!:number;
   noofchildrens!:number;
   date1!: FormControl;
   date2!: FormControl;
+
+x!:number[];
+form:any={
+
+};
 
  ngOnInit():void{
 
@@ -38,15 +43,29 @@ export class RoomReservationComponent implements OnInit {
     this.roomService.findAllById(this.roomid).subscribe(room=>{
       this.rooms=room;
     });
- 
+this.imageService.getRoomImageById(this.roomid).subscribe(roomimage=>{
+  this.image=roomimage;
+
+})
 this.date1=new FormControl(new Date(this.getCheckin()));
 this.date2=new FormControl(new Date(this.getCheckout()));
 this.noofrooms=this.getnoofroms();
 this.noofadults=this.getnoofadults();
 this.noofchildrens=this.getnoofchildrens();
-console.log(this.noofrooms);
-  }
- 
+this.x=[];
+this.x.length=this.noofchildrens;
+
+
+
+}
+
+
+
+hasChildrens():boolean{
+   if(this.noofchildrens<=0)
+     return false;
+  return true;
+}
 
  getCheckin():Date{
   this.checkin=JSON.parse(localStorage.getItem("checkin")||'{}');
@@ -69,4 +88,10 @@ getnoofchildrens():number{
   return this.noofchildrens;
 }
 
+
+
 }
+
+
+
+

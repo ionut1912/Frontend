@@ -1,7 +1,6 @@
 .user{
   display:flex;
   justify-content: center;
-  align-items:right;
   transform: translate(-800px, -900px);
 
 }

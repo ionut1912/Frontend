@@ -13,13 +13,13 @@
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
-	
 
-	
+
+
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	
-	
+
+
 </head>
 
 <body>
@@ -28,17 +28,17 @@
 
 	<div class="col-md-12 col-md-pull-7">
 		<div class="booking-form">
-			<form 
+			<form
 			name="form"
 			(ngSubmit)="f.form.valid && onSubmit()"
 			#f="ngForm"
 			novalidate>
-			
+
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group">
 							<span class="form-label">Check In</span>
-							<input class="form-control" type="date" name="checkin"   [(ngModel)]="form.checkin"  #checkin="ngModel"  required > 
+							<input class="form-control" type="date" name="checkin"   [(ngModel)]="form.checkin"  #checkin="ngModel"  required >
 							<div class="alert-danger" *ngIf="checkin.errors && f.submitted">
 								<div *ngIf="checkin.errors.required">Introduceti data de sosire.</div>
 					</div>
@@ -47,7 +47,7 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<span class="form-label">Check out</span>
-							<input class="form-control" type="date" name="checkout"   [(ngModel)]="form.checkout"  #checkout="ngModel"  required > 
+							<input class="form-control" type="date" name="checkout"   [(ngModel)]="form.checkout"  #checkout="ngModel"  required >
 							<div class="alert-danger" *ngIf="checkout.errors && f.submitted">
 								<div *ngIf="checkout.errors.required">Introduceti data de plecare.</div>
 						</div>
@@ -84,31 +84,34 @@
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
 							</select>
 							<span class="select-arrow"></span>
 						</div>
 					</div>
-				
+
 				</div>
 				<div>
 					<mat-checkbox>Calatoresc in interes de serviciu</mat-checkbox>
-					
+
 				</div>
 				<div class="form-btn">
 					<button class="submit-btn" (click)="myfunc()">Verifica dispoibilitatea</button>
 				</div>
-			
+
 			</form>
 		</div>
 	</div>
 	<div *ngIf="diplay&&submitted===true">
 		<app-roominfo [checkin]="form.checkin" [checkout]="form.checkout" ></app-roominfo>
-		
+
 		</div>
 </div>
 
-			
-	
+
+
 </body>
 
 </html>

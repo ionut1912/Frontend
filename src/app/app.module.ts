@@ -2,7 +2,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +30,9 @@ import { RoominfoComponent } from './roominfo/roominfo.component';
 import { RoomReservationComponent } from './room-reservation/room-reservation.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSelectModule} from "@angular/material/select";
+
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -47,33 +49,36 @@ import { MatNativeDateModule } from '@angular/material/core';
     LoginComponent,
     NavbarComponent,
     RoominfoComponent,
-    RoomReservationComponent 
+    RoomReservationComponent
   ] ,
-  imports:[
+  imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+  AngularFontAwesomeModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
     NgbModule,
-VideoModule,
-ReactiveFormsModule,
-FormsModule,
-MatCheckboxModule,
- MatToolbarModule,
- MatCardModule,
- MatInputModule,
-MatFormFieldModule,
-MatDialogModule,
-MatDatepickerModule,
-MatNativeDateModule,
-HttpClientModule
+    VideoModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    HttpClientModule,
+
+    MatSelectModule
 
   ],
 
   providers: [MatDatepickerModule],
-  
+
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [ModalComponent]

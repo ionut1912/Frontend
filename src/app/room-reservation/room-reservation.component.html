@@ -1,24 +1,73 @@
 <div *ngIf="rooms" class="info">
- 
- <p>Numele camerei:{{rooms.name}} </p> 
+
+ <p>Numele camerei:{{rooms.name}} </p>
  <p>Tipul camerei:{{rooms.roomtype}}</p>
 <p>Detalii camera:{{rooms.roomdetails}}</p>
 
 
 </div>
+<form name="form" class="infoform">
+  <mat-card>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Checkin</mat-label>
+        <input  matInput  value="{{checkin}}" >
 
-{{noofchildrens}}
- <div>
-  <mat-form-field appearance="fill">
-    <mat-label>Checkin</mat-label>
-    <input matInput [matDatepicker]="picker"  [formControl]="date1" >
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker ></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Checkout</mat-label>
-    <input matInput [matDatepicker]="picker1" [formControl]="date2" >
-    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-    <mat-datepicker #picker1 ></mat-datepicker>
-  </mat-form-field>
- </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Checkout</mat-label>
+        <input matInput value="{{checkout}}" >
+
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Numar de camere</mat-label>
+        <input matInput  value="{{noofrooms}}"  >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Numar de adulti</mat-label>
+        <input matInput value="{{noofadults}}">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Numar de copii</mat-label>
+        <input matInput  value="{{noofchildrens}}">
+      </mat-form-field>
+
+    </div>
+
+
+
+    <div>
+
+    </div>
+
+
+
+
+  </mat-card>
+</form>
+
+
+<div class="roomimage">
+  <ngb-carousel class="carousel" >
+
+    <ng-template ngbSlide *ngFor="let images of image">
+      <div class="picsum-img-wrapper">
+        <img class="imgcar" src="{{images.imagepath}}" >
+      </div>
+
+    </ng-template>
+
+  </ngb-carousel>
+</div>
+
+<div>
+ <mat-icon fontSet="fontawesome" fontIcon="fa-area-chart">sdaasdsad</mat-icon>
+</div>
