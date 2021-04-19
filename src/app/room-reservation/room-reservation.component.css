@@ -24,6 +24,60 @@ mat-card{
   width: 1000px;
 
 }
+.carouselslick{
+  width: 400px;
+}
+.text{
+  transform: translate(-10px,10px);
+
+}
+
+.booking{
+  background-color:#ebf3f5;
+  width: 100%;
+
+
+  transform: translate(5px,-350px);
+}
+.col {
+  float: left;
+  width: 10%;
+  padding: 10px;
+
+}
+.carouseltext{
+  text-align: center;
+color: white;
+}
+.reviews{
+
+  transform: translate(0px,-350px);
+  background-color: black;
+
+}
+.slick-slider {
+  width: 88%;
+  margin: auto;
+
+}
+
+body .slick-prev,
+body .slick-next {
+  height: 45px;
+  width: 40px;
+  background: grey !important;
+  z-index: 100;
+}
+.booking:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .roomimage{
   transform: translate(350px, -450px);
+}
+@media screen and (max-width: 600px) {
+  .col {
+    width: 100%;
+  }
 }

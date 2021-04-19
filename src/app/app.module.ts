@@ -32,7 +32,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from "@angular/material/select";
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
+import {MatSliderModule} from "@angular/material/slider";
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -50,12 +52,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     NavbarComponent,
     RoominfoComponent,
     RoomReservationComponent
+
   ] ,
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-  AngularFontAwesomeModule,
+
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
@@ -72,8 +75,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
-
-    MatSelectModule
+    MatIconModule,
+    MatSelectModule,
+    MatSliderModule,
+    SlickCarouselModule
 
   ],
 
@@ -86,4 +91,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 export class AppModule {
 
 
- }
+}
+
+
+
