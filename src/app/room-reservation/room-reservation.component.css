@@ -24,14 +24,42 @@ mat-card{
   width: 1000px;
 
 }
-.carouselslick{
-  width: 400px;
+.finalinfo{
+transform: translate(-10px,-350px);
+text-align: center;
 }
 .text{
   transform: translate(-10px,10px);
 
 }
-
+.reviewmesage{
+  text-align: center;
+  padding-right:20px;
+  transform: translate(-100px,-350px);
+}
+.reviewcard{
+  width: 100%;
+  border: 1px solid ;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
+.reviewtext{
+  text-align: center;
+}
+.finalinfo:after{
+  box-sizing: border-box;
+  content: "";
+  display: table;
+  clear: both;
+}
+.colinfo{
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+.rooms{
+  overflow-x: hidden;
+}
 .booking{
   background-color:#ebf3f5;
   width: 100%;
@@ -45,14 +73,16 @@ mat-card{
   padding: 10px;
 
 }
+
 .carouseltext{
   text-align: center;
 color: white;
 }
 .reviews{
-
+background-color:gray;
   transform: translate(0px,-350px);
-  background-color: black;
+
+
 
 }
 .slick-slider {
@@ -78,6 +108,9 @@ body .slick-next {
 }
 @media screen and (max-width: 600px) {
   .col {
+    width: 100%;
+  }
+  .colinfo{
     width: 100%;
   }
 }

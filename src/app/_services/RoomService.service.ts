@@ -11,7 +11,7 @@ private baseURL = "http://localhost:8081/room";
 constructor(private httpclient:HttpClient){}
 findAll():Observable<Room[]>
 {
-    return this.httpclient.get<Room[]>(`${this.baseURL}`);
+    return this.httpclient.get<Room[]>(`${this.baseURL}/all`);
 }
 findAllById(id:number):Observable<Room>
 {

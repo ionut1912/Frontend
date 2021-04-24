@@ -1,35 +1,62 @@
-<div class="info" *ngFor="let item of room">
-	
-		<div class="image">
-	
-<ngb-carousel class="carousel" >
+<div *ngIf="roomDetails.length===0;else other_content">
+  <div class="info" *ngFor="let room of rooms">
+    <div class="col">
 
-    <ng-template ngbSlide *ngFor="let image of item.images">
-      <div class="picsum-img-wrapper">
-        <img class="imgcar" src="{{image.imagepath}}" >
-      </div>
 
-    </ng-template>
 
-  </ngb-carousel>
-		</div>	
-		<div class="name">
-			{{item.name}}
-		</div>
+      <img class="imgcar" src="{{room.roomImage[0].imagepath}}" >
 
-	<div class="name">
 
-		{{item.roomdetails}}
-	</div>
-	
-	<div class="button">
 
-		<button  routerLink="/room/{{item.roomid}}" type="button" class="btn btn-dark" >Rezerva</button> 
-	
+    </div>
+    <div class="col">
+     {{room.name}}
+    </div>
 
-		
-	
-	</div>
-	
+    <div class="col">
+
+      {{room.roomdetails}}
+    </div>
+
+    <div class="col">
+      <button  routerLink="/room/{{room.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #other_content>
+
+  <div class="info" *ngFor="let item of roomDetails">
+
+    <div class="col" >
+
+
+
+            <img class="imgcar" src="{{item.images[0].imagepath}}" >
+
+
+
+    </div>
+    <div class="col">
+      {{item.name}}
+    </div>
+
+    <div class="col">
+
+      {{item.roomdetails}}
+    </div>
+
+    <div class="col">
+
+      <button  routerLink="/room/{{item.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
+
+
+
+
+    </div>
+
+  </div>
+</ng-template>
+
 
 

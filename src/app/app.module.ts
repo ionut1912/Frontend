@@ -24,17 +24,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardUserComponent } from './board-user/board-user.component';
+import {BoardUserComponent} from './board-user/board-user.component'
 import { LoginComponent } from './login/login.component';
 import { RoominfoComponent } from './roominfo/roominfo.component';
 import { RoomReservationComponent } from './room-reservation/room-reservation.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from "@angular/material/select";
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
 import {MatSliderModule} from "@angular/material/slider";
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatIconModule,
     MatSelectModule,
     MatSliderModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatSidenavModule,
+    MatListModule
 
   ],
 

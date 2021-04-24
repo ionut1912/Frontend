@@ -1,6 +1,6 @@
 import { RoomReservationComponent } from './room-reservation/room-reservation.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardUserComponent } from './board-user/board-user.component';
+import {BoardUserComponent} from './board-user/board-user.component'
 
 
 
