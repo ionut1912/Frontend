@@ -114,9 +114,12 @@ this.userData=new UserData();
   this.UserService.getUserData(this.tokenStorageService.getUsername()).subscribe(data => {
     this.userData = data;
     this.reservations = new Reservations(this.rooms.name, this.userData.email, this.rooms.roomtype, this.getCheckin(), this.getCheckout(), false, this.userData.userid);
-    this.reservationService.saveReservation(this.reservations).subscribe(data => {
+    this.reservationService.saveReservation(this.reservations).subscribe(reservation => {
     });
 this.roomreservation=new RoomReservations(this.rooms.roomid,this.price.id,this.reservations.reservationsId,this.getCheckin(),this.getCheckout(),this.getnoofroms(),this.getnoofadults(),this.getnoofchildrens());
+this.reservationService.saveRoomReservation(this.roomreservation).subscribe(data=>{
+
+})
   });
 
   }
