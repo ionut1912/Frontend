@@ -13,17 +13,17 @@
         <ul>
             <ng-container *ngFor="let item of links">
                 <li *ngIf="(item.public || isLoggedIn)">
-                    <a *ngIf="!item.dialog" routerLinkActive="active" routerLink="{{item.path}}" >{{item.text}}</a>
+                    <a *ngIf="!item.dialog" routerLinkActive="active" routerLink="/{{item.path}}" >{{item.text}}</a>
                     <a *ngIf="item.dialog && item.text=='Login'" (click)="openLogin()">{{item.text}}</a>
                     <a *ngIf="item.dialog && item.text=='LogOut'" (click)="logout()" >{{item.text}}</a>
                 </li>
-    
-    
-            </ng-container>   
+
+
+            </ng-container>
 
 
         </ul>
- 
+
         <div (click)="onClick()" class="mobile-menu-icon">
             <div class="hamburger-menu">
                 <div class="line"></div>

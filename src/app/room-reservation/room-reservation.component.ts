@@ -27,7 +27,7 @@ import {RoomReservations} from "../clases/RoomReservations";
 })
 export class RoomReservationComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService,private UserService:UserService, private  priceService: PriceService,private  reservationService:ReservationService,private  tokenStorageService:TokenStorageService) {
+  constructor(private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private UserService: UserService, private  priceService: PriceService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService) {
   }
 
   roomid!: number;
@@ -42,29 +42,38 @@ export class RoomReservationComponent implements OnInit {
   date2!: FormControl;
   reviews!: ReviewDetails[];
   price!: TotalPrice;
-userData!:UserData;
+  userData!: UserData;
   form: any = {};
-   reservations!: Reservations;
-   roomreservation!:RoomReservations;
+  reservations!: Reservations;
+  roomreservation!: RoomReservations;
 
   ngOnInit(): void {
 
     this.roomid = this.route.snapshot.params['id'];
-this.price=new TotalPrice();
+    this.price = new TotalPrice();
     this.rooms = new Room();
     this.roomService.findAllById(this.roomid).subscribe(room => {
       this.rooms = room;
+      this.userData=new UserData();
+      this.UserService.getUserData(this.tokenStorageService.getUsername()).subscribe(data => {
+        this.userData = data;
+        this.priceService.getTotalPrice(this.getCheckin(),this.getCheckout(),this.roomid).subscribe(pricedata=>{
+          this.price=pricedata;
 
+          this.reservations=new Reservations(this.userData.name,this.userData.email,this.rooms.roomtype,this.getCheckin(),this.getCheckout(),false,this.userData.userid);
+          console.log(this.reservations);
+          this.roomreservation=new RoomReservations(this.roomid,this.price.priceid,this.reservations.reservationsId,this.getCheckin(),this.getCheckout(),this.getnoofroms(),this.getnoofadults(),this.getnoofchildrens());
+
+        });
+
+      });
     });
     this.imageService.getRoomImageById(this.roomid).subscribe(roomimage => {
       this.image = roomimage;
 
     });
 
-    this.priceService.getTotalPrice(this.getCheckin(),this.getCheckout(),this.roomid).subscribe(prices => {
-      this.price = prices;
 
-    });
 
     this.reviewService.getReviews(this.roomid).subscribe(review => {
       this.reviews = review;
@@ -109,23 +118,22 @@ this.price=new TotalPrice();
     this.noofchildrens = JSON.parse(localStorage.getItem("noofchildrens") || '{}');
     return this.noofchildrens;
   }
-onClick():void {
-this.userData=new UserData();
-  this.UserService.getUserData(this.tokenStorageService.getUsername()).subscribe(data => {
-    this.userData = data;
-    this.reservations = new Reservations(this.rooms.name, this.userData.email, this.rooms.roomtype, this.getCheckin(), this.getCheckout(), false, this.userData.userid);
-    this.reservationService.saveReservation(this.reservations).subscribe(reservation => {
-    });
-this.roomreservation=new RoomReservations(this.rooms.roomid,this.price.id,this.reservations.reservationsId,this.getCheckin(),this.getCheckout(),this.getnoofroms(),this.getnoofadults(),this.getnoofchildrens());
-this.reservationService.saveRoomReservation(this.roomreservation).subscribe(data=>{
-
-})
-  });
+  onClick():void{
+this.saveRezervation();
 
   }
+saveRezervation():void{
 
-  }
+ this.reservationService.saveReservation(this.reservations).subscribe(reservation=>{
 
+ });
+
+ this.reservationService.saveRoomReservation(this.roomreservation).subscribe(roomreservations=>{
+
+ });
+}
+
+}
 
 
 

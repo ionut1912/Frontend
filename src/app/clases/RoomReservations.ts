@@ -4,7 +4,6 @@ import { Price } from './Price';
 import {Room} from './Room';
 
 export class RoomReservations{
-    roomreservationid!: number;
     room!: number
    price!: number;
    reservation!: number;

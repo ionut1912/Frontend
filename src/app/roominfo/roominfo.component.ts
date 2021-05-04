@@ -41,11 +41,13 @@ rooms:Room[]=[];
         });
       }
       else {
-        for (let i = 0; i < this.roomDetails.length; i++) this.roomImageService.getRoomImageById(this.roomDetails[i].roomid).subscribe(image => {
+        for (let i = 0; i < this.roomDetails.length; i++) {
+          this.roomImageService.getRoomImageById(this.roomDetails[i].roomid).subscribe(image => {
 
-          this.roomDetails[i].images = image;
+            this.roomDetails[i].images = image;
 
-        });
+          });
+        }
       }
         });
 

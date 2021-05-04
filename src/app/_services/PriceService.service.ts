@@ -18,4 +18,5 @@ export class PriceService {
 
     return this.httpclient.get<TotalPrice>(`${this.baseURL}/${checkin}/${checkout}/${id}`);
   }
+
 }

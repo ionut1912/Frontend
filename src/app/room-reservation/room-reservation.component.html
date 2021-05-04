@@ -125,7 +125,7 @@
 
 
   </div>
-  <div class="finalinfo">
+  <form (ngSubmit)="onClick()"class="finalinfo">
     <h2>Date finale despre rezervare:</h2>
 
     <div class="colinfo">
@@ -135,15 +135,16 @@
       <h2>Checkout: {{checkout}}</h2>
     </div>
     <div class="colinfo">
-      <h2>Pret final: {{price.finalprice}}  {{price.type}} </h2>
+      <h2>Pret final: {{price.finalprice}}  {{price.type}}  </h2>
+
 
     </div>
-    <div class="colinfo">
-      <button mat-raised-button color="warn" (click)="onClick()">Finalizeaza rezervarea</button>
+    <div  class="colinfo">
+      <button mat-raised-button color="warn" type="submit" >Finalizeaza rezervarea</button>
 
     </div>
 
-  </div>
+  </form>
 
 </div>
 

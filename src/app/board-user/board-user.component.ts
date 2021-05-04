@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {MediaMatcher} from "@angular/cdk/layout";
+import {MediaMatcher} from '@angular/cdk/layout';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-board-user',
@@ -7,5 +7,19 @@ import {MediaMatcher} from "@angular/cdk/layout";
   styleUrls: ['./board-user.component.css']
 })
 export class BoardUserComponent  {
+  mobileQuery: MediaQueryList;
 
-}
+
+
+
+  private _mobileQueryListener: () => void;
+
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+
+  }
+
+
+  }
+
