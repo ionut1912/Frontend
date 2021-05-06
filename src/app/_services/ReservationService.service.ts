@@ -13,8 +13,8 @@ export  class ReservationService {
 
   }
   saveReservation(reservation:Reservations,roomreservation:RoomReservations):void{
-      this.httpClient.post(`${this.baseURL}`,reservation);
-      this.httpClient.post(`${this.baseURL}`,roomreservation);
+      this.httpClient.post<Reservations>(`${this.baseURL}`,reservation);
+      this.httpClient.post<RoomReservations>(`${this.baseURL}`,roomreservation);
   }
 
 }

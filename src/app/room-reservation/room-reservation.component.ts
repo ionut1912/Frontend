@@ -79,10 +79,7 @@ export class RoomReservationComponent implements OnInit {
             noofadults: this.getnoofadults(),
             noofchildrens: this.getnoofchildrens()
           }
-
-
         });
-
       });
     });
     this.imageService.getRoomImageById(this.roomid).subscribe(roomimage => {
@@ -137,6 +134,8 @@ export class RoomReservationComponent implements OnInit {
 
   onClick(): void {
     this.saveRezervation();
+    console.log(this.reservations);
+    console.log(this.roomreservation);
 
   }
 
