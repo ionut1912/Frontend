@@ -36,7 +36,8 @@ import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
 import {MatSliderModule} from "@angular/material/slider";
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import {MatListModule} from '@angular/material/list';
-
+import { UserdataComponent } from './userdata/userdata.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -53,14 +54,15 @@ import {MatListModule} from '@angular/material/list';
     LoginComponent,
     NavbarComponent,
     RoominfoComponent,
-    RoomReservationComponent
+    RoomReservationComponent,
+    UserdataComponent
 
   ] ,
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+MatTableModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,

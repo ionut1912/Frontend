@@ -54,15 +54,32 @@ export class RoomReservationComponent implements OnInit {
     this.rooms = new Room();
     this.roomService.findAllById(this.roomid).subscribe(room => {
       this.rooms = room;
-      this.userData=new UserData();
+      this.userData = new UserData();
       this.UserService.getUserData(this.tokenStorageService.getUsername()).subscribe(data => {
         this.userData = data;
-        this.priceService.getTotalPrice(this.getCheckin(),this.getCheckout(),this.roomid).subscribe(pricedata=>{
-          this.price=pricedata;
+        this.priceService.getTotalPrice(this.getCheckin(), this.getCheckout(), this.roomid).subscribe(pricedata => {
+          this.price = pricedata;
 
-          this.reservations=new Reservations(this.userData.name,this.userData.email,this.rooms.roomtype,this.getCheckin(),this.getCheckout(),false,this.userData.userid);
-          console.log(this.reservations);
-          this.roomreservation=new RoomReservations(this.roomid,this.price.priceid,this.reservations.reservationsId,this.getCheckin(),this.getCheckout(),this.getnoofroms(),this.getnoofadults(),this.getnoofchildrens());
+          this.reservations = {
+            name: this.userData.name,
+            email: this.userData.email,
+            roomtype: this.rooms.roomtype,
+            checkin: this.getCheckin(),
+            checkout: this.getCheckout(),
+            deleted: false,
+            userid: this.userData.userid
+          };
+
+          this.roomreservation = {
+            roomid: this.roomid,
+            priceid: this.price.priceid,
+            checkin: this.getCheckin(),
+            checkout: this.getCheckout(),
+            noofrooms: this.getnoofroms(),
+            noofadults: this.getnoofadults(),
+            noofchildrens: this.getnoofchildrens()
+          }
+
 
         });
 
@@ -72,7 +89,6 @@ export class RoomReservationComponent implements OnInit {
       this.image = roomimage;
 
     });
-
 
 
     this.reviewService.getReviews(this.roomid).subscribe(review => {
@@ -118,21 +134,18 @@ export class RoomReservationComponent implements OnInit {
     this.noofchildrens = JSON.parse(localStorage.getItem("noofchildrens") || '{}');
     return this.noofchildrens;
   }
-  onClick():void{
-this.saveRezervation();
+
+  onClick(): void {
+    this.saveRezervation();
 
   }
-saveRezervation():void{
 
- this.reservationService.saveReservation(this.reservations).subscribe(reservation=>{
+  saveRezervation(): void {
 
- });
+    this.reservationService.saveReservation(this.reservations, this.roomreservation);
 
- this.reservationService.saveRoomReservation(this.roomreservation).subscribe(roomreservations=>{
 
- });
-}
-
+  }
 }
 
 

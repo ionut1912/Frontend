@@ -12,10 +12,9 @@ export  class ReservationService {
   constructor(private httpClient:HttpClient){
 
   }
-  saveReservation(reservation:Reservations):Observable<object>{
-    return  this.httpClient.post(`${this.baseURL}`,reservation);
+  saveReservation(reservation:Reservations,roomreservation:RoomReservations):void{
+      this.httpClient.post(`${this.baseURL}`,reservation);
+      this.httpClient.post(`${this.baseURL}`,roomreservation);
   }
-  saveRoomReservation(roomreservation:RoomReservations):Observable<object>{
-    return  this.httpClient.post(`${this.baseURL}/roomreservations`,roomreservation);
-  }
+
 }

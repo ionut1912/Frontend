@@ -8,53 +8,53 @@ import { TokenStorageService } from '../_services/token-storage.service';
 declare const navSlide: any;
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.css'],
-    providers: [
-        {provide: MAT_DIALOG_DATA, useValue: {}},
-        {provide: MatDialogRef, useValue: {}},
-        LoginComponent
-    ]
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
+  providers: [
+    {provide: MAT_DIALOG_DATA, useValue: {}},
+    {provide: MatDialogRef, useValue: {}},
+    LoginComponent
+  ]
 })
 
 export class NavbarComponent implements OnInit {
-    links: MenuItem[] = [];
+  links: MenuItem[] = [];
 
-    isLoggedIn = false;
+  isLoggedIn = false;
 
-    constructor(public matDialog: MatDialog, public login: LoginComponent, private router: Router,
-                private navbarService: NavbarService, private tokenStorageService: TokenStorageService) {
-    }
+  constructor(public matDialog: MatDialog, public login: LoginComponent, private router: Router,
+              private navbarService: NavbarService, private tokenStorageService: TokenStorageService) {
+  }
 
-    ngOnInit(): void {
-        this.isLoggedIn = this.tokenStorageService.isLoggedIn();
-        this.navbarService.getLinks().subscribe(data => this.links = data);
-        this.navbarService.updateLoginStatus(this.isLoggedIn);
-    }
+  ngOnInit(): void {
+    this.isLoggedIn = this.tokenStorageService.isLoggedIn();
+    this.navbarService.getLinks().subscribe(data => this.links = data);
+    this.navbarService.updateLoginStatus(this.isLoggedIn);
+  }
 
-    onClick(): void {
-        navSlide();
-    }
+  onClick(): void {
+    navSlide();
+  }
 
-    logout(): void {
-        this.tokenStorageService.signOut();
+  logout(): void {
+    this.tokenStorageService.signOut();
 
-        this.navbarService.updateLoginStatus(false);
-        this.isLoggedIn = false;
-        this.router.navigateByUrl('');
+    this.navbarService.updateLoginStatus(false);
+    this.isLoggedIn = false;
+    this.router.navigateByUrl('');
 
-    }
+  }
 
-    openLogin(): void {
-        const dialogConfig = new MatDialogConfig();
+  openLogin(): void {
+    const dialogConfig = new MatDialogConfig();
 
-        dialogConfig.disableClose = true;
-        dialogConfig.id = 'login-component';
-        dialogConfig.height = '100%';
-        dialogConfig.width = '50%';
+    dialogConfig.disableClose = true;
+    dialogConfig.id = 'login-component';
+    dialogConfig.height = '100%';
+    dialogConfig.width = '50%';
 
-        this.matDialog.open(LoginComponent, dialogConfig);
-    }
+    this.matDialog.open(LoginComponent, dialogConfig);
+  }
 
 }

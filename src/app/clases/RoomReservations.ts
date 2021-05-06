@@ -4,9 +4,9 @@ import { Price } from './Price';
 import {Room} from './Room';
 
 export class RoomReservations{
-    room!: number
-   price!: number;
-   reservation!: number;
+    roomid!: number
+   priceid!: number;
+
    checkin!: Date;
    checkout!: Date;
    noofrooms!: number;
@@ -14,7 +14,5 @@ export class RoomReservations{
    noofchildrens!: number;
 
 
-constructor(private Room:number,private  Price:number,private Reservation:number,Checkin:Date,Checkout:Date,Noofrooms:number,Noofadults:number,noofchildrens:number){
 
-}
 }
