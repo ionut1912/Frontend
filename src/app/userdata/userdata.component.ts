@@ -11,26 +11,31 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./userdata.component.css']
 })
 export class UserdataComponent implements OnInit {
-  columns: string[] =['name', 'email', 'username'];
-  userInfo!:UserData;
+  columns: string[] =['name', 'email', 'username','action'];
+hidden:boolean=false;
   users!:UserData[];
 
-  constructor(public matDialog: MatDialog, public dialogRef: MatDialogRef<UserdataComponent>,public userService:UserService,public  tokenStorage:TokenStorageService) { }
-  closeModal(): void {
-    this.dialogRef.close();
-  }
+  constructor(public userService:UserService,public  tokenStorage:TokenStorageService) { }
+
   ngOnInit(): void {
 this.getUserInfo();
   }
   getUserInfo():void
   {
-    this.userInfo=new UserData();
+
     this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(userinformation=>{
-      this.userInfo=userinformation;
+      this.users=[];
+      this.users.push(userinformation);
 
 
 
     });
+  }
+  test(){
+    if(this.hidden==false)
+    this.hidden=true;
+    else
+      this.hidden=false;
   }
 
 }

@@ -6,6 +6,6 @@ export class Room{
     roomtype!: string;
     roomdetails!: string;
     roomstatus!: string;
-    roomImage!:RoomImage[]
+    roomImage:RoomImage[]=[];
 
 }

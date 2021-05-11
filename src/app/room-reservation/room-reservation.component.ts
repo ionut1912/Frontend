@@ -15,10 +15,11 @@ import {TotalPrice} from "../clases/TotalPrice";
 import {PriceService} from "../_services/PriceService.service";
 import {ReservationService} from "../_services/ReservationService.service";
 import {TokenStorageService} from "../_services/token-storage.service";
-import {Reservations} from "../clases/Reservations";
+
 import {UserService} from "../_services/UserService.service";
 import {UserData} from "../clases/UserData";
-import {RoomReservations} from "../clases/RoomReservations";
+import {ReservationsHelper} from "../clases/ReservationsHelper";
+
 
 @Component({
   selector: 'app-room-reservation',
@@ -31,7 +32,7 @@ export class RoomReservationComponent implements OnInit {
   }
 
   roomid!: number;
-  rooms!: Room;
+  rooms: Room = new Room();
   checkin!: Date;
   checkout!: Date;
   noofrooms!: number;
@@ -43,15 +44,15 @@ export class RoomReservationComponent implements OnInit {
   reviews!: ReviewDetails[];
   price!: TotalPrice;
   userData!: UserData;
+  reservations!: ReservationsHelper;
   form: any = {};
-  reservations!: Reservations;
-  roomreservation!: RoomReservations;
+
 
   ngOnInit(): void {
 
     this.roomid = this.route.snapshot.params['id'];
     this.price = new TotalPrice();
-    this.rooms = new Room();
+
     this.roomService.findAllById(this.roomid).subscribe(room => {
       this.rooms = room;
       this.userData = new UserData();
@@ -59,7 +60,6 @@ export class RoomReservationComponent implements OnInit {
         this.userData = data;
         this.priceService.getTotalPrice(this.getCheckin(), this.getCheckout(), this.roomid).subscribe(pricedata => {
           this.price = pricedata;
-
           this.reservations = {
             name: this.userData.name,
             email: this.userData.email,
@@ -67,18 +67,14 @@ export class RoomReservationComponent implements OnInit {
             checkin: this.getCheckin(),
             checkout: this.getCheckout(),
             deleted: false,
-            userid: this.userData.userid
-          };
-
-          this.roomreservation = {
+            userid: this.userData.userid,
             roomid: this.roomid,
             priceid: this.price.priceid,
-            checkin: this.getCheckin(),
-            checkout: this.getCheckout(),
             noofrooms: this.getnoofroms(),
             noofadults: this.getnoofadults(),
             noofchildrens: this.getnoofchildrens()
           }
+
         });
       });
     });
@@ -134,15 +130,14 @@ export class RoomReservationComponent implements OnInit {
 
   onClick(): void {
     this.saveRezervation();
-    console.log(this.reservations);
-    console.log(this.roomreservation);
+
 
   }
 
   saveRezervation(): void {
 
-    this.reservationService.saveReservation(this.reservations, this.roomreservation);
 
+    this.reservationService.saveReservation(this.reservations);
 
   }
 }

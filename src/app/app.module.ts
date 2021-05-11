@@ -38,7 +38,11 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import {MatListModule} from '@angular/material/list';
 import { UserdataComponent } from './userdata/userdata.component';
 import {MatTableModule} from "@angular/material/table";
-
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatTabsModule} from '@angular/material/tabs';
+import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
+import { RoomReviewComponent } from './room-review/room-review.component';
+import { HotelReviewComponent } from './hotel-review/hotel-review.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,20 +59,24 @@ import {MatTableModule} from "@angular/material/table";
     NavbarComponent,
     RoominfoComponent,
     RoomReservationComponent,
-    UserdataComponent
+    UserdataComponent,
+    ViewReservationsComponent,
+    RoomReviewComponent,
+    HotelReviewComponent
 
   ] ,
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-MatTableModule,
+    MatTableModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
     NgbModule,
     VideoModule,
     ReactiveFormsModule,
+    MatTableModule,
     FormsModule,
     MatCheckboxModule,
     MatToolbarModule,
@@ -84,7 +92,9 @@ MatTableModule,
     MatSliderModule,
     SlickCarouselModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatTooltipModule,
+    MatTabsModule
 
   ],
 

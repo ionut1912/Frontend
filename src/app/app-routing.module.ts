@@ -1,9 +1,7 @@
 import { RoomReservationComponent } from './room-reservation/room-reservation.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {BoardUserComponent} from './board-user/board-user.component'
-
-
-
+import  {UserdataComponent} from "./userdata/userdata.component";
 import { ServiciiComponent } from './servicii/servicii.component';
 
 import { RezervationComponent } from './rezervation/rezervation.component';
@@ -18,8 +16,8 @@ const routes: Routes = [
 {path:'servicii',component:ServiciiComponent},
 {path:'user',component:BoardUserComponent},
 {path:'admin',component:BoardAdminComponent},
-{path:'room/:id',component:RoomReservationComponent}
-
+{path:'room/:id',component:RoomReservationComponent},
+{path:'userdetails',component:UserdataComponent}
 
 ];
 

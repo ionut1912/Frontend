@@ -1,4 +1,6 @@
 
+
+
 import { ImageService } from './../_services/ImageService.service';
 import { RoomDetails } from './../clases/RoomDetails';
 import { RoomDetailsService } from './../_services/RoomDetailsService.service';
@@ -8,27 +10,27 @@ import {RoomService} from "../_services/RoomService.service";
 
 
 @Component({
-    selector: 'app-roominfo',
-    templateUrl: './roominfo.component.html',
-    styleUrls: ['./roominfo.component.css']
+  selector: 'app-roominfo',
+  templateUrl: './roominfo.component.html',
+  styleUrls: ['./roominfo.component.css']
 })
 export class RoominfoComponent implements OnInit {
   roomDetails :RoomDetails[]=[];
-rooms:Room[]=[];
+  rooms:Room[]=[];
 
 
-    @Input() checkin!: Date;
-    @Input() checkout!: Date;
+  @Input() checkin!: Date;
+  @Input() checkout!: Date;
 
-    constructor(private roomDetailsService: RoomDetailsService, private roomImageService: ImageService ,private  roomService:RoomService) {
+  constructor(private roomDetailsService: RoomDetailsService, private roomImageService: ImageService ,private  roomService:RoomService) {
 
-    }
+  }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
 
 
-        this.roomDetailsService.getRoomInfo(this.checkin, this.checkout).subscribe(info => {
-            this.roomDetails = info;
+    this.roomDetailsService.getRoomInfo(this.checkin, this.checkout).subscribe(info => {
+      this.roomDetails = info;
 
       if(this.roomDetails.length===0){
         this.roomService.findAll().subscribe(room=>{
@@ -49,9 +51,9 @@ rooms:Room[]=[];
           });
         }
       }
-        });
+    });
 
 
-    }
+  }
 
 }

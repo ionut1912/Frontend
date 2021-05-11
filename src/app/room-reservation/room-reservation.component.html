@@ -10,57 +10,48 @@
   <form name="form" class="infoform">
     <mat-card>
       <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Checkin</mat-label>
-          <input  matInput readonly value="{{checkin}}" >
+          <input matInput readonly value="{{checkin}}">
 
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Checkout</mat-label>
-          <input matInput readonly value="{{checkout}}" >
+          <input matInput readonly value="{{checkout}}">
 
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Numar de camere</mat-label>
-          <input matInput readonly  value="{{noofrooms}}"  >
+          <input matInput readonly value="{{noofrooms}}">
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Numar de adulti</mat-label>
           <input matInput readonly value="{{noofadults}}">
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Numar de copii</mat-label>
-          <input matInput readonly  value="{{noofchildrens}}">
+          <input matInput readonly value="{{noofchildrens}}">
         </mat-form-field>
 
       </div>
-
-
-
-
-
-
-
-
-
     </mat-card>
   </form>
 
 
   <div class="roomimage">
-    <ngb-carousel class="carousel" >
+    <ngb-carousel class="carousel">
 
       <ng-template ngbSlide *ngFor="let images of image">
         <div class="picsum-img-wrapper">
-          <img class="imgcar" src="{{images.imagepath}}" >
+          <img class="imgcar" src="{{images.imagepath}}">
         </div>
 
       </ng-template>
@@ -68,7 +59,7 @@
     </ngb-carousel>
   </div>
 
-  <div  class="booking" >
+  <div class="booking">
     <h2>Beneficii:</h2>
     <div class="col">
       <mat-icon>
@@ -113,8 +104,8 @@
     <ngx-slick-carousel class="carouselslick"
                         #slickModal="slick-carousel">
 
-      <div ngxSlickItem  class="slide" *ngFor="let review of reviews">
-        <mat-card class="reviewcard" >
+      <div ngxSlickItem class="slide" *ngFor="let review of reviews">
+        <mat-card class="reviewcard">
           <p class="reviewtext">Autor Review:{{review.name}}</p>
           <p class="reviewtext">Titlu Review:{{review.reviewtitle}}</p>
           <p class="reviewtext">Review:{{review.reviewtext}}</p>
@@ -125,7 +116,7 @@
 
 
   </div>
-  <form (ngSubmit)="onClick()"class="finalinfo">
+  <form (ngSubmit)="onClick()" class="finalinfo">
     <h2>Date finale despre rezervare:</h2>
 
     <div class="colinfo">
@@ -139,8 +130,8 @@
 
 
     </div>
-    <div  class="colinfo">
-      <button mat-raised-button color="warn" type="submit" >Finalizeaza rezervarea</button>
+    <div class="colinfo">
+      <button mat-raised-button color="warn" type="submit">Finalizeaza rezervarea</button>
 
     </div>
 

@@ -1,20 +1,32 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {ReservationsHelper} from "../clases/ReservationsHelper";
 import {Observable} from "rxjs";
-import {Reservations} from "../clases/Reservations";
-import {RoomReservations} from "../clases/RoomReservations";
+import {RoomReservation} from "../clases/RoomReservation";
+import {Room} from "../clases/Room";
+import {throwPortalOutletAlreadyDisposedError} from "@angular/cdk/portal/portal-errors";
+import {Reservation} from "../clases/Reservation";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export  class ReservationService {
   private baseURL = "http://localhost:8081/reservations";
-  constructor(private httpClient:HttpClient){
+
+  constructor(private httpClient: HttpClient) {
 
   }
-  saveReservation(reservation:Reservations,roomreservation:RoomReservations):void{
-      this.httpClient.post<Reservations>(`${this.baseURL}`,reservation);
-      this.httpClient.post<RoomReservations>(`${this.baseURL}`,roomreservation);
+
+  saveReservation(reservation: ReservationsHelper): void {
+    this.httpClient.post<ReservationsHelper>(`${this.baseURL}`, reservation).subscribe();
   }
+
+  getAll(): Observable<RoomReservation[]> {
+    return this.httpClient.get<RoomReservation[]>(`${this.baseURL}`);
+  }
+getRezervationByUserId(id:number):Observable<Reservation[]>{
+    return  this.httpClient.get<Reservation[]>(`${this.baseURL}/${id}`)
+}
 
 }

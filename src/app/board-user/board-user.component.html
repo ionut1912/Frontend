@@ -1,28 +1,20 @@
 
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">User Dashboard</h1>
-  </mat-toolbar>
-
-  <mat-sidenav-container class="example-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item (click)="viewuserdata()">Vizualizare date personale </a>
-        <a mat-list-item>Vizualizare rezervari</a>
-        <a mat-list-item>Adauga review camera</a>
-        <a mat-list-item>Adauga review hotel</a>
-        <a mat-list-item routerLink="/"><mat-icon>home</mat-icon>Acasa</a>
-      </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
 
 
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Vizualizare date personale">
+    <app-userdata></app-userdata>
+  </mat-tab>
+  <mat-tab label="Vizualizare rezervari">
+    <app-view-reservations></app-view-reservations>
+  </mat-tab>
+  <mat-tab label="Adauga review camera">
+<app-room-review></app-room-review>
+  </mat-tab>
+  <mat-tab label="Adauga review hotel">
+<app-hotel-review></app-hotel-review>
+  </mat-tab>
+  <mat-tab label="Acasa">
 
+  </mat-tab>
+</mat-tab-group>
