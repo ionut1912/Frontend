@@ -67,9 +67,9 @@ export class RoomReservationComponent implements OnInit {
             checkin: this.getCheckin(),
             checkout: this.getCheckout(),
             deleted: false,
-            userid: this.userData.userid,
-            roomid: this.roomid,
-            priceid: this.price.priceid,
+            userId: this.userData.userid,
+            roomId: this.roomid,
+            priceId: this.price.priceid,
             noofrooms: this.getnoofroms(),
             noofadults: this.getnoofadults(),
             noofchildrens: this.getnoofchildrens()

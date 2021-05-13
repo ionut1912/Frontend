@@ -6,5 +6,5 @@ roomtype!:string;
 checkin!:Date;
 checkout!:Date;
 deleted!:boolean;
-userid!:number
+userId!:number
 }

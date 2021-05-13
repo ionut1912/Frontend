@@ -16,6 +16,7 @@ findAll():Observable<Room[]>
 findAllById(id:number):Observable<Room>
 {
   return this.httpclient.get<Room>(`${this.baseURL}/${id}`);
+
 }
 
 }

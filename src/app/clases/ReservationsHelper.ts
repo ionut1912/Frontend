@@ -5,9 +5,9 @@ export class ReservationsHelper {
   checkin!:Date;
   checkout!:Date;
   deleted!:boolean;
-  userid!:number;
-  roomid!:number;
-  priceid!:number;
+  userId!:number;
+  roomId!:number;
+  priceId!:number;
   noofrooms!:number;
   noofadults!:number;
   noofchildrens!:number

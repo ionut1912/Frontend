@@ -1,43 +1,48 @@
 <div>
-  <table mat-table [dataSource]="rezervationInfo" class="mat-elevation-z8">-->
+  <table mat-table [dataSource]="rezervationInfo"  matSort class="mat-elevation-z8">-->
 
 
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="roomtype">
-      <th mat-header-cell *matHeaderCellDef> RoomType </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> RoomType</th>
       <td mat-cell *matCellDef="let element"> {{element.roomtype}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="checkin">
-      <th mat-header-cell *matHeaderCellDef>  Checkin </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Checkin</th>
       <td mat-cell *matCellDef="let element"> {{element.checkin}} </td>
     </ng-container>
     <ng-container matColumnDef="checkout">
-      <th mat-header-cell *matHeaderCellDef>  CheckOut </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> CheckOut</th>
       <td mat-cell *matCellDef="let element"> {{element.checkout}} </td>
     </ng-container>
     <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <th mat-header-cell *matHeaderCellDef> Actions</th>
 
       <td mat-cell *matCellDef="let element">
 
-        <button mat-icon-button color="primary"  matTooltip="Modificati rezervarea" ><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button color="primary"  matTooltip="Stergeti rezervarea" >    <mat-icon>delete_outline</mat-icon></button>
+        <button mat-icon-button color="primary"  matTooltip="Modificati rezervarea">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" matTooltip="Stergeti rezervarea">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
       </td>
 
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 
 

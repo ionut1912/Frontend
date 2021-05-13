@@ -43,6 +43,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
 import { RoomReviewComponent } from './room-review/room-review.component';
 import { HotelReviewComponent } from './hotel-review/hotel-review.component';
+import {DialogDataExampleDialog} from "./userdata/userdata.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,14 +66,15 @@ import { HotelReviewComponent } from './hotel-review/hotel-review.component';
     UserdataComponent,
     ViewReservationsComponent,
     RoomReviewComponent,
-    HotelReviewComponent
+    HotelReviewComponent,
+    DialogDataExampleDialog
 
   ] ,
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatTableModule,
+
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
@@ -94,7 +99,9 @@ import { HotelReviewComponent } from './hotel-review/hotel-review.component';
     MatSidenavModule,
     MatListModule,
     MatTooltipModule,
-    MatTabsModule
+    MatTabsModule,
+    MatPaginatorModule,
+    MatSortModule
 
   ],
 
