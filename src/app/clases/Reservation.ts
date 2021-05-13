@@ -1,5 +1,5 @@
 export  class Reservation {
-reservationid!:number;
+rezervationid!:number;
 name!:string;
 email!:string;
 roomtype!:string;
