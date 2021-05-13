@@ -15,38 +15,63 @@ import {MatSort} from "@angular/material/sort";
   templateUrl: './view-reservations.component.html',
   styleUrls: ['./view-reservations.component.css']
 })
-export class ViewReservationsComponent implements OnInit,AfterViewInit{
-userDetails:UserData=new UserData();
-  columns: string[] =['name', 'email', 'roomtype','checkin','checkout','action'];
-rezervationInfo:Reservation[]=[];
-  constructor(private  reservationService:ReservationService,private  tokenStorage:TokenStorageService,private  userService:UserService) { }
+export class ViewReservationsComponent implements OnInit,AfterViewInit {
+  userDetails: UserData = new UserData();
+  columns: string[] = ['reservationid','name', 'email', 'roomtype', 'checkin', 'checkout', 'action'];
+  rezervationInfo: Reservation[] = [];
+
+  constructor(private  reservationService: ReservationService, private  tokenStorage: TokenStorageService, private  userService: UserService) {
+  }
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  public dataSource=new MatTableDataSource<Reservation>();
+  id!: number;
+  hidden: boolean = false;
+  public dataSource = new MatTableDataSource<Reservation>();
+
   ngOnInit(): void {
     this.getReservationByUserid();
 
   }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
   }
-getReservationByUserid(){
-  this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(userInfo=>{
-    this.userDetails=userInfo;
-console.log(this.userDetails);
-    this.reservationService.getRezervationByUserId(this.userDetails.userid).subscribe(rezervation=>{
-     this.rezervationInfo=rezervation;
-          for(let i=0;i<this.rezervationInfo.length;i++)
-          {
-            if(this.rezervationInfo[i].deleted)
-              this.rezervationInfo.splice(i,1);
 
-          }
+  getReservationByUserid() {
+    this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(userInfo => {
+      this.userDetails = userInfo;
+
+      this.reservationService.getRezervationByUserId(this.userDetails.userid).subscribe(rezervation => {
+        this.rezervationInfo = rezervation;
+        for (let i = 0; i < this.rezervationInfo.length; i++) {
+          if (this.rezervationInfo[i].deleted)
+            this.rezervationInfo.splice(i, 1);
+
+        }
+
+      });
+    });
+  }
+
+  edit(id: number): void {
+    this.id = id;
+    if (!this.hidden)
+      this.hidden = true;
+
+    else
+      this.hidden = false;
+    this.reservationService.modifyRezervation(this.id, this.rezervationInfo[id]).subscribe(data => {
 
     });
-  });
-}
+  }
+  delete(id:number):void{
+    this.id=id;
 
+  }
+  onSubmit():void{
+
+  }
 }

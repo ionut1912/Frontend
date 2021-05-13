@@ -3,8 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ReservationsHelper} from "../clases/ReservationsHelper";
 import {Observable} from "rxjs";
 import {RoomReservation} from "../clases/RoomReservation";
-import {Room} from "../clases/Room";
-import {throwPortalOutletAlreadyDisposedError} from "@angular/cdk/portal/portal-errors";
+
 import {Reservation} from "../clases/Reservation";
 
 
@@ -28,5 +27,7 @@ export  class ReservationService {
 getRezervationByUserId(id:number):Observable<Reservation[]>{
     return  this.httpClient.get<Reservation[]>(`${this.baseURL}/${id}`)
 }
-
+modifyRezervation(id:number,reservation:Reservation):Observable<Reservation>{
+    return  this.httpClient.patch<Reservation>(`${this.baseURL}/${id}`,reservation);
+}
 }

@@ -1,6 +1,9 @@
 <div>
-  <table mat-table [dataSource]="rezervationInfo"  matSort class="mat-elevation-z8">-->
-
+  <table mat-table [dataSource]="rezervationInfo"  matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="reservationid">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> RezervationId</th>
+      <td mat-cell *matCellDef="let element"> {{element.reservationid}} </td>
+    </ng-container>
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
@@ -30,10 +33,10 @@
 
       <td mat-cell *matCellDef="let element">
 
-        <button mat-icon-button color="primary"  matTooltip="Modificati rezervarea">
+        <button mat-icon-button color="primary"  (click)="edit(element.id)" matTooltip="Modificati rezervarea">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="primary" matTooltip="Stergeti rezervarea">
+        <button mat-icon-button color="primary"  (click)="delete(element.id)"  matTooltip="Stergeti rezervarea">
           <mat-icon>delete_outline</mat-icon>
         </button>
       </td>
@@ -44,5 +47,56 @@
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
+
+
+<form *ngIf="hidden" name="form" class="formuser"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+  <p>Modificati datele personale</p>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Nume</mat-label>
+      <input matInput  name="name" required  [(ngModel)]="rezervationInfo[id].name"  >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput  name="email" required  [(ngModel)]="rezervationInfo[id].email" >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>RoomType</mat-label>
+      <input matInput required name="roomtype" [(ngModel)]="rezervationInfo[id].roomtype" >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Checkin</mat-label>
+      <!-- #docregion toggle -->
+      <input matInput [matDatepicker]="picker" required name="checkin" [(ngModel)]="rezervationInfo[id].checkin">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <!-- #enddocregion toggle -->
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Checkout</mat-label>
+      <!-- #docregion toggle -->
+      <input matInput [matDatepicker]="picker1" required name="checkout" [(ngModel)]="rezervationInfo[id].checkout">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <!-- #enddocregion toggle -->
+    </mat-form-field>
+  </div>
+  <div>
+
+    <button mat-raised-button color="accent">Modificati datele</button>
+
+  </div>
+</form>
 
 
