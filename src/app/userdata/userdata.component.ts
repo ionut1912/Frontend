@@ -11,6 +11,7 @@ export interface DialogData {
   hidden:boolean;
   text:string;
   text2:string;
+  text3:string
 }
 @Component({
   selector: 'app-userdata',
@@ -58,7 +59,8 @@ const dialogRef=this.dialog.open(DialogDataExampleDialog,{
   data:{
 hidden:this.hidden,
     text:"Datele",
-    text2:"modificate"
+    text2:"modificate",
+    text3:"au"
   }
 });
     dialogRef.afterClosed().subscribe(result => {
@@ -81,6 +83,7 @@ export class DialogDataExampleDialog {
   }
   ok():void{
   this.data.hidden=false;
+
   this.dialogRef.close();
 
 }

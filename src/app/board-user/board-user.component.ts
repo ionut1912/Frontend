@@ -21,7 +21,7 @@ constructor(private  router:Router){
 
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {
 
-    if(this.group.selectedIndex == 4) {
+    if(this.group.selectedIndex === 4) {
 
       this.router.navigate(['']);
 

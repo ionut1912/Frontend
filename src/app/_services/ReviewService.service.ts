@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 import {ReviewDetails} from "../clases/ReviewDetails";
+import {ReviewHelper} from '../clases/ReviewHelper';
 
 
 
@@ -19,5 +20,8 @@ export class ReviewService{
 
   getReviews(id: number): Observable<ReviewDetails[]> {
     return this.httpclient.get<ReviewDetails[]>(`${this.baseURL}/${id}`);
+  }
+  saveReview(helper:ReviewHelper):void{
+    this.httpclient.post<ReviewHelper>(`${this.baseURL}`,helper).subscribe();
   }
 }

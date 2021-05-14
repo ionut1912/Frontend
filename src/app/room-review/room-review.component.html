@@ -1,10 +1,17 @@
 
-<form class="form-reviews">
+<form class="form-reviews"  class="formuser" [formGroup]="reviews"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
   <p>Adauga review-uri pentru camere</p>
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Titlu review</mat-label>
-      <input matInput>
+      <input matInput required formControlName="reviewtitle" [(ngModel)]="form.reviewtitle">
+      <mat-error>
+        Introduceti titlul review-ului
+      </mat-error>
+
     </mat-form-field>
   </div>
 
@@ -12,14 +19,20 @@
 <div>
   <mat-form-field appearance="fill">
     <mat-label>Text review</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput required formControlName="reviewtext"  [(ngModel)]="form.reviewtext"></textarea>
+    <mat-error>
+      Introduceti textul review-ului
+    </mat-error>
 
   </mat-form-field>
 </div>
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Room id</mat-label>
-      <input matInput>
+      <input matInput required formControlName="roomid"  [(ngModel)]="form.roomid">
+      <mat-error>
+        Introduceti numarul camerei
+      </mat-error>
     </mat-form-field>
   </div>
   <div>
