@@ -4,4 +4,5 @@ name!:string;
 email!:string;
 username!:string;
 type!:string;
+hotelreview!:string;
 }

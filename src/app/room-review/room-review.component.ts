@@ -40,24 +40,24 @@ formErors:any;
   }
 
   ngOnInit(): void {
-const {reviewtitle,reviewtext,roomid}=this.form;
+
 this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(info=>{
   this.user=info;
-  this.reviewHelper={
-    reviewTitle:this.form.reviewtitle,
-    reviewText:this.form.reviewtext,
-    userId:this.user.userid,
-    roomId:this.form.roomid
-  };
+
 });
   }
 onSubmit():void{
 this.saveReview();
 
-  console.log(this.reviewHelper.userId);
+
 }
 saveReview()
 {
-  this.reviewService.saveReview(this.reviewHelper);
+  this.reviewService.saveReview({
+    reviewTitle:this.form.reviewtitle,
+    reviewText:this.form.reviewtext,
+    userId:this.user.userid,
+    roomId:this.form.roomid
+  });
 }
 }

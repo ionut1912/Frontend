@@ -19,4 +19,9 @@ getUserData(username:string):Observable<UserData>
 updateUserDetails(id:number, user:UserData):Observable<UserData>{
     return  this.httpClient.patch<UserData>(`${this.baseURL}/${id}`,user);
 }
+
+  setHotelReview(id: number, user: Users):Observable<Users>{
+    return  this.httpClient.patch<Users>(`${this.baseURL}/updatehotelreview/${id}`,user)
+}
+
 }
