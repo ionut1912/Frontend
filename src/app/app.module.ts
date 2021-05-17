@@ -1,53 +1,61 @@
-import { NavbarComponent } from './navbar/navbar.component';
+import {NavbarComponent} from './navbar/navbar.component';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RezervationComponent } from './rezervation/rezervation.component';
-import { HomeComponent } from './home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ServiciiComponent } from './servicii/servicii.component';
-import { FooterComponent } from './footer/footer.component';
-import { ModalComponent } from './modal/modal.component';
-import { Modal2Component } from './modal2/modal2.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {RezervationComponent} from './rezervation/rezervation.component';
+import {HomeComponent} from './home/home.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ServiciiComponent} from './servicii/servicii.component';
+import {FooterComponent} from './footer/footer.component';
+import {ModalComponent} from './modal/modal.component';
+import {Modal2Component} from './modal2/modal2.component';
+import {ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { VideoModule } from './video/video.module';
-import { RegisterComponent } from './register/register.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
+import {VideoModule} from './video/video.module';
+import {RegisterComponent} from './register/register.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {BoardAdminComponent} from './board-admin/board-admin.component';
 import {BoardUserComponent} from './board-user/board-user.component';
-import { LoginComponent } from './login/login.component';
-import { RoominfoComponent } from './roominfo/roominfo.component';
-import { RoomReservationComponent } from './room-reservation/room-reservation.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {LoginComponent} from './login/login.component';
+import {RoominfoComponent} from './roominfo/roominfo.component';
+import {RoomReservationComponent} from './room-reservation/room-reservation.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSliderModule} from '@angular/material/slider';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {MatListModule} from '@angular/material/list';
-import { UserdataComponent } from './userdata/userdata.component';
+import {UserdataComponent} from './userdata/userdata.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {EditRezervationComponent, ViewReservationsComponent} from './view-reservations/view-reservations.component';
-import { RoomReviewComponent } from './room-review/room-review.component';
-import { HotelReviewComponent } from './hotel-review/hotel-review.component';
+import {RoomReviewComponent} from './room-review/room-review.component';
+import {HotelReviewComponent} from './hotel-review/hotel-review.component';
 import {DialogDataExampleDialog} from './userdata/userdata.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-
+import  {EditRoom} from './view-rooms/view-rooms.component';
 import {DeleteRezervationComponent} from './view-reservations/view-reservations.component';
+import {ViewUsersComponent} from './view-users/view-users.component';
+import {AddRoom, ViewRoomsComponent} from './view-rooms/view-rooms.component';
+import {DeleteUser} from './view-users/view-users.component';
+import {ViewRoomImagesComponent} from './view-room-images/view-room-images.component';
+import {AddUserComponent} from './view-users/view-users.component';
+import {EditUser} from './view-users/view-users.component';
+import {DeleteRoom} from './view-rooms/view-rooms.component';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +71,8 @@ import {DeleteRezervationComponent} from './view-reservations/view-reservations.
     BoardUserComponent,
     LoginComponent,
     NavbarComponent,
+    EditRoom,
+    DeleteRoom,
     RoominfoComponent,
     RoomReservationComponent,
     UserdataComponent,
@@ -70,9 +80,16 @@ import {DeleteRezervationComponent} from './view-reservations/view-reservations.
     RoomReviewComponent,
     HotelReviewComponent,
     DialogDataExampleDialog,
-EditRezervationComponent,
-    DeleteRezervationComponent
-  ] ,
+    EditRezervationComponent,
+    DeleteRezervationComponent,
+    ViewUsersComponent,
+    ViewRoomsComponent,
+    AddRoom,
+    EditUser,
+    DeleteUser,
+    ViewRoomImagesComponent,
+    AddUserComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -104,6 +121,7 @@ EditRezervationComponent,
     MatTooltipModule,
     MatTabsModule,
     MatPaginatorModule,
+
     MatSortModule,
 
 

@@ -7,11 +7,15 @@ import {UserData} from "../clases/UserData";
 import {Users} from "../clases/Users";
 
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+import {MatTableDataSource} from '@angular/material/table';
+import {Reservation} from '../clases/Reservation';
 export interface DialogData {
   hidden:boolean;
   text:string;
   text2:string;
   text3:string
+
 }
 @Component({
   selector: 'app-userdata',
@@ -21,8 +25,7 @@ export interface DialogData {
 export class UserdataComponent implements OnInit {
   columns: string[] =['name', 'email', 'username','action'];
 hidden:boolean=false;
-  users!:UserData[];
-user:Users=new Users();
+  users:Users[]=[];
 
 
   constructor(public userService:UserService,public  tokenStorage:TokenStorageService,public  dialog:MatDialog) { }

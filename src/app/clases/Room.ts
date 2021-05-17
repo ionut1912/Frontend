@@ -5,7 +5,8 @@ export class Room{
     name!: string;
     roomtype!: string;
     roomdetails!: string;
-    roomstatus!: string;
+    roomprice!:number;
+    pricecurency!:string;
     roomImage:RoomImage[]=[];
 
 }

@@ -1,1 +1,15 @@
-<app-navbar></app-navbar>
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="Vizualizare  utilizatori">
+<app-view-users></app-view-users>
+  </mat-tab>
+  <mat-tab label="Vizualizare  camere">
+<app-view-rooms></app-view-rooms>
+  </mat-tab>
+
+  <mat-tab label="Vizualizare imagini camere">
+<app-view-room-images></app-view-room-images>
+  </mat-tab>
+  <mat-tab label="Acasa">
+
+  </mat-tab>
+</mat-tab-group>
