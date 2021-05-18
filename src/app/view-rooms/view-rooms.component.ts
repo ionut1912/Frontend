@@ -31,7 +31,7 @@ export class ViewRoomsComponent implements OnInit {
   columns: string[] = ['roomid', 'name', 'roomtype', 'roomdetails', 'roomprice', 'pricecurency', 'action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+room:Room[]=[];
   constructor(public  roomService: RoomService,public  dialog:MatDialog) {
   }
 
@@ -39,7 +39,8 @@ export class ViewRoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.roomService.findAll().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
+      this.room=data;
+      this.dataSource = new MatTableDataSource(this.room);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
@@ -87,7 +88,7 @@ export class AddRoom {
     roomprice: null,
     pricecurency: null
   };
-  user: Users = new Users();
+
 
   constructor(private builder: FormBuilder,  public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog,public  roomService:RoomService) {
 
@@ -135,6 +136,7 @@ this.dialog.open(DialogDataExampleDialog,{
 
 
 }
+
 
 }
 @Component({

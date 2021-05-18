@@ -19,7 +19,7 @@ export class BoardAdminComponent implements OnInit {
   }
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {
 
-    if(this.group.selectedIndex ===3) {
+    if(this.group.selectedIndex ===4) {
 
       this.router.navigate(['']);
 

@@ -51,10 +51,11 @@ import {DeleteRezervationComponent} from './view-reservations/view-reservations.
 import {ViewUsersComponent} from './view-users/view-users.component';
 import {AddRoom, ViewRoomsComponent} from './view-rooms/view-rooms.component';
 import {DeleteUser} from './view-users/view-users.component';
-import {ViewRoomImagesComponent} from './view-room-images/view-room-images.component';
+
 import {AddUserComponent} from './view-users/view-users.component';
 import {EditUser} from './view-users/view-users.component';
 import {DeleteRoom} from './view-rooms/view-rooms.component';
+import { ViewAllReservationsComponent } from './view-all-reservations/view-all-reservations.component';
 
 
 @NgModule({
@@ -87,8 +88,9 @@ import {DeleteRoom} from './view-rooms/view-rooms.component';
     AddRoom,
     EditUser,
     DeleteUser,
-    ViewRoomImagesComponent,
-    AddUserComponent
+
+    AddUserComponent,
+    ViewAllReservationsComponent
   ],
   imports: [
     BrowserModule,

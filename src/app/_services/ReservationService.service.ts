@@ -33,4 +33,7 @@ modifyRezervation(id:number,reservation:Reservation):Observable<Reservation>{
   deleteRezervation(id:number,reservation:Reservation):Observable<Reservation>{
     return  this.httpClient.patch<Reservation>(`${this.baseURL}/delete/${id}`,reservation);
   }
+  getRezervation():Observable<Reservation[]>{
+    return  this.httpClient.get<Reservation[]>(`${this.baseURL}/all`)
+  }
 }
