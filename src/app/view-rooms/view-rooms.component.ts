@@ -130,9 +130,6 @@ export class AddRoom {
         pricecurency: this.form.pricecurency,
         imagepath: this.getBase64(this.selectedFiles)
       };
-      
-    
-    console.log(this.room);
 this.roomService.saveRoom(this.room);
     this.dialogRef.close();
     this.dialog.open(DialogDataExampleDialog, {
@@ -166,7 +163,7 @@ this.roomService.saveRoom(this.room);
       reader.onerror = function(error) {
         console.log('Error: ', error);
       };
-     this.text+=reader.result;
+     this.text+=reader.result+"\n";
     }
     return this.text;
   
