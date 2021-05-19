@@ -120,18 +120,20 @@ export class AddRoom {
   }
 
   saveRoom(): void {
-    for (let i = 0; i < this.selectedFiles.length; i++) {
+    
 
-      this.room = {
+      this.room = <Room> {
         name: this.form.name,
         roomtype: this.form.roomtype,
         roomdetails: this.form.roomdetails,
         roomprice: this.form.roomprice,
         pricecurency: this.form.pricecurency,
-        imagepath: this.getBase64(this.selectedFiles[i])
+        imagepath: this.getBase64(this.selectedFiles)
       };
-    }
-
+      
+    
+    console.log(this.room);
+this.roomService.saveRoom(this.room);
     this.dialogRef.close();
     this.dialog.open(DialogDataExampleDialog, {
       data: {
@@ -151,20 +153,23 @@ export class AddRoom {
   }
 
 
-  getBase64(file: File) {
+  getBase64(file: FileList) {
 
+    for (let i = 0; i < file.length; i++) {
+      let reader = new FileReader();
 
-    let reader = new FileReader();
+      reader.readAsDataURL(file[i]);
+      reader.onload = function() {
 
-    reader.readAsDataURL(file);
-    reader.onload = function() {
-
-      console.log(reader.result);
-    };
-    reader.onerror = function(error) {
-      console.log('Error: ', error);
-    };
-    return reader.result;
+        console.log(reader.result);
+      };
+      reader.onerror = function(error) {
+        console.log('Error: ', error);
+      };
+     this.text+=reader.result;
+    }
+    return this.text;
+  
   }
 
 
