@@ -2,15 +2,12 @@ import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {Users} from '../clases/Users';
 import {Room} from '../clases/Room';
 import {RoomService} from '../_services/RoomService.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../_services/UserService.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {TokenStorageService} from '../_services/token-storage.service';
 import {DialogDataExampleDialog} from '../userdata/userdata.component';
-import { ViewUsersComponent} from '../view-users/view-users.component';
+
 export  interface EditRoomInterface {
   roomid:number,
   name:string,
@@ -32,6 +29,7 @@ export class ViewRoomsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 room:Room[]=[];
+
   constructor(public  roomService: RoomService,public  dialog:MatDialog) {
   }
 
@@ -88,8 +86,10 @@ export class AddRoom {
     roomprice: null,
     pricecurency: null
   };
+  text!:string;
+  room:Room=new Room();
 
-
+selectedFiles!:FileList
   constructor(private builder: FormBuilder,  public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog,public  roomService:RoomService) {
 
     this.rooms = this.builder.group({
@@ -113,16 +113,21 @@ export class AddRoom {
   }
 
   onSubmit() {
-this.saveUser();
+this.saveRoom();
   }
-saveUser():void{
-    this.roomService.saveRoom(<Room> {
+saveRoom():void{
+  for(let i=0;i<this.selectedFiles.length;i++){
+
+    this.room= {
       name: this.form.name,
       roomtype: this.form.roomtype,
       roomdetails: this.form.roomdetails,
       roomprice: this.form.roomprice,
-      pricecurency: this.form.pricecurency
-    }).subscribe(()=>{
+      pricecurency: this.form.pricecurency,
+    imagepath:this.getBase64(this.selectedFiles[i])
+    }
+  }
+
 this.dialogRef.close();
 this.dialog.open(DialogDataExampleDialog,{
   data: {
@@ -132,9 +137,34 @@ this.dialog.open(DialogDataExampleDialog,{
   }
 })
 
-})
 
 
+
+}
+  selectFiles({event}: { event: any }) {
+
+    this.selectedFiles = event.target.files;
+
+
+  }
+
+
+ getBase64(file:File) {
+
+
+
+
+   let reader = new FileReader();
+
+     reader.readAsDataURL(file);
+     reader.onload = function() {
+
+       console.log(reader.result);
+     };
+     reader.onerror = function(error) {
+       console.log('Error: ', error);
+     };
+return reader.result;
 }
 
 

@@ -8,5 +8,5 @@ export class Room{
     roomprice!:number;
     pricecurency!:string;
     roomImage:RoomImage[]=[];
-
+    imagepath!:string;
 }

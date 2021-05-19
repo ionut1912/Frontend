@@ -55,6 +55,16 @@
         </mat-form-field>
       </div>
       <div>
+        <label class="btn btn-default">
+          <input type="file" multiple (change)="selectFiles({event : $event})" />
+        </label>
+
+
+
+
+
+      </div>
+      <div>
       <button mat-raised-button color="accent">Adaugati camera</button>
 
     </div>
