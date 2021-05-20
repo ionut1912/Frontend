@@ -92,9 +92,9 @@ export class AddRoom {
   room: Room = new Room();
 
   selectedFiles!: FileList;
+  imagesrc: string[] = [];
 
   constructor(private builder: FormBuilder, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, public  roomService: RoomService) {
-
     this.rooms = this.builder.group({
       name: ['', Validators.required],
       roomtype: ['', Validators.required],
@@ -117,23 +117,19 @@ export class AddRoom {
 
   onSubmit() {
     this.saveRoom();
+
   }
 
-  saveRoom(): void {
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-
-      this.room = <Room> {
-        name: this.form.name,
-        roomtype: this.form.roomtype,
-        roomdetails: this.form.roomdetails,
-        roomprice: this.form.roomprice,
-        pricecurency: this.form.pricecurency,
-        imagepath: this.getBase64(this.selectedFiles[i])
-      };
-      
-    }
-    console.log(this.room);
-this.roomService.saveRoom(this.room);
+  saveRoom() {
+    this.room = <Room> {
+      name: this.form.name,
+      roomtype: this.form.roomtype,
+      roomdetails: this.form.roomdetails,
+      roomprice: this.form.roomprice,
+      pricecurency: this.form.pricecurency,
+      imagepath: this.imagesrc
+    };
+    this.roomService.saveRoom(this.room);
     this.dialogRef.close();
     this.dialog.open(DialogDataExampleDialog, {
       data: {
@@ -143,33 +139,27 @@ this.roomService.saveRoom(this.room);
       }
     });
 
-
   }
+
   selectFiles({event}: { event: any }) {
-
-    this.selectedFiles = event.target.files;
-
-
+    this.selectedFiles = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+    var pattern = /image-*/;
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      var reader = new FileReader();
+      if (!this.selectedFiles[i].type.match(pattern)) {
+        alert('invalid format');
+        return;
+      }
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsDataURL(this.selectedFiles[i]);
+    }
   }
 
+  _handleReaderLoaded(e: { target: any; }) {
+    let reader = e.target;
+    this.imagesrc.push(reader.result);
 
-  getBase64(file: File) {
-
-
-    let reader = new FileReader();
-
-    reader.readAsDataURL(file);
-    reader.onload = function() {
-
-      console.log(reader.result);
-    };
-    reader.onerror = function(error) {
-      console.log('Error: ', error);
-    };
-    return reader.result;
   }
-
-
 }
 
 @Component({
