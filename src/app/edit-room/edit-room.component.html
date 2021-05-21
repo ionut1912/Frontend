@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Modificare camera
+
+</h1>
+<div mat-dialog-content>
+
+  <form  [formGroup]="rooms"
+         (ngSubmit)="f.form.valid && onSubmit()"
+         #f="ngForm"
+         novalidate>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nume</mat-label>
+        <input matInput  formControlName="name" required  [(ngModel)]="data.name">
+
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>RoomType</mat-label>
+        <input matInput  formControlName="roomtype" required [(ngModel)]="data.roomtype" >
+
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>RoomDetails</mat-label>
+        <input matInput required formControlName="roomdetails" [(ngModel)]="data.roomdetails"  >
+
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Pret</mat-label>
+        <input matInput required formControlName="roomprice"  [(ngModel)]="data.roomprice">
+
+      </mat-form-field>
+    </div>
+    <div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Moneda</mat-label>
+          <input matInput required formControlName="pricecurency"  [(ngModel)]="data.pricecurency">
+
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="accent">Modificati datele camerei</button>
+
+      </div>
+    </div>
+  </form>
+

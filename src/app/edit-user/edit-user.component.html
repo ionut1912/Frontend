@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Modificare date utilizator
+
+</h1>
+<div mat-dialog-content>
+
+  <form  [formGroup]="users"
+         (ngSubmit)="f.form.valid && onSubmit()"
+         #f="ngForm"
+         novalidate>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nume</mat-label>
+        <input matInput name="name" formControlName="name" required  [(ngModel)]="data.name">
+
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput name="email"  formControlName="email" required [(ngModel)]="data.email" >
+
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput name="username" formControlName="username"  required [(ngModel)]="data.username">
+
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <select matNativeControl name="role" formControlName="role" required [(ngModel)]="data.type">
+
+
+          <option value="ROLE_USER">ROLE_USER</option>
+          <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+
+        </select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="accent">Modificati datele utilizatorul</button>
+
+    </div>
+  </form>
+
+
+</div>
+
+
+

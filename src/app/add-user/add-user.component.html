@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Adaugare utilizator
+
+</h1>
+<div mat-dialog-content>
+
+  <form  [formGroup]="users"
+         (ngSubmit)="f.form.valid && onSubmit()"
+         #f="ngForm"
+         novalidate>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nume</mat-label>
+        <input matInput  formControlName="name" required  [(ngModel)]="form.name">
+        <mat-error>
+          Introduceti numele
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput  formControlName="email" required [(ngModel)]="form.email" >
+        <mat-error>
+          Introduceti email-ul
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput required formControlName="username" [(ngModel)]="form.username"  >
+        <mat-error>
+          Introduceti numele de utilizator
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Parola</mat-label>
+        <input  type="password" matInput required formControlName="password"  [(ngModel)]="form.password" >
+        <mat-error>
+          Introduceti parola
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+
+      <button mat-raised-button color="accent">Adaugati utilizatorul</button>
+
+    </div>
+  </form>
+
+
+</div>
+
+
+
