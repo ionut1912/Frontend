@@ -40,22 +40,27 @@ import {UserdataComponent} from './userdata/userdata.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
-import {EditRezervationComponent, ViewReservationsComponent} from './view-reservations/view-reservations.component';
+import { ViewReservationsComponent} from './view-reservations/view-reservations.component';
+import  {EditRezervationComponent} from './edit-rezervation/edit-rezervation.component';
 import {RoomReviewComponent} from './room-review/room-review.component';
 import {HotelReviewComponent} from './hotel-review/hotel-review.component';
-import {DialogDataExampleDialog} from './userdata/userdata.component';
+import  {DialogDataExampleDialog} from './dialog-data-example-dialog/dialog-data-example-dialog.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import  {EditRoom} from './view-rooms/view-rooms.component';
-import {DeleteRezervationComponent} from './view-reservations/view-reservations.component';
+import  {EditRoom} from './edit-room/edit-room.component';
+import  {DeleteRezervationComponent} from './delete-rezervation/delete-rezervation.component';
 import {ViewUsersComponent} from './view-users/view-users.component';
-import {AddRoom, ViewRoomsComponent} from './view-rooms/view-rooms.component';
-import {DeleteUser} from './view-users/view-users.component';
+import {ViewRoomsComponent} from './view-rooms/view-rooms.component';
+import  {AddRoom} from './add-room/add-room.component';
+import  {DeleteUser} from './delete-user/delete-user.component';
+import  {AddUser} from './add-user/add-user.component';
 
-import {AddUserComponent} from './view-users/view-users.component';
-import {EditUser} from './view-users/view-users.component';
-import {DeleteRoom} from './view-rooms/view-rooms.component';
 import { ViewAllReservationsComponent } from './view-all-reservations/view-all-reservations.component';
+import {DeleteRoom} from './delete-room/delete-room.component';
+import {EditUser} from './edit-user/edit-user.component';
+
+
+
 
 
 @NgModule({
@@ -86,11 +91,18 @@ import { ViewAllReservationsComponent } from './view-all-reservations/view-all-r
     ViewUsersComponent,
     ViewRoomsComponent,
     AddRoom,
+    AddUser,
     EditUser,
     DeleteUser,
 
-    AddUserComponent,
-    ViewAllReservationsComponent
+DialogDataExampleDialog,
+    ViewAllReservationsComponent,
+
+
+    EditRoom,
+    DeleteRoom,
+
+
   ],
   imports: [
     BrowserModule,

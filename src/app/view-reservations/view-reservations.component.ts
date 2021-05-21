@@ -10,7 +10,9 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {FormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogDataExampleDialog} from '../userdata/userdata.component';
+
+import {EditRezervationComponent} from '../edit-rezervation/edit-rezervation.component';
+import {DeleteRezervationComponent} from '../delete-rezervation/delete-rezervation.component';
 
 
 
@@ -123,106 +125,4 @@ dialogRef.afterClosed().subscribe(information=>{
 
 
 }
-
-@Component({
-  selector: 'edit-rezervation',
-  templateUrl: 'edit-rezervation.html',
-})
-
-export class EditRezervationComponent {
-  date1!: FormControl;
-  date2!: FormControl;
-  rezervation: Reservation=new Reservation();
-  rezervations:Reservation[]=[];
-  user:UserData=new UserData();
-  constructor(public dialogRef: MatDialogRef<ViewReservationsComponent>, @Inject(MAT_DIALOG_DATA) public data: EditRezervationData,public userService:UserService, public  rezervationService: ReservationService, public dialog: MatDialog,public  tokenStorage:TokenStorageService) {
-    this.date1 = new FormControl(new Date(data.Checkin));
-    this.date2 = new FormControl(new Date(data.Checkout));
-
-  }
-  onSubmit(): void{
-    this.rezervation = <Reservation> ({
-      name: this.data.Name,
-      email: this.data.Email,
-      roomtype: this.data.RoomType,
-      checkin: new Date(this.date1.value),
-      checkout: new Date(this.date2.value)
-    });
-
-
-    this.rezervationService.modifyRezervation(this.data.rezervationId, this.rezervation).subscribe(rezdata=>{
-      this.refresh();
-      this.dialogRef.close();
-
-      const dialogRef2 = this.dialog.open(DialogDataExampleDialog, {
-        data: {
-          text: 'Rezervarea',
-          text2: 'modificata',
-          text3: 'a',
-          dataSource:this.data.dataSource
-        }
-      });
-
-    });
-
-  }
-refresh():void{
-    this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(userInformation=> {
-      this.user = userInformation;
-this.rezervationService.getRezervationByUserId(this.user.userid).subscribe(rezervationInfo=>{
-  this.data.dataSource=new MatTableDataSource(rezervationInfo);
-    });
-    });
-}
-
-}
-@Component({
-  selector: 'delete-rezervation',
-  templateUrl: 'delete-rezervation.html',
-})
-
-export class DeleteRezervationComponent {
-  rezervation: Reservation = new Reservation();
-  user: UserData = new UserData();
-
-  constructor(public userService: UserService, public tokenStorage: TokenStorageService, public dialogRef: MatDialogRef<ViewReservationsComponent>, @Inject(MAT_DIALOG_DATA) public data: DeleteReervationData, public dialog1: MatDialog, public  rezervationService: ReservationService) {
-
-
-  }
-
-
-  nu(): void {
-    this.dialogRef.close();
-  }
-
-  da(): void {
-
-    this.rezervation = <Reservation> ({
-      rezervationid: this.data.rezervationId
-    });
-    this.rezervationService.deleteRezervation(this.data.rezervationId, this.rezervation).subscribe(() => {
-      this.refresh();
-      this.dialogRef.close();
-      const ref = this.dialog1.open(DialogDataExampleDialog, {
-        data: {
-          text: 'Rezervarea',
-          text2: 'stearsa',
-          text3: 'a'
-        }
-      });
-    });
-  }
-
-  refresh(): void {
-    this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(userInformation => {
-      this.user = userInformation;
-      this.rezervationService.getRezervationByUserId(this.user.userid).subscribe(rezervationInfo => {
-        this.data.dataSource = new MatTableDataSource(rezervationInfo);
-      });
-    });
-  }
-}
-
-
-
 

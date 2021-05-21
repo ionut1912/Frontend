@@ -1,5 +1,11 @@
 <div *ngIf="room.length===0;else other_content">
   Nu aveti camere
+  <div>
+    Adaugati una
+    <div>
+      <button mat-raised-button color="accent" (click)="addRoom()">Adaugati camera</button>
+    </div>
+  </div>
 </div>
 <ng-template #other_content>
 <div>

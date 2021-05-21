@@ -1,15 +1,13 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component,  OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
 import {UserService} from "../_services/UserService.service";
 import {TokenStorageService} from "../_services/token-storage.service";
-import {UserData} from "../clases/UserData";
+
 
 import {Users} from "../clases/Users";
 
-import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-import {MatTableDataSource} from '@angular/material/table';
-import {Reservation} from '../clases/Reservation';
+import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
 export interface DialogData {
   hidden:boolean;
   text:string;
@@ -73,21 +71,4 @@ hidden:this.hidden,
   }
 
 }
-@Component({
-  selector: 'dialog-data-example-dialog',
-  templateUrl: 'dialog-data-example-dialog.html',
-})
-export class DialogDataExampleDialog {
 
-  constructor( public dialogRef: MatDialogRef<UserdataComponent>,
-               @Inject(MAT_DIALOG_DATA) public data:DialogData) {
-
-
-  }
-  ok():void{
-  this.data.hidden=false;
-
-  this.dialogRef.close();
-
-}
-}
