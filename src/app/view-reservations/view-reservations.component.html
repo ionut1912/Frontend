@@ -1,7 +1,5 @@
-<div *ngIf="rezervationNotDeleted.length===0;else other_content">
-Nu aveti rezervari
-</div>
-<ng-template #other_content>
+
+
   <div>
     <table mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8">
       <ng-container matColumnDef="reservationid">
@@ -52,7 +50,6 @@ Nu aveti rezervari
     </table>
     <mat-paginator [pageSizeOptions]="[5, 15, 25]" showFirstLastButtons></mat-paginator>
   </div>
-</ng-template>
 
 
 

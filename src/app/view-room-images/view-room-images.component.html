@@ -1,0 +1,18 @@
+<div class="galery" *ngFor="let image of images">
+
+  <img class="roomimage" src="{{image.imagepath}}" >
+
+ <button mat-icon-button color="primary" (click)="editImage(image.imageid)"   matTooltip="Modificati imaginea" matTooltipPosition="left">
+  <mat-icon>edit</mat-icon>
+  </button>
+
+
+
+</div>
+<div *ngIf="display">
+  <div>
+    <label class="btn btn-default">
+      <input type="file"  (change)="selectFiles( {event : $event})"/>
+    </label>
+  </div>
+</div>

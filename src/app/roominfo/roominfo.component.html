@@ -1,4 +1,4 @@
-<div *ngIf="roomDetails.length===0;else other_content">
+<div *ngIf="roomDetails.length===0&&roomReservation.length===0">
 <div class="info" *ngFor="let room of rooms">
   <div class="col">
 
@@ -24,37 +24,54 @@
 </div>
 </div>
 
-
-<ng-template #other_content>
-
-  <div class="info" *ngFor="let item of roomDetails">
-
-    <div class="col" >
+<div *ngIf="roomDetails.length===0&&roomReservation.length>0">
+  <div class="info" *ngFor="let room of roomInformation">
+    <div class="col">
 
 
 
-      <img class="imgcar" src="{{item.images[0].imagepath}}" >
+      <img class="imgcar" src="{{room.images[0].imagepath}}" >
 
 
 
     </div>
     <div class="col">
-      {{item.name}}
+      {{room.name}}
     </div>
 
     <div class="col">
 
-      {{item.roomdetails}}
+      {{room.roomdetails}}
     </div>
 
     <div class="col">
-
-      <button  routerLink="/room/{{item.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
-
-
-
-
+      <button  routerLink="/room/{{room.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
     </div>
-
   </div>
-</ng-template>
+</div>
+
+<div *ngIf="roomDetails.length>0">
+  <div class="info" *ngFor="let room of roomDetails">
+    <div class="col">
+
+
+
+      <img class="imgcar" src="{{room.images[0].imagepath}}" >
+
+
+
+    </div>
+    <div class="col">
+      {{room.name}}
+    </div>
+
+    <div class="col">
+
+      {{room.roomdetails}}
+    </div>
+
+    <div class="col">
+      <button  routerLink="/room/{{room.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
+    </div>
+  </div>
+</div>

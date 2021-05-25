@@ -1,12 +1,12 @@
 <div>
-  <table mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="userid">
-      <th  mat-header-cell *matHeaderCellDef mat-sort-header> UserId</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> UserId</th>
       <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <th  mat-header-cell *matHeaderCellDef mat-sort-header> Nume</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nume</th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
     <ng-container matColumnDef="email">
@@ -15,34 +15,43 @@
     </ng-container>
 
     <ng-container matColumnDef="username">
-      <th  mat-header-cell *matHeaderCellDef mat-sort-header> Username</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Username</th>
       <td mat-cell *matCellDef="let element"> {{element.username}} </td>
     </ng-container>
 
 
     <ng-container matColumnDef="type">
-      <th  mat-header-cell *matHeaderCellDef mat-sort-header> Rol</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol</th>
       <td mat-cell *matCellDef="let element"> {{element.type}} </td>
     </ng-container>
 
 
     <ng-container matColumnDef="action">
+
       <th id="action" mat-header-cell *matHeaderCellDef> Actiuni</th>
-
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="addUser()" matTooltip="Adaugati un utilizator " matTooltipPosition="left">
-          <mat-icon>add_circle</mat-icon>
-        </button>
-
-        <button mat-icon-button color="primary" (click)="edit(element.userid,element.name,element.email,element.username,element.type)"   matTooltip="Modificati utilizatorul" matTooltipPosition="left">
+        <button mat-icon-button color="primary"
+                (click)="edit(element.userid,element.name,element.email,element.username,element.type)"
+                matTooltip="Modificati utilizatorul" matTooltipPosition="left">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="primary" (click)="delete(element.userid)"   matTooltip="Stergeti utilizatorul" matTooltipPosition="left">
+        <button mat-icon-button color="primary" (click)="delete(element.userid)" matTooltip="Stergeti utilizatorul"
+                matTooltipPosition="left">
           <mat-icon>delete_outline</mat-icon>
         </button>
       </td>
-
     </ng-container>
+
+    <ng-container matColumnDef="create_user">
+      <mat-header-cell *matHeaderCellDef>
+      <mat-icon (click)="addUser()" class="materials-icons" aria-hidden="false" style="cursor: pointer ;" matTooltip="Adaugare utilizator">
+        add_circle_outline
+      </mat-icon>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+      </mat-cell>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
   </table>

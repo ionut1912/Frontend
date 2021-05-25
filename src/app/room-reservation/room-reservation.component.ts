@@ -11,14 +11,17 @@ import {RoomImage} from "../clases/RoomImage";
 
 import {ReviewDetails} from "../clases/ReviewDetails";
 import {ReviewService} from './../_services/ReviewService.service';
-import {TotalPrice} from "../clases/TotalPrice";
-import {PriceService} from "../_services/PriceService.service";
+
+
 import {ReservationService} from "../_services/ReservationService.service";
 import {TokenStorageService} from "../_services/token-storage.service";
 
 import {UserService} from "../_services/UserService.service";
 import {UserData} from "../clases/UserData";
 import {ReservationsHelper} from "../clases/ReservationsHelper";
+import {TotalPrice} from '../clases/TotalPrice';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
 
 
 @Component({
@@ -28,7 +31,7 @@ import {ReservationsHelper} from "../clases/ReservationsHelper";
 })
 export class RoomReservationComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private UserService: UserService, private  priceService: PriceService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService) {
+  constructor(private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService,public  matDialog:MatDialog) {
   }
 
   roomid!: number;
@@ -42,7 +45,7 @@ export class RoomReservationComponent implements OnInit {
   date1!: FormControl;
   date2!: FormControl;
   reviews!: ReviewDetails[];
-  price!: TotalPrice;
+price:TotalPrice=new TotalPrice();
   userData!: UserData;
   reservations!: ReservationsHelper;
   form: any = {};
@@ -51,25 +54,27 @@ export class RoomReservationComponent implements OnInit {
   ngOnInit(): void {
 
     this.roomid = this.route.snapshot.params['id'];
-    this.price = new TotalPrice();
+    this.roomService.getPrice(this.getCheckin(),this.getCheckout(),this.roomid).subscribe(price=>{
+      this.price=price;
+    });
 
     this.roomService.findAllById(this.roomid).subscribe(room => {
       this.rooms = room;
       this.userData = new UserData();
-      this.UserService.getUserData(this.tokenStorageService.getUsername()).subscribe(data => {
+
+      this.userService.getUserData(this.tokenStorageService.getUsername()).subscribe(data => {
         this.userData = data;
-        this.priceService.getTotalPrice(this.getCheckin(), this.getCheckout(), this.roomid).subscribe(pricedata => {
-          this.price = pricedata;
-          this.reservations = {
+
+          this.reservations = <ReservationsHelper> {
             name: this.userData.name,
             email: this.userData.email,
             roomtype: this.rooms.roomtype,
             checkin: this.getCheckin(),
             checkout: this.getCheckout(),
             deleted: false,
-            userId: this.userData.userid,
-            roomId: this.roomid,
-            priceId: this.price.priceid,
+            userid: this.userData.userid,
+            roomid: this.roomid,
+
             noofrooms: this.getnoofroms(),
             noofadults: this.getnoofadults(),
             noofchildrens: this.getnoofchildrens()
@@ -77,7 +82,7 @@ export class RoomReservationComponent implements OnInit {
 
         });
       });
-    });
+
     this.imageService.getRoomImageById(this.roomid).subscribe(roomimage => {
       this.image = roomimage;
 
@@ -97,11 +102,6 @@ export class RoomReservationComponent implements OnInit {
   }
 
 
-  hasChildrens(): boolean {
-    if (this.noofchildrens <= 0)
-      return false;
-    return true;
-  }
 
   getCheckin(): Date {
     this.checkin = JSON.parse(localStorage.getItem("checkin") || '{}');
@@ -132,12 +132,22 @@ export class RoomReservationComponent implements OnInit {
     this.saveRezervation();
 
 
+
   }
 
   saveRezervation(): void {
 
 
     this.reservationService.saveReservation(this.reservations);
+
+      const ref = this.matDialog.open(DialogDataExampleDialog, {
+        data: {
+          text: 'Rezervarea',
+          text2: 'adaugata',
+          text3: 'a'
+        }
+      });
+
 
   }
 }

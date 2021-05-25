@@ -17,4 +17,9 @@ getRoomImageById(id:number):Observable<RoomImage[]>
 {
     return this.httpclient.get<RoomImage[]>(`${this.baseURL}/images/${id}`);
 }
+modifyImage(id:number,image:RoomImage):Observable<RoomImage>
+{
+  return  this.httpclient.patch<RoomImage>(`${this.baseURL}/images/${id}`,image)
+}
+
 }

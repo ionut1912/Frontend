@@ -12,5 +12,7 @@ constructor(private httpclient:HttpClient){}
 getRoomInfo(checkin:Date,checkout:Date):Observable<RoomDetails[]>{
 return this.httpclient.get<RoomDetails[]>(`${this.baseURL}/${checkin}/${checkout}`);
 }
-
+  getRoomDetails():Observable<RoomDetails[]>{
+  return  this.httpclient.get<RoomDetails[]>(`${this.baseURL}/details`)
+  }
 }

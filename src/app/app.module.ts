@@ -61,6 +61,7 @@ import { ViewAllReservationsComponent } from './view-all-reservations/view-all-r
 import {DeleteRoom} from './delete-room/delete-room.component';
 import {EditUser} from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ViewRoomImagesComponent } from './view-room-images/view-room-images.component';
 
 
 
@@ -105,6 +106,7 @@ DialogDataExampleDialog,
     EditRoom,
     DeleteRoom,
     PageNotFoundComponent,
+    ViewRoomImagesComponent,
 
 
 

@@ -1,9 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {RoomService} from '../_services/RoomService.service';
-import {DeleteRoomInterface, ViewRoomsComponent} from '../view-rooms/view-rooms.component';
+import { ViewRoomsComponent} from '../view-rooms/view-rooms.component';
 import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
-
+export interface DeleteRoomInterface {
+  roomid: number,
+}
 @Component({
   selector: 'delete-room',
   templateUrl: 'delete-room.component.html',

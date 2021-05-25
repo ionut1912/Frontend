@@ -1,0 +1,10 @@
+.galery{
+  margin: 5px;
+
+  float: left;
+  width: 280px;
+}
+.roomimage{
+  width: 60%;
+height: 100px;
+}

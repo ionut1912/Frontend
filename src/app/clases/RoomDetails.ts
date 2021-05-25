@@ -5,7 +5,6 @@ export class RoomDetails {
     roomtype!: string;
     roomdetails!: string;
     roomid!: number;
-    checkin!: Date;
-    checkout!: Date;
+
     images: RoomImage[]=[];
 }

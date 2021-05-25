@@ -4,9 +4,9 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {Users} from '../clases/Users';
 import {UserService} from '../_services/UserService.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
 import {EditUser} from '../edit-user/edit-user.component';
 import {DeleteUser} from '../delete-user/delete-user.component';
 import {AddUser} from '../add-user/add-user.component';
@@ -21,7 +21,7 @@ import {AddUser} from '../add-user/add-user.component';
   styleUrls: ['./view-users.component.css']
 })
 export class ViewUsersComponent implements OnInit,AfterViewInit {
-  columns: string[] = ['userid','name', 'email', 'username', 'type' , 'action'];
+  columns: string[] = ['userid','name', 'email', 'username', 'type' , 'action','create_user'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(public  userService:UserService,public  dialog:MatDialog) { }

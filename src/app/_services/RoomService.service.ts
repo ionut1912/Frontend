@@ -5,6 +5,8 @@ import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ReviewHelper} from '../clases/ReviewHelper';
 import {throwPortalOutletAlreadyDisposedError} from '@angular/cdk/portal/portal-errors';
+import {RoomDetails} from '../clases/RoomDetails';
+import {TotalPrice} from '../clases/TotalPrice';
 @Injectable({
     providedIn: 'root'
   })
@@ -29,10 +31,15 @@ updateRoom(id:number,room:Room):Observable<Room>{
   }
   saveRoom(room:Room):void{
   this.httpclient.post<Room>(`${this.baseURL}`,room).subscribe();
-  console.log(room);
+
 
 
   }
+getPrice(checkin:Date,checkout:Date,id:number):Observable<TotalPrice>
+{
+  return  this.httpclient.get<TotalPrice>(`${this.baseURL}/${checkin}/${checkout}/${id}`)
+}
+
 
 
 }
