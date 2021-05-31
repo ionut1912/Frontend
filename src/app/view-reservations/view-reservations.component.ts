@@ -64,6 +64,7 @@ export class ViewReservationsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.rezervationNotDeleted);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        console.log(this.rezervationNotDeleted)
 
       });
 

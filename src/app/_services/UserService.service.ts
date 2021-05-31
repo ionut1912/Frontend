@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserData} from "../clases/UserData";
 import {Users} from "../clases/Users";
+import {HotelReviewHelper} from '../clases/HotelReviewHelper';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ saveUser(user:Users):Observable<Users>{
 }
 deleteUsers(id:number):void {
     this.httpClient.delete<Users>(`${this.baseURL}/${id}`).subscribe();
+}
+getHotelReviews():Observable<HotelReviewHelper[]>
+{
+  return  this.httpClient.get<HotelReviewHelper[]>(`${this.baseURL}/hotelreview`)
 }
 }

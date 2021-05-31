@@ -1,8 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
 import { CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import {AuthService} from '../_services/auth.service';
+
 import {TokenStorageService} from '../_services/token-storage.service';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class AdminCheckGuard implements CanLoad {
 
   private role: string;
   private isLogged: boolean;
-  constructor(private tokenService:TokenStorageService, private route: Router) {
+  constructor(private tokenService:TokenStorageService, private route: Router,public  snackBar:MatSnackBar) {
     this.role = this.tokenService.getUserRole();
     this.isLogged = this.tokenService.isLoggedIn();
   }
@@ -27,7 +28,9 @@ export class AdminCheckGuard implements CanLoad {
       return true;
     }
     else {
-      alert("Nu puteti accesa aceasta pagina");
+      this.snackBar.open('Nu puteti accesa aceasta pagina','Inchide',{
+        duration:3000
+      });
       this.route.navigate(['']);
       return  false;
     }

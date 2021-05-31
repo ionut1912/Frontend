@@ -19,7 +19,7 @@ export  class ReservationService {
 
   saveReservation(reservation: ReservationsHelper): void {
     this.httpClient.post<ReservationsHelper>(`${this.baseURL}`, reservation).subscribe();
-    console.log(reservation)
+
   }
 
   getAll(): Observable<RoomReservation[]> {

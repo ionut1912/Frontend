@@ -1,18 +1,90 @@
 <div class="home">
-    <app-navbar></app-navbar>
-    <div class="info">
-      <p class="textinfo">Toate drumurile duc la Hotelya se spune,asta pentru ca amplasarea si dotarile hotelului   fac sa fie unul dintre cele mai cautate hoteluri din zona .</p>
-    <p class="textinfo">Mai jos aveti  o prezentare video a hotelul nostru.</p>
-    </div>
-<div class="video">
-<app-video></app-video>
+  <app-navbar></app-navbar>
+
+<div class="container">
+  <div class="row">
+  <div class="column1" >
+
+    <img class="intro" src="assets/Images/intro.jpg" alt="Nu exista">
+  </div>
+  <div class="column2" >
+
+    <p class="textinfo">Toate drumurile duc la Hotelya se spune,asta pentru ca amplasarea si dotarile hotelului   fac sa fie unul dintre cele mai cautate hoteluri de pe litoralul romanesc .</p>
+    <p class="textinfo">Consideram ca locatia hotelului este una linistita,asfel daca alegeti sa va petreceti vacanta la noi o sa va incarcati complet bateriile.
+    </p>
+    <p class="textinfo">Va asteptam la noi!</p>
+
+  </div>
+
 </div>
-<div class="info">
+</div>
+<div class="container">
+  <div class="row">
+    <div class="column1" >
 
-       <p class="textinfo">Suntem un hotel cu recunoastere nationala,fiecare client fiind multumit de serviciile noastre.Mai jos avem cateva review-uri de la utilizatorii nostrii.</p>
+      <app-video ></app-video>
 
 
-      </div>
+    </div>
+    <div class="column2" >
+
+      <p class="textinfo">Acest videoclip prezinta principalele componente ale hotelului. </p>
+
     </div>
 
-<app-footer></app-footer>
+  </div>
+</div>
+<div id="reviews">
+  <div class="container">
+
+    <p class="textinfocardheading">Parerile clientilor despre noi.</p>
+    <ngb-carousel class="carousel">
+
+      <ng-template ngbSlide *ngFor="let review of hotelReview">
+        <div class="reviewcard">
+          <p class="textinfocard">{{review.name}} </p>
+
+
+        </div>
+        <div class="reviewcard">
+          <p class="textinfocard">{{review.hotelreview}} </p>
+
+
+        </div>
+      </ng-template>
+
+    </ngb-carousel>
+  </div>
+
+</div>
+  <div class="images">
+    <p class="textinfo">Imagini din exterior</p>
+    <ngb-carousel class="carousel" >
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img class="imgcar" src="assets/Images/exterior1.jpg" >
+        </div>
+
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img class="imgcar" src="assets/Images/exterior2.jpg" >
+        </div>
+
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img class="imgcar" src="assets/Images/exterior3.jpg"  alt="nu exista">
+        </div>
+
+      </ng-template>
+
+    </ngb-carousel>
+  </div>
+
+    <footer>
+      <app-footer></app-footer>
+    </footer>
+
+
+</div>

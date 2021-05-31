@@ -54,17 +54,13 @@ import {ViewRoomsComponent} from './view-rooms/view-rooms.component';
 import  {AddRoom} from './add-room/add-room.component';
 import  {DeleteUser} from './delete-user/delete-user.component';
 import  {AddUser} from './add-user/add-user.component';
-import {AuthenticationGuard} from './auth-guard/authentication.guard';
-import  {AdminCheckGuard} from './auth-guard/admin-check.guard';
-import  {UserCheckGuard} from './auth-guard/user-check.guard';
+
 import { ViewAllReservationsComponent } from './view-all-reservations/view-all-reservations.component';
 import {DeleteRoom} from './delete-room/delete-room.component';
 import {EditUser} from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ViewRoomImagesComponent } from './view-room-images/view-room-images.component';
-
-
-
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 
 @NgModule({
@@ -145,7 +141,7 @@ DialogDataExampleDialog,
 
     MatSortModule,
 
-
+MatSnackBarModule
   ],
 
   providers: [MatDatepickerModule],

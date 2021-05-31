@@ -1,6 +1,6 @@
 export class RoomReservation {
-  roomReservationId!: number;
-  roomId!: number;
+  roomReservationd!: number;
+  roomid!: number;
 priceid!:number;
 reservationid!:number;
 checkin!:Date;
