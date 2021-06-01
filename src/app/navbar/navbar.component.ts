@@ -54,7 +54,7 @@ export class NavbarComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.id = 'login-component';
-    dialogConfig.height = '700px';
+    dialogConfig.height = '550px';
     dialogConfig.width = '500px';
 
     this.matDialog.open(LoginComponent, dialogConfig);
