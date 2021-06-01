@@ -5,6 +5,8 @@ import { AuthService } from '../_services/auth.service';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../_services/navbar.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-register',
@@ -12,8 +14,9 @@ import { NavbarService } from '../_services/navbar.service';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-
+  users!:FormGroup;
+hide=true;
+  formErors:any;
     form: any = {
         name: null,
         email: null,
@@ -26,7 +29,23 @@ export class RegisterComponent implements OnInit {
     submitted = false;
 
     constructor(public matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent>,
-                private authService: AuthService, private navbarService: NavbarService) {
+                private authService: AuthService, private navbarService: NavbarService,private builder:FormBuilder) {
+                  this.users = this.builder.group({
+                    name:              ['', [Validators.minLength,Validators.maxLength,Validators.required]],
+                    email:                  ['', [Validators.email,Validators.required]],
+                    username:['',[Validators.required,Validators.maxLength,Validators.minLength]],
+                    password:['',[Validators.minLength,Validators.maxLength,Validators.required]]
+                  });
+
+                  this.formErors = {
+                    name:        {},
+                    email:            {},
+
+                    username:            {},
+
+                    password:            {},
+                  };
+
     }
 
     ngOnInit(): void {
@@ -76,5 +95,7 @@ export class RegisterComponent implements OnInit {
         this.dialogRef.close();
     }
 
-
+    public checkError = (controlName: string, errorName: string) => {
+      return this.users.controls[controlName].hasError(errorName);
+    }
 }

@@ -79,8 +79,8 @@ export class LoginComponent implements OnInit {
 
         dialogConfig.disableClose = true;
         dialogConfig.id = 'register-component';
-        dialogConfig.height = '100%';
-        dialogConfig.width = '50%';
+        dialogConfig.height = '700px';
+        dialogConfig.width = '500px';
 
         this.matDialog.open(RegisterComponent, dialogConfig);
         this.closeModal();

@@ -11,9 +11,14 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+
 }
-.container{
+.inputs{
+  align-items: center;
+  padding-top: 20px;
+  padding-left: 60px;
+}
+.containerform{
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -21,12 +26,13 @@ body{
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
-.container .title{
+.containerform .title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
+  text-align: center;
 }
-.container .title::before{
+.containerform .title::before{
   content: "";
   position: absolute;
   left: 0;
@@ -34,7 +40,7 @@ body{
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+
 }
 .content form .user-details{
   display: flex;
@@ -65,6 +71,10 @@ form .input-box span.details{
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
   border-color: #9b59b6;
+}
+input{
+  width: 500px;
+
 }
  form .gender-details .gender-title{
   font-size: 20px;
@@ -137,7 +147,7 @@ border: none;
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
  @media(max-width: 1000px){
- .container{
+ .containerform{
   max-width: 100%;
 }
 form .user-details .input-box{
@@ -156,7 +166,7 @@ form .user-details .input-box{
   }
   }
   @media(max-width: 800px){
-  .container .content .category{
+  .containerform .content .category{
     flex-direction: column;
   }
 
