@@ -1,28 +1,40 @@
 
-  <footer>
-    
-    <div class="footer-container">
-      <div class="left-col">
-          <p>Logo</p>
-        <img src="assets/Images/logo.jpeg"  class="logo">
+<footer>
 
-        <p class="rights-text">© 2021 Realizat de Nitescu Cornel Ionut </p>
-      </div>
-      <div class="mid-col">
-        <a class="link"  (click)="openModal()">Politica de confidentialitate si fidelitate </a>
-<br><br>
-<a class="link" (click)="openModal2()">Reguli de ordine interioara</a>
-      </div>
-      <div class="right-col">
-        <h1>Date de contact</h1>
-        <div class="border"></div>
-<p>Telefon:0732129278</p>
-<p>Adresa de email:receptie@hotelya.ro</p>
-      </div>
+
+  <div class="row">
+    <div class="column">
+      <p>Logo</p>
+      <h4><span class="logotext">H</span>otelya</h4>
+
+      <p class="rights-text">© 2021 Realizat de Nitescu Cornel Ionut </p>
     </div>
-  </footer>
-  
+    <div class="column" >
+      <p>Link-uri rapide</p>
+      <div>
+        <a class="link" href="/servicii">Servicii</a>
+      </div>
+  <div>
+    <a class="link" (click)="openLogin()">Login</a>
+  </div>
 
-  
-  
- 
+    </div>
+    <div class="column" >
+      <p>Politica Hotelya</p>
+      <a class="link"  (click)="openModal()">Politica de confidentialitate </a>
+      <br><br>
+      <a class="link" (click)="openModal2()">Reguli de ordine interioara</a>
+    </div>
+    <div class="column" >
+      <h1>Date de contact</h1>
+      <div class="border"></div>
+      <p>Telefon:0732129278</p>
+      <p>Adresa de email:receptie@hotelya.ro</p>
+    </div>
+  </div>
+
+</footer>
+
+
+
+

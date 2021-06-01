@@ -9,7 +9,7 @@
 
 #modal-title {
     font-size: 22px;
- 
+
 }
 
 #modal-footer {
@@ -18,10 +18,7 @@
 }
 
 
-#modal-cancel-button{
-    background-color: black;
-    color: white;
-}
+
 .col {
     float: left;
     width: 100%;
@@ -31,14 +28,14 @@ font-size: 20px;
 font-family:'Poppins',sans-serif;
 padding-left: 30px;
   }
-  li{ 
-    list-style: none; 
-} 
+  li{
+    list-style: none;
+}
 
 
-li::before{ 
+li::before{
 
 
-    content: "\00BB"; 
+    content: "\00BB";
     color: green;
-} 
+}

@@ -60,7 +60,8 @@ import {DeleteRoom} from './delete-room/delete-room.component';
 import {EditUser} from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ViewRoomImagesComponent } from './view-room-images/view-room-images.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -103,6 +104,7 @@ DialogDataExampleDialog,
     DeleteRoom,
     PageNotFoundComponent,
     ViewRoomImagesComponent,
+
 
 
 

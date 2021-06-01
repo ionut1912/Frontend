@@ -1,7 +1,7 @@
 
-.intro{
-  width:300px;
-height:300px;
+.intro {
+  width: 95%;
+  height: 95%;
 }
 .info{
      font-family: 'Roboto', sans-serif;
@@ -10,12 +10,6 @@ height:300px;
 
 color: whitesmoke;
 
-}
-.home{
-  padding-top: 30px;
-}
-.footer{
-  padding-top: 30px;
 }
 
 .images{
@@ -27,13 +21,15 @@ height: 300px;
   width: 200px;
   height: 200px;
 }
-#reviews{
-  background-color:#4169E1;
+#reviews {
+  background-color: #4169E1;
   width: 100%;
 
 }
+
+
 footer{
-  padding-top: 250px;
+  padding-top: 280px;
 }
 #reviews .container{
   padding: 50px 50px;
@@ -45,12 +41,22 @@ footer{
 .textinfo{
     font-size:25px;
 width: 100%;
+  padding-top: 50px;
 
 text-align: center;
   padding-left: 80px;
 
 font-family: 'Roboto',sans-serif;
 
+
+
+}
+#left{
+  background-color: #dbd5da;
+}
+#right{
+   background-color:#4169E1;;
+  color: white;
 
 }
 
@@ -74,10 +80,10 @@ font-family: 'Roboto',sans-serif;
   width: 50%;
 
   text-align: center;
-  padding: 15px;
+  padding-left: 15px;
 
 
-  color: black;
+
 
 }
 
