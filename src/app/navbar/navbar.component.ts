@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 declare const navSlide: any;
 
@@ -24,7 +25,7 @@ export class NavbarComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(public matDialog: MatDialog, public login: LoginComponent, private router: Router,
-              private navbarService: NavbarService, private tokenStorageService: TokenStorageService) {
+              private navbarService: NavbarService, private tokenStorageService: TokenStorageService,private snackBar:MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -43,7 +44,9 @@ export class NavbarComponent implements OnInit {
     this.navbarService.updateLoginStatus(false);
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
-
+    this.snackBar.open('Delogare realizata cu succes','Inchide',{
+      duration:3000
+    });
   }
 
   openLogin(): void {
@@ -51,10 +54,11 @@ export class NavbarComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.id = 'login-component';
-    dialogConfig.height = '100%';
-    dialogConfig.width = '50%';
+    dialogConfig.height = '700px';
+    dialogConfig.width = '500px';
 
     this.matDialog.open(LoginComponent, dialogConfig);
-  }
+
+}
 
 }

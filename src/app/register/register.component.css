@@ -116,6 +116,7 @@ input{
     text-align:center;
 color: black;
 border: none;
+cursor: pointer;
   }
   .exit{
     border:none;

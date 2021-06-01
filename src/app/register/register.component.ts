@@ -80,16 +80,19 @@ hide=true;
 
     }
 
-    openLogin(): void {
-        const dialogConfig = new MatDialogConfig();
 
-        dialogConfig.disableClose = true;
-        dialogConfig.id = 'login-component';
-        dialogConfig.height = '100%';
-        dialogConfig.width = '50%';
-        const modalDialog = this.matDialog.open(LoginComponent, dialogConfig);
-        this.closeModal();
-    }
+  openLogin(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.id = 'login-component';
+    dialogConfig.height = '700px';
+    dialogConfig.width = '700px';
+
+    this.matDialog.open(LoginComponent, dialogConfig);
+    this.closeModal();
+
+}
 
     closeModal(): void {
         this.dialogRef.close();

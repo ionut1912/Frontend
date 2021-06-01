@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
@@ -15,6 +17,8 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 
 export class LoginComponent implements OnInit {
+  users!:FormGroup;
+  hide=true;
     form: any = {
         username: null,
         password: null
@@ -23,11 +27,26 @@ export class LoginComponent implements OnInit {
     roles!: string;
     submitted = false;
     isLoggedIn = false;
+  formErors:any;
 
     constructor(public matDialog: MatDialog, public dialogRef: MatDialogRef<LoginComponent>,
                 private authService: AuthService, private tokenStorage: TokenStorageService,
-                private route: Router, private navbarService: NavbarService) {
+                private route: Router, private navbarService: NavbarService,private builder:FormBuilder) {
         this.isLoggedIn = tokenStorage.isLoggedIn();
+        this.users = this.builder.group({
+
+          username:['',[Validators.required,Validators.maxLength,Validators.minLength]],
+          password:['',[Validators.minLength,Validators.maxLength,Validators.required]]
+        });
+
+        this.formErors = {
+          name:        {},
+          email:            {},
+
+          username:            {},
+
+          password:            {},
+        };
     }
 
     ngOnInit(): void {
@@ -98,5 +117,8 @@ export class LoginComponent implements OnInit {
 
     closeModal(): void {
         this.dialogRef.close();
+    }
+    public checkError = (controlName: string, errorName: string) => {
+      return this.users.controls[controlName].hasError(errorName);
     }
 }
