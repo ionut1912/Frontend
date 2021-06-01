@@ -39,6 +39,7 @@ import {MatListModule} from '@angular/material/list';
 import {UserdataComponent} from './userdata/userdata.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
+
 import {MatTabsModule} from '@angular/material/tabs';
 import { ViewReservationsComponent} from './view-reservations/view-reservations.component';
 import  {EditRezervationComponent} from './edit-rezervation/edit-rezervation.component';
@@ -54,7 +55,6 @@ import {ViewRoomsComponent} from './view-rooms/view-rooms.component';
 import  {AddRoom} from './add-room/add-room.component';
 import  {DeleteUser} from './delete-user/delete-user.component';
 import  {AddUser} from './add-user/add-user.component';
-
 import { ViewAllReservationsComponent } from './view-all-reservations/view-all-reservations.component';
 import {DeleteRoom} from './delete-room/delete-room.component';
 import {EditUser} from './edit-user/edit-user.component';
