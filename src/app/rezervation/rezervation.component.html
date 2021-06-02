@@ -62,6 +62,10 @@
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
 							</select>
 							<span class="select-arrow"></span>
 						</div>
@@ -104,7 +108,7 @@
 		</div>
 	</div>
 	<div *ngIf="diplay&&submitted===true">
-		<app-roominfo [checkin]="form.checkin" [checkout]="form.checkout" ></app-roominfo>
+		<app-roominfo [checkin]="form.checkin" [checkout]="form.checkout" [noofrooms]="form.noofrooms" [noofadults]="form.noofadults"  [noofchildrens]="form.noofchildrens"></app-roominfo>
 
 		</div>
 </div>

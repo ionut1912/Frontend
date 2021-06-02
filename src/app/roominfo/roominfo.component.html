@@ -19,7 +19,7 @@
   </div>
 
   <div class="col">
-    <button  routerLink="/room/{{room.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
+    <button  (click)="reserveRoom(room.roomid)"   type="button" class="btn btn-dark" >Rezerva</button>
   </div>
 </div>
 </div>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="col">
-      <button  routerLink="/room/{{room.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
+      <button (click)="reserveRoom(room.roomid)" type="button" class="btn btn-dark" >Rezerva</button>
     </div>
   </div>
 </div>
@@ -71,7 +71,13 @@
     </div>
 
     <div class="col">
-      <button  routerLink="/room/{{room.roomid}}" type="button" class="btn btn-dark" >Rezerva</button>
+      <button (click)="reserveRoom(room.roomid)"  type="button" class="btn btn-dark" >Rezerva</button>
+      {{nrofClicks}}
     </div>
   </div>
+
+</div>
+<div *ngIf="nrofClicks>=noofrooms">
+  <button class="btn btn-dark">Finalizeaza  rezervarea</button>
+
 </div>

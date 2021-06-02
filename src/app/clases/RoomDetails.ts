@@ -1,10 +1,11 @@
-import { RoomImage } from './../clases/RoomImage';
+import {RoomImage} from './../clases/RoomImage';
 
 export class RoomDetails {
-    name!: string;
-    roomtype!: string;
-    roomdetails!: string;
-    roomid!: number;
-
-    images: RoomImage[]=[];
+  name!: string;
+  roomtype!: string;
+  roomdetails!: string;
+  roomid!: number;
+  roomprice!: number;
+  pricecurency!: string;
+  images: RoomImage[] = [];
 }
