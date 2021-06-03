@@ -38,9 +38,10 @@ export class FooterComponent  {
 
     dialogConfig.disableClose = true;
     dialogConfig.id = 'login-component';
-    dialogConfig.height = '100%';
-    dialogConfig.width = '50%';
+    dialogConfig.height = '550px';
+    dialogConfig.width = '500px';
 
     this.matDialog.open(LoginComponent, dialogConfig);
+
   }
 }

@@ -8,8 +8,9 @@ import {RoomReservation} from '../clases/RoomReservation';
 import {ReservationService} from '../_services/ReservationService.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
-import {throwUnknownPortalTypeError} from '@angular/cdk/portal/portal-errors';
-import {RouterModule} from '@angular/router';
+import {RoomImage} from '../clases/RoomImage';
+import {MatDialog} from '@angular/material/dialog';
+import {RoomReservationComponent} from '../room-reservation/room-reservation.component';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class RoominfoComponent implements OnInit {
   rooms: Room[] = [];
   roomReservation: RoomReservation[] = [];
   roomInformation: RoomDetails[] = [];
+  images:RoomImage[]=[];
 
   @Input() checkin!: Date;
   @Input() checkout!: Date;
@@ -32,11 +34,12 @@ export class RoominfoComponent implements OnInit {
   roomDetail: RoomDetails = new RoomDetails();
   roomInfo: Room = new Room();
   ids!: number;
-  found = false;
+  display = false;
+
   reservation: MultipleReservationsHelper = new MultipleReservationsHelper();
   reservations: MultipleReservationsHelper[] = [];
 
-  constructor(private roomDetailsService: RoomDetailsService, private roomImageService: ImageService, private  roomService: RoomService, private  reservationService: ReservationService, public  snackBar: MatSnackBar) {
+  constructor(private  matDialog:MatDialog,private roomDetailsService: RoomDetailsService, private roomImageService: ImageService, private  roomService: RoomService, private  reservationService: ReservationService, public  snackBar: MatSnackBar) {
 
   }
 
@@ -129,7 +132,7 @@ if(this.nrofClicks<=this.noofrooms){
             roomdetails: this.rooms[this.ids].roomdetails,
             roomprice: this.rooms[this.ids].roomprice,
             pricecurency: this.rooms[this.ids].pricecurency,
-            images: this.rooms[this.ids].roomImage,
+
             checkin: this.checkin,
             checkout: this.checkout,
             noofrooms: this.noofrooms,
@@ -159,7 +162,7 @@ if(this.nrofClicks<=this.noofrooms){
             roomdetails: this.roomInformation[this.ids].roomdetails,
             roomprice: this.roomInformation[this.ids].roomprice,
             pricecurency: this.roomInformation[this.ids].pricecurency,
-            images: this.roomInformation[this.ids].images,
+
             checkin: this.checkin,
             checkout: this.checkout,
             noofrooms: this.noofrooms,
@@ -175,6 +178,7 @@ if(this.nrofClicks<=this.noofrooms){
             this.roomDetails[i].images = images;
           });
         }
+
         this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
           this.roomInformation = roomDetailss;
 
@@ -185,12 +189,17 @@ if(this.nrofClicks<=this.noofrooms){
           }
           for (let i = 0; i < this.roomInformation.length; i++) {
             this.roomDetails.push(this.roomInformation[i]);
+
           }
+          console.log(this.roomDetails);
           this.roomDetail = this.roomDetails.filter(x => x.roomid === id)[0];
 
           this.ids = this.roomDetails.indexOf(this.roomDetail);
 
           console.log(this.ids);
+
+
+
           this.reservation = <MultipleReservationsHelper> {
             roomid: id,
 
@@ -199,7 +208,7 @@ if(this.nrofClicks<=this.noofrooms){
             roomdetails: this.roomDetails[this.ids].roomdetails,
             roomprice: this.roomDetails[this.ids].roomprice,
             pricecurency: this.roomDetails[this.ids].pricecurency,
-            images: this.roomDetails[this.ids].images,
+
             checkin: this.checkin,
             checkout: this.checkout,
             noofrooms: this.noofrooms,
@@ -208,22 +217,9 @@ if(this.nrofClicks<=this.noofrooms){
           };
 
           this.reservations.push(this.reservation);
-          console.log(this.reservations)
-          for (let i = 0; i < this.reservations.length - 1; i++) {
-            {
-              for (let j = i + 1; i < this.reservations.length; i++) {
-                if (this.reservations[i].roomid == this.reservations[j].roomid) {
-                  this.found = true;
-                }
-              }
-            }
-          }
-          if (this.found) {
-            this.snackBar.open('Ati rezervat deja aceasta camera', 'Inchide', {
-              duration: 3000
-            });
-            this.nrofClicks--;
-          }
+
+console.log(this.reservations);
+
 
         });
 
@@ -240,5 +236,15 @@ if(this.nrofClicks<=this.noofrooms){
         duration: 3000
       });
     }
+  }
+
+  finishreservation() {
+// this.display=true;
+this.matDialog.open(RoomReservationComponent,{
+  data:
+    {
+      reservation:this.reservations
+    }
+})
   }
 }

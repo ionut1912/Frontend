@@ -7,7 +7,7 @@ roomtype!:string;
 roomdetails!:string;
 roomprice!:number;
 pricecurency!:string;
-images!:RoomImage[];
+
 checkin!:Date;
 checkout!:Date;
 noofrooms!:number;

@@ -12,7 +12,9 @@
     width: 450px;
 
 }
-
+.button{
+  padding-left: 30px;
+}
 .info:after{
   box-sizing: border-box;
   content: "";

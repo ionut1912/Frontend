@@ -28,9 +28,7 @@ height: 300px;
 }
 
 
-footer{
-  padding-top: 280px;
-}
+
 #reviews .container{
   padding: 50px 50px;
 }
@@ -51,14 +49,8 @@ font-family: 'Roboto',sans-serif;
 
 
 }
-#left{
-  background-color: #dbd5da;
-}
-#right{
-   background-color:#4169E1;;
-  color: white;
 
-}
+
 
 .row{
   padding-top: 20px;

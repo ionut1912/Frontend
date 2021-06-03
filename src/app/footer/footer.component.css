@@ -1,10 +1,20 @@
 footer{
 
     background: #4169E1;
-    padding: 90px 10px;
+
 align-items: center;
   color: white;
+  padding-bottom: 5px;
+
+
+
   }
+.footer-items {
+
+  padding-top: 300px;
+
+
+}
 
   .footer-container {
     width: 100%;
@@ -37,7 +47,7 @@ color: white;
   float: left;
   width: 25%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+   /* Should be removed. Only for demonstration */
 }
 
 /* Clear floats after the columns */
@@ -114,10 +124,9 @@ color: white;
       width: 100%;
       margin-top: 20px;
       }
-      footer{
-  padding-left: 200px;
 
-      }
+
+
       .column{
         width:100%
       }

@@ -25,26 +25,19 @@ mat-card{
 
 }
 .finalinfo{
-transform: translate(-10px,-350px);
+
 text-align: center;
 }
-.text{
-  transform: translate(-10px,10px);
 
-}
+
 .reviewmesage{
   text-align: center;
   padding-right:20px;
-  transform: translate(-100px,-350px);
-}
-.reviewcard{
-  width: 100%;
-  border: 1px solid ;
-  padding: 10px;
-  box-shadow: 5px 10px #888888;
+
 }
 .reviewtext{
   text-align: center;
+  color: white;
 }
 .finalinfo:after{
   box-sizing: border-box;
@@ -65,7 +58,6 @@ text-align: center;
   width: 100%;
 
 
-  transform: translate(5px,-350px);
 }
 .col {
   float: left;
@@ -77,13 +69,6 @@ text-align: center;
 .carouseltext{
   text-align: center;
 color: white;
-}
-.reviews{
-background-color:gray;
-  transform: translate(0px,-350px);
-
-
-
 }
 .slick-slider {
   width: 88%;
@@ -103,9 +88,7 @@ body .slick-next {
   display: table;
   clear: both;
 }
-.roomimage{
-  transform: translate(350px, -450px);
-}
+
 @media screen and (max-width: 600px) {
   .col {
     width: 100%;

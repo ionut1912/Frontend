@@ -72,12 +72,18 @@
 
     <div class="col">
       <button (click)="reserveRoom(room.roomid)"  type="button" class="btn btn-dark" >Rezerva</button>
-      {{nrofClicks}}
+
     </div>
   </div>
 
 </div>
 <div *ngIf="nrofClicks>=noofrooms">
-  <button class="btn btn-dark">Finalizeaza  rezervarea</button>
+  <div class="container button">
+    <button class="btn btn-dark" (click)="finishreservation()">Finalizeaza  rezervarea</button>
+  </div>
+
 
 </div>
+<!--<div *ngIf="display">-->
+<!--  <app-room-reservation [reservation]="reservations" ></app-room-reservation>-->
+<!--</div>-->

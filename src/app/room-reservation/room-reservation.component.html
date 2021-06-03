@@ -1,44 +1,119 @@
-<div class="rooms">
-  <div *ngIf="rooms" class="info">
 
-    <p>Numele camerei:{{rooms.name}} </p>
-    <p>Tipul camerei:{{rooms.roomtype}}</p>
-    <p>Detalii camera:{{rooms.roomdetails}}</p>
+<div *ngIf="data.reservation.length===0">
+  <div class="rooms">
+    <div class="container">
+      <h3>Detaliile camerei rezervate</h3>
+      <div *ngFor="let item of data.reservation" class="info">
+
+        <p>Numele camerei:{{item.name}} </p>
+        <p>Tipul camerei:{{item.roomtype}}</p>
+        <p>Detalii camera:{{item.roomdetails}}</p>
 
 
+      </div>
+
+
+
+
+
+
+      </div>
+    </div>
   </div>
+
+<div  class="reviews" *ngIf="reviews.length!=0">
+  <div class="container">
+<div *ngIf="data.reservation.length===1">
+  <h2 class="reviewmesage">Review-urile vizitatorilor nostrii despre aceasta camera:</h2>
+</div>
+    <div *ngIf="data.reservation.length>1">
+      <h2 class="reviewmesage">Review-urile vizitatorilor nostrii despre aceaste camere:</h2>
+    </div>
+    <ngb-carousel class="carousel">
+
+      <ng-template ngbSlide *ngFor="let review of reviews">
+
+        <div class="reviewcard">
+
+          <p class="reviewtext">Autor Review:{{review.name}}</p>
+          <p class="reviewtext">Titlu Review:{{review.reviewtitle}}</p>
+          <p class="reviewtext">Review:{{review.reviewtext}}</p>
+
+        </div>
+      </ng-template>
+
+    </ngb-carousel>
+  </div>
+<div *ngIf="data.reservation.length>0">
+  <div class="rooms">
+    <div class="container">
+      <h3>Detaliile camerelor rezervate</h3>
+      <div *ngFor="let item of data.reservation" class="info">
+
+        <p>Numele camerei:{{item.name}} </p>
+        <p>Tipul camerei:{{item.roomtype}}</p>
+        <p>Detalii camera:{{item.roomdetails}}</p>
+
+        <div  class="reviews" *ngIf="reviews.length!=0">
+          <div class="container">
+
+            <h2 class="reviewmesage">Review-urile vizitatorilor nostrii despre aceste camere:</h2>
+            <ngb-carousel class="carousel">
+
+              <ng-template ngbSlide *ngFor="let review of reviews">
+
+                <div class="reviewcard">
+
+                  <p class="reviewtext">Autor Review:{{review.name}}</p>
+                  <p class="reviewtext">Titlu Review:{{review.reviewtitle}}</p>
+                  <p class="reviewtext">Review:{{review.reviewtext}}</p>
+
+                </div>
+              </ng-template>
+
+            </ngb-carousel>
+          </div>
+      </div>
+    </div>
+</div>
+  </div>
+</div>
+
+
   <form name="form" class="infoform">
+
     <mat-card>
+      <h3>Datele rezervarii</h3>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Checkin</mat-label>
-          <input matInput readonly value="{{checkin}}">
+          <input matInput readonly value="{{data.reservation[0].checkin}}">
 
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Checkout</mat-label>
-          <input matInput readonly value="{{checkout}}">
+          <input matInput readonly value="{{data.reservation[0].checkout}}">
 
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Numar de camere</mat-label>
-          <input matInput readonly value="{{noofrooms}}">
+          <input matInput readonly value="{{data.reservation[0].noofrooms}}">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Numar de adulti</mat-label>
-          <input matInput readonly value="{{noofadults}}">
+          <input matInput readonly value="{{data.reservation[0].noofadults}}">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Numar de copii</mat-label>
-          <input matInput readonly value="{{noofchildrens}}">
+          <input matInput readonly value="{{data.reservation[0].noofchildrens}}">
         </mat-form-field>
 
       </div>
@@ -46,18 +121,6 @@
   </form>
 
 
-  <div class="roomimage">
-    <ngb-carousel class="carousel">
-
-      <ng-template ngbSlide *ngFor="let images of image">
-        <div class="picsum-img-wrapper">
-          <img class="imgcar" src="{{images.imagepath}}">
-        </div>
-
-      </ng-template>
-
-    </ngb-carousel>
-  </div>
 
   <div class="booking">
     <h2>Beneficii:</h2>
@@ -98,45 +161,26 @@
     </div>
   </div>
 
-  <h2 class="reviewmesage">Review-urile vizitatorilor nostrii despre aceasta camera:</h2>
-  <div class="reviews">
 
-    <ngx-slick-carousel class="carouselslick"
-                        #slickModal="slick-carousel">
+<!--  <form (ngSubmit)="onClick()" class="finalinfo">-->
+<!--    <h2>Date finale despre rezervare:</h2>-->
 
-      <div ngxSlickItem class="slide" *ngFor="let review of reviews">
-        <mat-card class="reviewcard">
-          <p class="reviewtext">Autor Review:{{review.name}}</p>
-          <p class="reviewtext">Titlu Review:{{review.reviewtitle}}</p>
-          <p class="reviewtext">Review:{{review.reviewtext}}</p>
-        </mat-card>
-      </div>
-
-    </ngx-slick-carousel>
+<!--    <div class="colinfo">-->
+<!--      <h2>Checkin: {{checkin}}</h2>-->
+<!--    </div>-->
+<!--    <div class="colinfo">-->
+<!--      <h2>Checkout: {{checkout}}</h2>-->
+<!--    </div>-->
+<!--    <div class="colinfo" >-->
+<!--      <h2>Pret final: {{price.finalprice}}  {{price.pricecurency}}  </h2>-->
 
 
-  </div>
-  <form (ngSubmit)="onClick()" class="finalinfo">
-    <h2>Date finale despre rezervare:</h2>
+<!--    </div>-->
+<!--    <div class="colinfo">-->
+<!--      <button mat-raised-button color="warn" type="submit">Finalizeaza rezervarea</button>-->
 
-    <div class="colinfo">
-      <h2>Checkin: {{checkin}}</h2>
-    </div>
-    <div class="colinfo">
-      <h2>Checkout: {{checkout}}</h2>
-    </div>
-    <div class="colinfo" >
-      <h2>Pret final: {{price.finalprice}}  {{price.pricecurency}}  </h2>
+<!--    </div>-->
 
-
-    </div>
-    <div class="colinfo">
-      <button mat-raised-button color="warn" type="submit">Finalizeaza rezervarea</button>
-
-    </div>
-
-  </form>
-
-</div>
+<!--  </form>-->
 
 
