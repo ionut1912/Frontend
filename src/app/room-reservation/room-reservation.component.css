@@ -6,7 +6,10 @@
 mat-form-field {
    margin-top: 12px;
  }
-
+.reviews{
+  background-color: #4169E1; ;
+  color: white;
+}
 
 mat-card{
   width: 310px;

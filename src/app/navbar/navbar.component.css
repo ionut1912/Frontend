@@ -27,6 +27,7 @@ nav {
 
 nav ul {
     display: flex;
+
 }
 
 nav ul li {
@@ -41,7 +42,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    border-bottom: 2px solid #262626;
+    border-bottom: 1px solid #262626;
+  padding: 20px;
 }
 
 main {

@@ -21,7 +21,7 @@ export interface DialogData {
   styleUrls: ['./userdata.component.css']
 })
 export class UserdataComponent implements OnInit {
-  columns: string[] =['name', 'email', 'username','action'];
+  columns: string[] =['name', 'email', 'username','actiuni'];
 hidden:boolean=false;
   users:Users[]=[];
 

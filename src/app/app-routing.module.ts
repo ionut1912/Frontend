@@ -12,6 +12,7 @@ import {AuthenticationGuard} from './auth-guard/authentication.guard';
 import {UserCheckGuard} from './auth-guard/user-check.guard';
 import {AdminCheckGuard} from './auth-guard/admin-check.guard';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
 {path: 'rezervation', component: RezervationComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
 {path: 'admin', component: BoardAdminComponent,canActivate:[AuthenticationGuard],canLoad:[AdminCheckGuard], loadChildren: () => import('./admin-panel/admin-panel.module').then(m => m.AdminPanelModule)},
 {path: 'room/:id', component: RoomReservationComponent},
 {path: 'userdetails', component: UserdataComponent},
-  {path:'pagenotfound',component:PageNotFoundComponent}
+  {path: 'pagenotfound',component:PageNotFoundComponent},
+
 ];
 @NgModule({
   imports: [

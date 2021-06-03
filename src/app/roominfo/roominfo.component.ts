@@ -11,6 +11,8 @@ import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
 import {RoomImage} from '../clases/RoomImage';
 import {MatDialog} from '@angular/material/dialog';
 import {RoomReservationComponent} from '../room-reservation/room-reservation.component';
+import {ReviewDetails} from "../clases/ReviewDetails";
+import {ReviewService} from "../_services/ReviewService.service";
 
 
 @Component({
@@ -39,11 +41,13 @@ export class RoominfoComponent implements OnInit {
   reservation: MultipleReservationsHelper = new MultipleReservationsHelper();
   reservations: MultipleReservationsHelper[] = [];
 
-  constructor(private  matDialog:MatDialog,private roomDetailsService: RoomDetailsService, private roomImageService: ImageService, private  roomService: RoomService, private  reservationService: ReservationService, public  snackBar: MatSnackBar) {
+
+ constructor(private  matDialog:MatDialog,private roomDetailsService: RoomDetailsService, private roomImageService: ImageService, private  roomService: RoomService, private  reservationService: ReservationService, public  snackBar: MatSnackBar) {
 
   }
 
   ngOnInit(): void {
+
 
     this.reservationService.getAll().subscribe(info => {
       this.roomReservation = info;
@@ -218,7 +222,7 @@ if(this.nrofClicks<=this.noofrooms){
 
           this.reservations.push(this.reservation);
 
-console.log(this.reservations);
+       console.log(this.reservations);
 
 
         });
@@ -238,13 +242,16 @@ console.log(this.reservations);
     }
   }
 
-  finishreservation() {
-// this.display=true;
+  finishreservation(): void {
+
 this.matDialog.open(RoomReservationComponent,{
+
   data:
     {
-      reservation:this.reservations
-    }
-})
+      reservation: this.reservations
+    },
+  height: '800px',
+  width: '800px'
+});
   }
 }
