@@ -17,11 +17,11 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
 {path: 'rezervation', component: RezervationComponent},
 {path: 'servicii', component: ServiciiComponent},
-{path: 'user', component: BoardUserComponent,canActivate:[AuthenticationGuard],canLoad:[UserCheckGuard], loadChildren: () => import('./user-panel/user-panel.module').then(m => m.UserPanelModule)},
-{path: 'admin', component: BoardAdminComponent,canActivate:[AuthenticationGuard],canLoad:[AdminCheckGuard], loadChildren: () => import('./admin-panel/admin-panel.module').then(m => m.AdminPanelModule)},
+{path: 'user', component: BoardUserComponent, canActivate:[AuthenticationGuard], canLoad:[UserCheckGuard], loadChildren: () => import('./user-panel/user-panel.module').then(m => m.UserPanelModule)},
+{path: 'admin', component: BoardAdminComponent, canActivate:[AuthenticationGuard], canLoad:[AdminCheckGuard], loadChildren: () => import('./admin-panel/admin-panel.module').then(m => m.AdminPanelModule)},
 {path: 'room/:id', component: RoomReservationComponent},
 {path: 'userdetails', component: UserdataComponent},
-  {path: 'pagenotfound',component:PageNotFoundComponent},
+  {path: 'pagenotfound', component: PageNotFoundComponent},
 
 ];
 @NgModule({
