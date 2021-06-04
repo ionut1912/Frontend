@@ -1,40 +1,40 @@
 
 
-  <div>
-    <table mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8">
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource"  matSort >
       <ng-container matColumnDef="reservationid">
-        <th id="reservationid" mat-header-cell *matHeaderCellDef mat-sort-header> RezervationId</th>
-        <td mat-cell *matCellDef="let element"> {{element.rezervationid}} </td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> RezervationId</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="reservationid"> {{element.rezervationid}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th id="name" mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="name"> {{element.name}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="email">
-        <th id="email" mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="email"> {{element.email}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="roomtype">
-        <th id="roomtype" mat-header-cell *matHeaderCellDef mat-sort-header> RoomType</th>
-        <td mat-cell *matCellDef="let element"> {{element.roomtype}} </td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipul camerei</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Tipul camerei"> {{element.roomtype}} </mat-cell>
       </ng-container>
 
 
       <ng-container matColumnDef="checkin">
-        <th id="checkin" mat-header-cell *matHeaderCellDef mat-sort-header> Checkin</th>
-        <td mat-cell *matCellDef="let element"> {{element.checkin}} </td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Checkin</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Checkin"> {{element.checkin}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="checkout">
-        <th id="checkout" mat-header-cell *matHeaderCellDef mat-sort-header> CheckOut</th>
-        <td mat-cell *matCellDef="let element"> {{element.checkout}} </td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> CheckOut</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="checkout"> {{element.checkout}} </mat-cell>
       </ng-container>
 
 
-      <tr mat-header-row *matHeaderRowDef="columns"></tr>
-      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-    </table>
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+    </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 15, 25]" showFirstLastButtons></mat-paginator>
   </div>
 

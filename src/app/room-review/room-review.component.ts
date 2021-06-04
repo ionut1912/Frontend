@@ -5,6 +5,8 @@ import {ReviewService} from '../_services/ReviewService.service';
 import {UserData} from '../clases/UserData';
 import {ReviewHelper} from '../clases/ReviewHelper';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
+import {THIS_EXPR} from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: 'app-room-review',
@@ -22,7 +24,7 @@ formErors:any;
   };
   user:UserData=new UserData();
   reviewHelper:ReviewHelper=new ReviewHelper();
-  constructor(private builder: FormBuilder,public  userService:UserService,public reviewService:ReviewService,public  tokenStorage:TokenStorageService) {
+  constructor(public matSnackbar:MatSnackBar,private builder: FormBuilder,public  userService:UserService,public reviewService:ReviewService,public  tokenStorage:TokenStorageService) {
 
     this.reviews = this.builder.group({
       reviewtitle:              ['', Validators.required],
@@ -58,6 +60,9 @@ saveReview()
     reviewText:this.form.reviewtext,
     userId:this.user.userid,
     roomId:this.form.roomid
+  });
+  this.matSnackbar.open('Review-ul a fost adaugat cu succes','Inchide',{
+    duration: 3000
   });
 }
 }

@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {RoomReservation} from "../clases/RoomReservation";
 
 import {Reservation} from "../clases/Reservation";
+import {UserReservationHelper} from "../clases/UserReservationHelper";
 
 
 @Injectable({
@@ -25,8 +26,8 @@ export  class ReservationService {
   getAll(): Observable<RoomReservation[]> {
     return this.httpClient.get<RoomReservation[]>(`${this.baseURL}`);
   }
-getRezervationByUserId(id:number):Observable<Reservation[]>{
-    return  this.httpClient.get<Reservation[]>(`${this.baseURL}/${id}`)
+getRezervationByUserId(id:number):Observable<UserReservationHelper[]>{
+    return  this.httpClient.get<UserReservationHelper[]>(`${this.baseURL}/${id}`);
 }
 modifyRezervation(id:number,reservation:Reservation):Observable<Reservation>{
     return  this.httpClient.patch<Reservation>(`${this.baseURL}/${id}`,reservation);

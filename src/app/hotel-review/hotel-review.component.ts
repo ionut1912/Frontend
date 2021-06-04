@@ -6,6 +6,7 @@ import {UserService} from '../_services/UserService.service';
 import {ReviewService} from '../_services/ReviewService.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {Users} from '../clases/Users';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-hotel-review',
@@ -21,7 +22,7 @@ export class HotelReviewComponent implements OnInit {
   };
   user:UserData=new UserData();
   reviewHelper:ReviewHelper=new ReviewHelper();
-  constructor(private builder: FormBuilder,public  userService:UserService,public  tokenStorage:TokenStorageService) {
+  constructor(private  matSnackBar:MatSnackBar,private builder: FormBuilder,public  userService:UserService,public  tokenStorage:TokenStorageService) {
 
     this.hotelreviews = this.builder.group({
       reviewhotel:              ['', Validators.required],
@@ -52,6 +53,10 @@ this.saveHotelReview();
     }).subscribe(data=>{
 
     });
+    this.matSnackBar.open('Review ul a fost adaugat cu succes','Inchide',{
+    duration: 3000
+  });
+
   }
 
 }

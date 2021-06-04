@@ -2,6 +2,7 @@
 
 </h1>
 <div mat-dialog-content>
+{{data.rezervationId}}
 
   <form name="form" class="formuser"
         (ngSubmit)="f.form.valid && onSubmit()"
@@ -11,19 +12,19 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nume</mat-label>
-        <input matInput  name="name" required  [(ngModel)]="data.Name"  >
+        <input matInput  name="name" required  [(ngModel)]="data.name"  >
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput  name="email" required  [(ngModel)]="data.Email" >
+        <input matInput  name="email" required  [(ngModel)]="data.email" >
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>RoomType</mat-label>
-        <input matInput required name="username" [(ngModel)]="data.RoomType" >
+        <input matInput required name="username" [(ngModel)]="data.roomType" >
       </mat-form-field>
     </div>
     <div>

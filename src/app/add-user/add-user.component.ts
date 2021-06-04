@@ -50,7 +50,7 @@ export class AddUser{
       name: this.form.name,
       email: this.form.email,
       username: this.form.username,
-      password: this.form.password
+
     }).subscribe(()=>{
 
       this.dialogRef.close();

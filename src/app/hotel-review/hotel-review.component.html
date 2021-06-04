@@ -1,19 +1,22 @@
-<form [formGroup]="hotelreviews"
-(ngSubmit)="f.form.valid && onSubmit()"
-#f="ngForm"
-novalidate>
-  <p>Adauga review hotelului</p>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Review Hotel</mat-label>
-      <input matInput required formControlName="reviewhotel" [(ngModel)]="form.reviewhotel">
-      <mat-error>
-        Introduceti review-ul hotelului
-      </mat-error>
+<div class="container">
+  <form [formGroup]="hotelreviews" class="hotelreviews"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate>
+    <p>Adauga review hotelului</p>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Review Hotel</mat-label>
+        <input matInput required formControlName="reviewhotel" [(ngModel)]="form.reviewhotel">
+        <mat-error>
+          Introduceti review-ul hotelului
+        </mat-error>
 
-    </mat-form-field>
-  </div>
-  <div>
-    <button mat-raised-button color="accent">Salveaza review-ul</button>
-  </div>
-</form>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="accent">Salveaza review-ul</button>
+    </div>
+  </form>
+
+</div>

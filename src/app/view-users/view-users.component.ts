@@ -21,7 +21,7 @@ import {AddUser} from '../add-user/add-user.component';
   styleUrls: ['./view-users.component.css']
 })
 export class ViewUsersComponent implements OnInit,AfterViewInit {
-  columns: string[] = ['userid','name', 'email', 'username', 'type' , 'action','create_user'];
+  columns: string[] = ['userid','name', 'email', 'username', 'type' , 'action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(public  userService:UserService,public  dialog:MatDialog) { }

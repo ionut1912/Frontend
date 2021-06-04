@@ -13,23 +13,25 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 
 import {EditRezervationComponent} from '../edit-rezervation/edit-rezervation.component';
 import {DeleteRezervationComponent} from '../delete-rezervation/delete-rezervation.component';
-
+import {UserReservationHelper} from "../clases/UserReservationHelper";
 
 
 export interface EditRezervationData {
-  rezervationId:number,
-  Name:string;
-  Email:string;
-  RoomType:string;
-  Checkin:Date;
-  Checkout:Date,
-  dataSource:MatTableDataSource<Reservation>
+  rezervationId: number,
+  Name: string;
+  Email: string;
+  RoomType: string;
+  Checkin: Date;
+  Checkout: Date,
+  dataSource: MatTableDataSource<Reservation>
 
 }
+
 export interface DeleteReervationData {
-  rezervationId:number,
-  dataSource:MatTableDataSource<Reservation>
+  rezervationId: number,
+  dataSource: MatTableDataSource<Reservation>
 }
+
 @Component({
   selector: 'app-view-reservations',
   templateUrl: './view-reservations.component.html',
@@ -37,34 +39,35 @@ export interface DeleteReervationData {
 })
 export class ViewReservationsComponent implements OnInit {
   userDetails: UserData = new UserData();
-  columns: string[] = ['reservationid','name', 'email', 'roomtype', 'checkin', 'checkout', 'action'];
-  rezervationInfo: Reservation[] = [];
-  reservation:Reservation=new Reservation();
-  date1:FormControl[]=[];
-  date2:FormControl[]=[];
-  constructor(private  reservationService: ReservationService, private  tokenStorage: TokenStorageService, private  userService: UserService,public  dialog:MatDialog) {
+  columns: string[] = ['reservationid', 'roomid', 'name', 'email', 'roomtype', 'checkin', 'checkout', 'action'];
+  rezervationInfo: UserReservationHelper[] = [];
+  reservation: Reservation = new Reservation();
+  date1: FormControl[] = [];
+  date2: FormControl[] = [];
+
+  constructor(private  reservationService: ReservationService, private  tokenStorage: TokenStorageService, private  userService: UserService, public  dialog: MatDialog) {
 
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   id!: number;
-  rezervationNotDeleted:Reservation[]=[];
+  rezervationNotDeleted: UserReservationHelper[] = [];
 
-  public dataSource=new MatTableDataSource<Reservation>();
+  public dataSource = new MatTableDataSource<UserReservationHelper>();
 
   ngOnInit(): void {
     this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(userInfo => {
       this.userDetails = userInfo;
 
       this.reservationService.getRezervationByUserId(this.userDetails.userid).subscribe(rezervation => {
-        this.rezervationInfo=rezervation;
-        this.rezervationNotDeleted= this.rezervationInfo.filter(x=>!x.deleted);
+        this.rezervationInfo = rezervation;
+        this.rezervationNotDeleted = this.rezervationInfo.filter(x => !x.deleted);
 
         this.dataSource = new MatTableDataSource(this.rezervationNotDeleted);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        console.log(this.rezervationNotDeleted)
+
 
       });
 
@@ -73,11 +76,9 @@ export class ViewReservationsComponent implements OnInit {
   }
 
 
-
-
-  edit(id: number, name: string, email:string , roomtype: string, checkin: Date, checkout: Date): void {
+  edit(id: number, name: string, email: string, roomtype: string, checkin: Date, checkout: Date): void {
     this.id = id;
-    this.reservation=<Reservation> {
+    this.reservation = <Reservation>{
       rezervationid: this.id,
       name: name,
       email: email,
@@ -85,44 +86,43 @@ export class ViewReservationsComponent implements OnInit {
       checkin: checkin,
       checkout: checkout
     };
-    const dialogRef=this.dialog.open(EditRezervationComponent,{
-      data:{
-        rezervationId:id,
-        Name:name,
-        Email:email,
-        RoomType:roomtype,
-        Checkin:checkin,
-        Checkout:checkout,
-        dataSource:this.dataSource
+    console.log(this.reservation);
+    const dialogRef = this.dialog.open(EditRezervationComponent, {
+      data: {
+        rezervationId: id,
+        name: name,
+        email: email,
+        roomType: roomtype,
+        checkin: checkin,
+        checkout: checkout
 
 
-      }
+
+    }
 
     });
-dialogRef.afterClosed().subscribe(information=>{
+    dialogRef.afterClosed().subscribe(information => {
 
-  this.dataSource=new MatTableDataSource(information);
-});
+      this.dataSource = new MatTableDataSource(information);
+    });
 
 
   }
 
-  delete(rezervationid: number) {
-    this.id=rezervationid;
-    const dialogRef=this.dialog.open(DeleteRezervationComponent,{
-      data:{
-        rezervationId:rezervationid,
-        dataSource:this.dataSource
+  delete(rezervationid: number): void {
+    this.id = rezervationid;
+    const dialogRef = this.dialog.open(DeleteRezervationComponent, {
+      data: {
+        rezervationId: rezervationid,
+
       }
 
     });
-    dialogRef.afterClosed().subscribe(information=> {
+    dialogRef.afterClosed().subscribe(information => {
 
       this.dataSource = new MatTableDataSource(information);
     });
   }
-
-
 
 
 }

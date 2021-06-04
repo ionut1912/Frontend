@@ -23,6 +23,7 @@ import {TotalPrice} from '../clases/TotalPrice';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 export interface ReservationData {
@@ -35,7 +36,7 @@ export interface ReservationData {
   styleUrls: ['./room-reservation.component.css']
 })
 export class RoomReservationComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ReservationData, private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService, public  matDialog: MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ReservationData, private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService, public  matSnackBar:MatSnackBar) {
   }
 
   roomid!: number;
@@ -58,6 +59,7 @@ export class RoomReservationComponent implements OnInit {
   ngOnInit(): void {
 console.log(this.data.reservation.length);
     for (let i = 0; i < this.data.reservation.length; i++) {
+      this.reviews = [];
       this.reviewService.getReviews(this.data.reservation[i].roomid).subscribe(reviewsInformation => {
         this.reviews.push(reviewsInformation);
 
@@ -99,17 +101,11 @@ console.log(this.data.reservation.length);
       };
       this.reservationService.saveReservation(this.reservations);
     }
+    this.matSnackBar.open('Nu puteti accesa aceasta pagina','Inchide',{
+      duration:3000
+    });
 
 
-    const ref = this.matDialog.open(DialogDataExampleDialog, {
-      data: {
-        text: 'Rezervarea',
-        text2: 'adaugata',
-        text3: 'a'
-      }
-
-
-  });
   }
 }
 

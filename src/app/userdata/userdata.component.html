@@ -41,36 +41,39 @@
    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
  </mat-table>
 </div>
-<form *ngIf="hidden" name="form" class="formuser"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
-      novalidate>
-  <div class="container">
-    <p>Modificati datele personale</p>
-  </div>
+<div class="container">
+  <form *ngIf="hidden" name="form" class="formuser"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate>
+    <div class="container">
+      <p>Modificati datele personale</p>
+    </div>
 
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Nume</mat-label>
-      <input matInput  name="name" required  [(ngModel)]="users[0].name"  >
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput  name="email" required  [(ngModel)]="users[0].email" >
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Username</mat-label>
-      <input matInput required name="username" [(ngModel)]="users[0].username" >
-    </mat-form-field>
-  </div>
-  <div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Nume</mat-label>
+        <input matInput  name="name"[(ngModel)]="users[0].name"  >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput  name="email"  [(ngModel)]="users[0].email" >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput  name="username" [(ngModel)]="users[0].username" >
+      </mat-form-field>
+    </div>
+    <div>
 
-<button mat-raised-button color="accent">Modificati datele</button>
+      <button mat-raised-button color="accent">Modificati datele</button>
 
-  </div>
-</form>
+    </div>
+  </form>
 
+
+</div>
