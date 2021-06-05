@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Room} from '../clases/Room';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {RoomService} from '../_services/RoomService.service';
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
 import {ViewRoomsComponent} from '../view-rooms/view-rooms.component';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'add-room',
@@ -26,7 +27,7 @@ export class AddRoom {
   selectedFiles!: FileList;
   imagesrc: string[] = [];
 
-  constructor(private builder: FormBuilder, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, public  roomService: RoomService) {
+  constructor(private  matSnackbar:MatSnackBar,private builder: FormBuilder, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, public  roomService: RoomService) {
     this.rooms = this.builder.group({
       name: ['', Validators.required],
       roomtype: ['', Validators.required],
@@ -63,12 +64,8 @@ export class AddRoom {
     };
     this.roomService.saveRoom(this.room);
     this.dialogRef.close();
-    this.dialog.open(DialogDataExampleDialog, {
-      data: {
-        text: 'Camera',
-        text2: 'adaugata',
-        text3: 'a'
-      }
+    this.matSnackbar.open('Camera a fost adaugata cu succes','Inchide',{
+      duration: 3000
     });
 
   }

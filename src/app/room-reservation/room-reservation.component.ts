@@ -21,9 +21,10 @@ import {UserData} from '../clases/UserData';
 import {ReservationsHelper} from '../clases/ReservationsHelper';
 import {TotalPrice} from '../clases/TotalPrice';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {NrOfViewsHelper} from "../clases/NrOfViewsHelper";
 
 
 export interface ReservationData {
@@ -54,9 +55,10 @@ export class RoomReservationComponent implements OnInit {
   userData: UserData = new UserData();
   reservations!: ReservationsHelper;
   form: any = {};
-
+nrOfViews:NrOfViewsHelper=new NrOfViewsHelper();
 
   ngOnInit(): void {
+
 console.log(this.data.reservation.length);
     for (let i = 0; i < this.data.reservation.length; i++) {
       this.reviews = [];
@@ -65,6 +67,9 @@ console.log(this.data.reservation.length);
 
         console.log(this.reviews );
 
+      });
+      this.roomService.getNrOfViewsById(this.data.reservation[i].roomid).subscribe(nrOfViewsValues=>{
+        this.nrOfViews=nrOfViewsValues;
       });
        this.roomService.getPrice(this.data.reservation[0].checkin, this.data.reservation[0].checkout, this.data.reservation[i].roomid).subscribe(priceInfo => {
         this.price = priceInfo;

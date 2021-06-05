@@ -20,7 +20,9 @@ getUserData(username:string):Observable<Users>
 updateUserDetails(id:number, user:Users):Observable<Users>{
     return  this.httpClient.patch<Users>(`${this.baseURL}/${id}`,user);
 }
-
+  updateUserDetailswithoutType(id:number, user:Users):Observable<Users>{
+    return  this.httpClient.patch<Users>(`${this.baseURL}/${id}/type`,user);
+  }
   setHotelReview(id: number, user: Users):Observable<Users>{
     return  this.httpClient.patch<Users>(`${this.baseURL}/updatehotelreview/${id}`,user)
 }

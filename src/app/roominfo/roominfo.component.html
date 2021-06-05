@@ -19,7 +19,10 @@
   </div>
 
   <div class="col">
-    <button  (click)="reserveRoom(room.roomid)"   type="button" class="btn btn-dark" >Rezerva</button>
+    <button mat-raised-button color="primary"  (click)="viewRooms(room.roomid,room.name,room.roomdetails,room.roomtype,room.roomImage)"   type="button"  >Vizualizeaza camera</button>
+  </div>
+  <div class="col">
+    <button mat-raised-button color="primary"  (click)="reserveRoom(room.roomid)"   type="button"  >Rezerva</button>
   </div>
 </div>
 </div>
@@ -43,9 +46,11 @@
 
       {{room.roomdetails}}
     </div>
-
     <div class="col">
-      <button (click)="reserveRoom(room.roomid)" type="button" class="btn btn-dark" >Rezerva</button>
+      <button mat-raised-button color="primary"  (click)="viewRooms(room.roomid,room.name,room.roomdetails,room.roomtype,room.images)"   type="button"  >Vizualizeaza camera</button>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="reserveRoom(room.roomid)" type="button"  >Rezerva</button>
     </div>
   </div>
 </div>
@@ -69,9 +74,11 @@
 
       {{room.roomdetails}}
     </div>
-
     <div class="col">
-      <button (click)="reserveRoom(room.roomid)"  type="button" class="btn btn-dark" >Rezerva</button>
+      <button mat-raised-button color="primary"  (click)="viewRooms(room.roomid,room.name,room.roomdetails,room.roomtype,room.images)"   type="button"  >Vizualizeaza camera</button>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="reserveRoom(room.roomid)"  type="button" >Rezerva</button>
 
     </div>
   </div>
@@ -79,7 +86,7 @@
 </div>
 <div *ngIf="nrofClicks>=noofrooms">
   <div class="container button">
-    <button class="btn btn-dark" (click)="finishreservation()">Finalizeaza  rezervarea</button>
+    <button mat-raised-button color="primary" (click)="finishreservation()">Finalizeaza  rezervarea</button>
   </div>
 
 

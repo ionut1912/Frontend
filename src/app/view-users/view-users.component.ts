@@ -9,7 +9,6 @@ import {MatDialog} from '@angular/material/dialog';
 
 import {EditUser} from '../edit-user/edit-user.component';
 import {DeleteUser} from '../delete-user/delete-user.component';
-import {AddUser} from '../add-user/add-user.component';
 
 
 
@@ -44,9 +43,7 @@ export class ViewUsersComponent implements OnInit,AfterViewInit {
 
   }
 
-  addUser() {
-this.dialog.open(AddUser);
-  }
+
 
   edit(userid: number, name: string, email:string, username: string, type: string) {
 this.dialog.open(EditUser,{

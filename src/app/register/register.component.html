@@ -52,8 +52,10 @@
    <div class="inputs">
     <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Parola</mat-label>
-      <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="form.password" required>
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <input matInput  formControlName="password" [(ngModel)]="form.password" required [type]="hide ? 'password' : 'text'" >
+
+        <mat-icon matSuffix (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
 
       </mat-form-field>
    </div>

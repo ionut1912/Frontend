@@ -4,7 +4,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 import {RoomService} from '../_services/RoomService.service';
 import {Room} from '../clases/Room';
 import {ViewRoomsComponent} from '../view-rooms/view-rooms.component';
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
+import {MatSnackBar} from "@angular/material/snack-bar";
 export interface EditRoomInterface {
   roomid: number,
   name: string,
@@ -21,7 +22,7 @@ export class EditRoom {
   rooms!: FormGroup;
   formErors: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: EditRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, private builder: FormBuilder, public  roomService: RoomService) {
+  constructor(private matSnackBar:MatSnackBar ,@Inject(MAT_DIALOG_DATA) public data: EditRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, private builder: FormBuilder, public  roomService: RoomService) {
 
     this.rooms = this.builder.group({
       name: ['', Validators.required],
@@ -55,16 +56,14 @@ export class EditRoom {
       roomprice: this.data.roomprice,
       pricecurency: this.data.pricecurency
     }).subscribe(() => {
-      this.dialogRef.close();
-      this.dialog.open(DialogDataExampleDialog, {
-        data: {
-          text: 'Camera',
-          text2: 'modificata',
-          text3: 'a'
 
-        }
-      });
+
     });
+    this.dialogRef.close();
+    this.matSnackBar.open('Camera a fost modificata cu succes','Inchide',{
+      duration: 3000
+    });
+
 
   }
 

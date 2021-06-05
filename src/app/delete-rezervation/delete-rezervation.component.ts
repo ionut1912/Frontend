@@ -6,9 +6,9 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ReservationService} from '../_services/ReservationService.service';
 
-import {MatTableDataSource} from '@angular/material/table';
+
 import { ViewReservationsComponent} from '../view-reservations/view-reservations.component';
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
 import {MatSnackBar} from "@angular/material/snack-bar";
 export interface DeleteReervationData {
   rezervationId:number

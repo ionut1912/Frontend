@@ -1,5 +1,5 @@
 
-<div *ngIf="data.reservation.length===0">
+<div *ngIf="data.reservation.length===1">
   <div class="rooms">
     <div class="container">
       <h3>Detaliile camerei rezervate</h3>
@@ -9,18 +9,27 @@
         <p>Tipul camerei:{{item.roomtype}}</p>
         <p>Detalii camera:{{item.roomdetails}}</p>
 
+        <h3>Numar de vizualizari</h3>
+        <div *ngIf="nrOfViews.nrvizualizari>1" >
+          <p> Camera a fost vizualizata de {{nrOfViews.nrvizualizari}} persoane</p>
+        </div>
+        <div *ngIf="nrOfViews.nrvizualizari===1">
+          <p> Camera a fost vizualizata de  o {{nrOfViews.nrvizualizari}} persoana</p>
+        </div>
+      </div>
+      </div>
+
+</div>
+
+
+
+
+
 
       </div>
 
 
-
-
-
-
-      </div>
-    </div>
-  </div>
-<div *ngIf="data.reservation.length>0">
+<div *ngIf="data.reservation.length>1">
   <div class="rooms">
     <div class="container">
       <h3>Detaliile camerelor rezervate</h3>
@@ -29,9 +38,19 @@
         <p>Numele camerei:{{item.name}} </p>
         <p>Tipul camerei:{{item.roomtype}}</p>
         <p>Detalii camera:{{item.roomdetails}}</p>
+        <div *ngIf="nrOfViews.nrvizualizari>1">
+          <h3>Numar de vizualizari</h3>
+          <p> Camera a fost vizualizata de {{nrOfViews.nrvizualizari}} persoane</p>
+        </div>
+
+        <div *ngIf="nrOfViews.nrvizualizari===1">
+          <h3>Numar de vizualizari</h3>
+          <p> Camera a fost vizualizata de  o {{nrOfViews.nrvizualizari}} persoana</p>
+        </div>
 
 
       </div>
+
     </div>
   </div>
 </div>

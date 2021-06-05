@@ -7,6 +7,8 @@ import {ReviewHelper} from '../clases/ReviewHelper';
 import {throwPortalOutletAlreadyDisposedError} from '@angular/cdk/portal/portal-errors';
 import {RoomDetails} from '../clases/RoomDetails';
 import {TotalPrice} from '../clases/TotalPrice';
+import {RoomsViewed} from "../clases/RoomsViewed";
+import {NrOfViewsHelper} from "../clases/NrOfViewsHelper";
 @Injectable({
     providedIn: 'root'
   })
@@ -39,7 +41,11 @@ getPrice(checkin:Date,checkout:Date,id:number):Observable<TotalPrice>
 {
   return  this.httpclient.get<TotalPrice>(`${this.baseURL}/${checkin}/${checkout}/${id}`)
 }
-
-
+saveViews(roomViewed:RoomsViewed):Observable<RoomsViewed>{
+  return  this.httpclient.post<RoomsViewed>(`${this.baseURL}/views`,roomViewed)
+}
+  getNrOfViewsById(id:number):Observable<NrOfViewsHelper>{
+    return  this.httpclient.get<NrOfViewsHelper>(`${this.baseURL}/views/${id}`);
+  }
 
 }

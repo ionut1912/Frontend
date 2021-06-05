@@ -2,7 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {RoomService} from '../_services/RoomService.service';
 import { ViewRoomsComponent} from '../view-rooms/view-rooms.component';
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
+import {MatSnackBar} from "@angular/material/snack-bar";
 export interface DeleteRoomInterface {
   roomid: number,
 }
@@ -11,7 +12,7 @@ export interface DeleteRoomInterface {
   templateUrl: 'delete-room.component.html',
 })
 export class DeleteRoom {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DeleteRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, public  roomService: RoomService) {
+  constructor(private  matSnackbar: MatSnackBar,@Inject(MAT_DIALOG_DATA) public data: DeleteRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, public  roomService: RoomService) {
 
   }
 
@@ -22,13 +23,8 @@ export class DeleteRoom {
   deleteRoom() {
     this.roomService.deleteRoom(this.data.roomid);
     this.dialogRef.close();
-    this.dialog.open(DialogDataExampleDialog, {
-      data: {
-        text: 'Camera',
-        text2: 'stearsa',
-        text3: 'a'
-
-      }
+    this.matSnackbar.open('Camera a fost stearsa cu succes','Inchide',{
+      duration: 3000
     });
   }
 
