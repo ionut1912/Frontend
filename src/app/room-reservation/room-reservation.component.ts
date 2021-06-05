@@ -101,12 +101,13 @@ console.log(this.data.reservation.length);
       };
       this.reservationService.saveReservation(this.reservations);
     }
-    this.matSnackBar.open('Nu puteti accesa aceasta pagina','Inchide',{
+    this.matSnackBar.open('Rezervarea a fost creata cu succes','Inchide',{
       duration:3000
     });
 
 
   }
+
 }
 
 
