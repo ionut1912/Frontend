@@ -13,12 +13,12 @@
       <div class="inputs">
        <mat-form-field appearance="outline" hideRequiredMarker>
          <mat-label>Parola</mat-label>
-         <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="form.password" required aria-label="hidden">
-         <mat-icon matSuffix (click)="hide = !hide">home</mat-icon>
+         <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="form.password" required>
+         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 
          </mat-form-field>
          </div>
-        <mat-icon  >home</mat-icon>asdasdsadasdasdasd
+
 
         <div class="button">
           <input type="submit" value="LogIn">
