@@ -13,6 +13,7 @@ import {UserCheckGuard} from './auth-guard/user-check.guard';
 import {AdminCheckGuard} from './auth-guard/admin-check.guard';
 
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
 {path: 'rezervation', component: RezervationComponent},

@@ -43,7 +43,17 @@
   </div>
 </div>
 
-
+<div class="container">
+<div *ngIf="freeRooms.nroffreerooms===1">
+  <p class="warning">Grabiti-va!Mai este doar o camera libera cu tipul {{data.roomtype}}</p>
+</div>
+  <div *ngIf="freeRooms.nroffreerooms>=2||freeRooms.nroffreerooms<5">
+    <p class="good">Mai sunt doar  {{freeRooms.nroffreerooms}} libere cu tipul {{data.roomtype}}</p>
+  </div>
+  <div *ngIf="freeRooms.nroffreerooms>=5">
+    <p class="ok">Mai sunt doar {{freeRooms.nroffreerooms}} libere cu tipul {{data.roomtype}}</p>
+  </div>
+</div>
 
   <div class="container">
 

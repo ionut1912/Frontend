@@ -49,7 +49,7 @@ export class RoomReservationComponent implements OnInit {
   noofadults!: number;
   noofchildrens!: number;
 
-  reviews!: ReviewDetails[] ;
+  reviews!: ReviewDetails[];
   finalprice: number = 0;
   price: TotalPrice = new TotalPrice();
   userData: UserData = new UserData();
@@ -63,9 +63,9 @@ console.log(this.data.reservation.length);
     for (let i = 0; i < this.data.reservation.length; i++) {
       this.reviews = [];
       this.reviewService.getReviews(this.data.reservation[i].roomid).subscribe(reviewsInformation => {
-        this.reviews.push(reviewsInformation);
+        this.reviews = reviewsInformation;
 
-        console.log(this.reviews );
+        console.log(this.reviews);
 
       });
       this.roomService.getNrOfViewsById(this.data.reservation[i].roomid).subscribe(nrOfViewsValues=>{

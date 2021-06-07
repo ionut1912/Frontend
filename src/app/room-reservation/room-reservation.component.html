@@ -54,7 +54,9 @@
     </div>
   </div>
 </div>
-
+<div>
+ asdasdasas {{reviews[0].name}}
+</div>
 <div *ngIf="reviews.length!=0">
 <div *ngIf="data.reservation.length===1">
   <p>Parerile utilizatorilor despre aceasta camera</p>
@@ -63,27 +65,22 @@
     <p>Parerile utilizatorilor despre aceaste camere</p>
   </div>
 
+
     <div class="container reviews">
-
-
     <ngb-carousel class="carousel">
 
       <ng-template *ngFor="let review of reviews"  ngbSlide>
-
         <div class="reviewcard">
           <p class="textinfocard">Numele utilizatorului:{{review.name}} </p>
-
 
         </div>
         <div class="reviewcard">
           <p class="textinfocard">Titlul parerii:{{review.reviewtitle}} </p>
 
-
         </div>
+
         <div class="reviewcard">
           <p class="textinfocard">Parere:{{review.reviewtext}} </p>
-
-
         </div>
       </ng-template>
 

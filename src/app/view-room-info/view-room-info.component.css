@@ -35,7 +35,20 @@ mat-card{
   padding-left: 400px;
 
 }
+.warning{
+color: #e62727;
+  text-align: center;
 
+}
+.good{
+color: #ed8d1f;
+  text-align: center;
+
+}
+.ok{
+  color: #18b848;
+  text-align: center;
+}
 .reviewmesage{
   text-align: center;
   padding-right:20px;
