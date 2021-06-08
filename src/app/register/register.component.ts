@@ -27,11 +27,11 @@ hide=true;
     isSignUpFailed = false;
     errorMessage = '';
     submitted = false;
-
+  pattern = '[a-zA-Z ]*';
     constructor(public matDialog: MatDialog, public dialogRef: MatDialogRef<RegisterComponent>,
                 private authService: AuthService, private navbarService: NavbarService,private builder:FormBuilder) {
                   this.users = this.builder.group({
-                    name:              ['', [Validators.minLength,Validators.maxLength,Validators.required]],
+                    name:              ['', [Validators.minLength,Validators.maxLength,Validators.required, Validators.pattern(this.pattern)]],
                     email:                  ['', [Validators.email,Validators.required]],
                     username:['',[Validators.required,Validators.maxLength,Validators.minLength]],
                     password:['',[Validators.minLength,Validators.maxLength,Validators.required]]

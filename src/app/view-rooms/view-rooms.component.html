@@ -1,4 +1,48 @@
+<div class="container">
+  <form [formGroup]="search"
+        (ngSubmit)="f.form.valid"
+        #f="ngForm"
+        novalidate>
+    <p>Filtrare field-uri</p>
 
+    <div >
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa id-ul camerei</mat-label>
+        <input matInput formControlName="roomid" [(ngModel)]="form.roomid" >
+        <mat-icon matSuffix (click)="searchByRoomId()">search</mat-icon>
+
+      </mat-form-field>
+    </div>
+
+
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa numele camerei</mat-label>
+        <input matInput formControlName="name" [(ngModel)]="form.name" >
+        <mat-icon matSuffix (click)="searchByName()">search</mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa tipul camerei</mat-label>
+        <input matInput formControlName="roomtype" [(ngModel)]="form.roomtype" >
+        <mat-icon matSuffix (click)="searchByRoomType()" >search</mat-icon>
+      </mat-form-field>
+    </div>
+
+
+    <div >
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa pretul camerei</mat-label>
+        <input matInput formControlName="roomprice" [(ngModel)]="form.roomprice">
+        <mat-icon matSuffix (click)="searchByRoomPrice()" >search</mat-icon>
+      </mat-form-field>
+    </div>
+
+
+  </form>
+</div>
   <div class="example-container mat-elevation-z8">
   <mat-table [dataSource]="dataSource"  matSort >
     <ng-container matColumnDef="roomid">

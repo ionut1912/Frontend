@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {UserData} from "../clases/UserData";
 import {Users} from "../clases/Users";
 import {HotelReviewHelper} from '../clases/HotelReviewHelper';
+import {UserRoomsHelpers} from "../clases/UserRoomsHelpers";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,10 @@ deleteUsers(id:number):void {
 }
 getHotelReviews():Observable<HotelReviewHelper[]>
 {
-  return  this.httpClient.get<HotelReviewHelper[]>(`${this.baseURL}/hotelreview`)
+  return  this.httpClient.get<HotelReviewHelper[]>(`${this.baseURL}/hotelreview`);
+}
+getUserRooms(id:number):Observable<UserRoomsHelpers[]>
+{
+  return this.httpClient.get<UserRoomsHelpers[]>(`${this.baseURL}/rooms/${id}`);
 }
 }

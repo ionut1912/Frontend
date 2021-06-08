@@ -22,7 +22,9 @@ export  interface  Roomdata {
 export class ViewRoomInfoComponent implements OnInit {
 roomsViewed:NrOfViewsHelper=new NrOfViewsHelper();
 freeRooms:NrOfFreeRoomsHelper=new NrOfFreeRoomsHelper();
-constructor(@Inject(MAT_DIALOG_DATA) public data:Roomdata ,public  dialogRef:MatDialogRef<ViewRoomInfoComponent>,private  roomService:RoomService) { }
+constructor(@Inject(MAT_DIALOG_DATA) public data:Roomdata ,public  dialogRef:MatDialogRef<ViewRoomInfoComponent>,private  roomService:RoomService) {
+
+}
 
   ngOnInit(): void {
     this.roomService.getNrOfViewsById(this.data.roomid).subscribe(viewsData=>{

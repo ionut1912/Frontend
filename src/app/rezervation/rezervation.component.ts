@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-rezervation',
@@ -15,7 +16,7 @@ export class RezervationComponent implements OnInit {
   submitted = false;
   diplay = false;
 
-  constructor() {
+  constructor(private  matSnackbar:MatSnackBar) {
   }
 
   ngOnInit() {
@@ -25,21 +26,22 @@ export class RezervationComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.setData();
+
 
   }
 
   myfunc() {
-    this.diplay = true;
+
+    if(this.form.checkin >this.form.checkout){
+this.matSnackbar.open("Checkin-ul trebuie sa fie mai mic decat checkout-ul","Inchide",{
+  duration: 3000
+});
+    }
+    else {
+      this.diplay=true;
+    }
   }
 
-  setData(): void {
-    localStorage.setItem("checkin", JSON.stringify(this.form.checkin));
-    localStorage.setItem("checkout", JSON.stringify(this.form.checkout));
-    localStorage.setItem("noofrooms", JSON.stringify(this.form.noofrooms));
-    localStorage.setItem("noofadults", JSON.stringify(this.form.noofadults));
-    localStorage.setItem("noofchildrens", JSON.stringify(this.form.noofchildrens));
 
-  }
 
 }

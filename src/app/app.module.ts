@@ -62,9 +62,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ViewRoomImagesComponent } from './view-room-images/view-room-images.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewRoomInfoComponent } from './view-room-info/view-room-info.component';
-
-
-
+import  {NgxChartsModule} from '@swimlane/ngx-charts';
+import { StaticsticsComponent } from './staticstics/staticstics.component';
 
 
 @NgModule({
@@ -108,6 +107,7 @@ import { ViewRoomInfoComponent } from './view-room-info/view-room-info.component
     PageNotFoundComponent,
     ViewRoomImagesComponent,
     ViewRoomInfoComponent,
+    StaticsticsComponent,
 
 
 
@@ -119,7 +119,7 @@ import { ViewRoomInfoComponent } from './view-room-info/view-room-info.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+NgxChartsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
