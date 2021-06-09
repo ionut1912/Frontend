@@ -10,6 +10,8 @@ import {TotalPrice} from '../clases/TotalPrice';
 import {RoomsViewed} from "../clases/RoomsViewed";
 import {NrOfViewsHelper} from "../clases/NrOfViewsHelper";
 import {NrOfFreeRoomsHelper} from "../clases/NrOfFreeRoomsHelper";
+import {NrOfRoomsHelper} from "../clases/NrOfRoomsHelper";
+import {NrRoomsByType} from "../clases/NrRoomsByType";
 @Injectable({
     providedIn: 'root'
   })
@@ -52,5 +54,10 @@ saveViews(roomViewed:RoomsViewed):Observable<RoomsViewed>{
   {
     return  this.httpclient.get<NrOfFreeRoomsHelper>(`${this.baseURL}/freerooms/${type}`);
   }
-
+getNrOfRooms():Observable<NrOfRoomsHelper>{
+  return  this.httpclient.get<NrOfRoomsHelper>(`${this.baseURL}/nrofrooms`);
+}
+getNrOfRoomsByType():Observable<NrRoomsByType[]>{
+  return  this.httpclient.get<NrRoomsByType[]>(`${this.baseURL}/nrroomsbytype`);
+}
 }

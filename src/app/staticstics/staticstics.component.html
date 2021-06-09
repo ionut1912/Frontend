@@ -1,0 +1,89 @@
+
+   <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <mat-card>
+          <p>Numar de utilizatori: {{nrOfUsers.nrofusers}}</p>
+        </mat-card>
+      </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <mat-card>
+        <p>Numar de camere: {{nrOfRooms.nrofrooms}}</p>
+      </mat-card>
+    </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <mat-card>
+          <p>Numar de rezervari: {{nrOfReservations.nrofreservations}}</p>
+        </mat-card>
+      </div>
+  </div>
+
+
+   <div class="container-fluid info ">
+
+
+         <div class="chartinfo">
+           <p>Useri dupa tip</p>
+           <canvas baseChart
+                   [data]="pieChartDataUsers"
+                   [labels]="pieChartLabelsUsers"
+                   [chartType]="pieChartType"
+                   [options]="pieChartOptions"
+                   [plugins]="pieChartPlugins"
+                   [colors]="pieChartColors"
+                   [legend]="pieChartLegend">
+           </canvas>
+         </div>
+<div class="chartinfo">
+  <p>Rezervari dupa tipul camerei</p>
+  <canvas baseChart
+          [data]="pieChartDataReservations"
+          [labels]="pieChartLabelsReservations"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend">
+  </canvas>
+</div>
+<div class="chartinfo">
+  <p>Camere dupa tip</p>
+  <canvas baseChart
+          [data]="pieChartDataRoommsByType"
+          [labels]="pieChartLabelsRoomsByType"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend">
+  </canvas>
+</div>
+         <div class="chartinfo">
+           <p>Rezervari user</p>
+           <canvas baseChart
+                   [data]="pieChartDataUserReservations"
+                   [labels]="pieChartLabelsUserReservations"
+                   [chartType]="pieChartType"
+                   [options]="pieChartOptions"
+                   [plugins]="pieChartPlugins"
+                   [colors]="pieChartColors"
+                   [legend]="pieChartLegend">
+           </canvas>
+         </div>
+
+<div class="chartinfo">
+  <p>Camere nerezervate dupa tip</p>
+  <canvas baseChart
+          [data]="pieChartDataFreeRooms"
+          [labels]="pieChartLabelFreeRooms"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend">
+  </canvas>
+</div>
+
+       </div>
+
+

@@ -5,6 +5,9 @@ import {UserData} from "../clases/UserData";
 import {Users} from "../clases/Users";
 import {HotelReviewHelper} from '../clases/HotelReviewHelper';
 import {UserRoomsHelpers} from "../clases/UserRoomsHelpers";
+import {NrOfUsersHelper} from "../clases/NrOfUsersHelper";
+import {UserByType} from "../clases/UserByType";
+import {NrOfUserReservations} from "../clases/NrOfUserReservations";
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +46,16 @@ getHotelReviews():Observable<HotelReviewHelper[]>
 getUserRooms(id:number):Observable<UserRoomsHelpers[]>
 {
   return this.httpClient.get<UserRoomsHelpers[]>(`${this.baseURL}/rooms/${id}`);
+}
+getNrOfUsers():Observable<NrOfUsersHelper>
+{
+  return  this.httpClient.get<NrOfUsersHelper>(`${this.baseURL}/nrofusers`)
+}
+getNrOfUsersByType():Observable<UserByType[]>
+{
+    return this.httpClient.get<UserByType[]>(`${this.baseURL}/usersbytype`);
+}
+getUserReservations():Observable<NrOfUserReservations[]>{
+    return  this.httpClient.get<NrOfUserReservations[]>(`${this.baseURL}/userreservations`);
 }
 }

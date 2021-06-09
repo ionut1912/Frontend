@@ -1,0 +1,18 @@
+
+mat-card{
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.chartinfo{
+  width: 25%;
+  height: 25%;
+  display: inline-block;
+}
+p{
+  text-align: center;
+}
+.info{
+  padding-top: 30px;
+}
