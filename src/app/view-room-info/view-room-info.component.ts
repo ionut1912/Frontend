@@ -20,22 +20,23 @@ export  interface  Roomdata {
   styleUrls: ['./view-room-info.component.css']
 })
 export class ViewRoomInfoComponent implements OnInit {
-roomsViewed:NrOfViewsHelper=new NrOfViewsHelper();
-freeRooms:NrOfFreeRoomsHelper=new NrOfFreeRoomsHelper();
-constructor(@Inject(MAT_DIALOG_DATA) public data:Roomdata ,public  dialogRef:MatDialogRef<ViewRoomInfoComponent>,private  roomService:RoomService) {
+roomsViewed: NrOfViewsHelper = new NrOfViewsHelper();
+freeRooms: NrOfFreeRoomsHelper =new NrOfFreeRoomsHelper();
+constructor(@Inject(MAT_DIALOG_DATA) public data:Roomdata , public  dialogRef: MatDialogRef<ViewRoomInfoComponent>, private  roomService: RoomService) {
 
 }
 
   ngOnInit(): void {
-    this.roomService.getNrOfViewsById(this.data.roomid).subscribe(viewsData=>{
-      this.roomsViewed=viewsData;
+  console.log(this.data.roomtype);
+    this.roomService.getNrOfViewsById(this.data.roomid).subscribe(viewsData => {
+      this.roomsViewed = viewsData;
     });
-this.roomService.getNrOfFreeRooms(this.data.roomtype).subscribe(freerooms=>{
-  this.freeRooms=freerooms;
+this.roomService.getNrOfFreeRooms(this.data.roomtype).subscribe(freerooms => {
+  this.freeRooms = freerooms;
 
 });
   }
-close():void
+close(): void
 {
   this.dialogRef.close();
 }

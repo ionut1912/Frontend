@@ -12,8 +12,8 @@ import {ReservationsByType} from "../clases/ReservationsByType";
 import {UserByType} from '../clases/UserByType';
 
 
-import {ChartType, ChartOptions, ChartDataSets} from 'chart.js';
-import {Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip} from 'ng2-charts';
+import {ChartType, ChartOptions} from 'chart.js';
+import {Label} from 'ng2-charts';
 
 
 @Component({
@@ -56,8 +56,8 @@ userByType!: UserByType[];
   public pieChartDataFreeRooms: number[] = [];
   constructor(public  roomService: RoomService,public reservationService:ReservationService,public  userService:UserService) {
 
-    monkeyPatchChartJsLegend();
-    monkeyPatchChartJsTooltip();
+
+
   }
   ngOnInit(): void {
 this.userService.getNrOfUsers().subscribe(numberOfUsers => {
