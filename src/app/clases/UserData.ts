@@ -3,4 +3,5 @@ export class  UserData {
   email!:string;
 userid!:number;
 username!:string
+password!:string;
 }

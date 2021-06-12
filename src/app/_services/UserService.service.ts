@@ -70,4 +70,8 @@ sentCode(id:number,userData:UserData):Observable<UserData>{
 getCode(id:number):Observable<FindCodeHelper>{
   return this.httpClient.get<FindCodeHelper>(`${this.baseURL}/usercode/${id}`);
 }
+savePassword(id:number,userData:UserData):Observable<UserData>
+{
+  return this.httpClient.patch<UserData>(`${this.baseURL}/password/${id}`,userData);
+}
 }
