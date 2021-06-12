@@ -200,6 +200,7 @@ border: none;
   text-decoration: none;
   text-align: center;
   color: red;
+  cursor: pointer;
 }
 .exit{
   border:none;

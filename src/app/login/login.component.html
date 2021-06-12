@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title">Logare</div>
     <div class="content">
-      <form *ngIf="!isLoggedIn" [formGroup]="users" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form *ngIf="!isLoggedIn" [formGroup]="users" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate autocomplete="off">
       <div class="inputs" >
         <mat-form-field appearance="outline" hideRequiredMarker>
           <mat-label>Numele de utilizator</mat-label>
@@ -13,11 +13,13 @@
       <div class="inputs">
        <mat-form-field appearance="outline" hideRequiredMarker>
          <mat-label>Parola</mat-label>
-         <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="form.password" required>
+         <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="form.password" required minlength="8" maxlength="32">
          <div  matSuffix *ngIf="hide===false">
            <div  (click)="hide=!hide">
              <img class="img-fluid visibility"  src="assets/Images/visibility_off.png" alt="nu exista">
+
            </div>
+
          </div>
 
          <div matSuffix *ngIf="hide===true">
@@ -37,7 +39,7 @@
         <button mat-flat-button color="warn"(click)="closeModal()" >Iesire</button>
 
         <div>
-          <a class="forgot">Am uitat parola</a>
+          <a class="forgot" (click)="forgotPassword()" >Am uitat parola</a>
         </div>
 
 

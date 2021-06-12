@@ -1,0 +1,18 @@
+<form  [formGroup]="users" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <h2>Introduceti email-ul pentru a primi codul de resetare parola</h2>
+<div class="inputs">
+  <mat-form-field appearance="outline" hideRequiredMarker>
+    <mat-label>Email</mat-label>
+    <input matInput  formControlName="email" required [(ngModel)]="form.email" >
+    <mat-error *ngIf="checkError('email','required')">
+      Introduceti email-ul
+    </mat-error>
+    <mat-error *ngIf="checkError('email','email')">
+     Email-ul trebuie sa contina '@'
+   </mat-error>
+  </mat-form-field>
+</div>
+<div class="inputs">
+  <button mat-raised-button color="primary">Trimite codul pe email</button>
+</div>
+</form>

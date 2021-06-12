@@ -1,3 +1,4 @@
+import { UserdataComponent } from './../userdata/userdata.component';
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -8,6 +9,8 @@ import {UserRoomsHelpers} from "../clases/UserRoomsHelpers";
 import {NrOfUsersHelper} from "../clases/NrOfUsersHelper";
 import {UserByType} from "../clases/UserByType";
 import {NrOfUserReservations} from "../clases/NrOfUserReservations";
+import { UserCode } from "../clases/UserCode";
+import { FindCodeHelper } from '../clases/FindCodeHelper';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +60,14 @@ getNrOfUsersByType():Observable<UserByType[]>
 }
 getUserReservations():Observable<NrOfUserReservations[]>{
     return  this.httpClient.get<NrOfUserReservations[]>(`${this.baseURL}/userreservations`);
+}
+getIdByEmail(email:string):Observable<UserCode>{
+return this.httpClient.get<UserCode>(`${this.baseURL}/emails/${email}`);
+}
+sentCode(id:number,userData:UserData):Observable<UserData>{
+  return this.httpClient.patch<UserData>(`${this.baseURL}/usercode/${id}`,userData);
+}
+getCode(id:number):Observable<FindCodeHelper>{
+  return this.httpClient.get<FindCodeHelper>(`${this.baseURL}/usercode/${id}`);
 }
 }

@@ -11,8 +11,8 @@ import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
 import {RoomImage} from '../clases/RoomImage';
 import {MatDialog} from '@angular/material/dialog';
 import {RoomReservationComponent} from '../room-reservation/room-reservation.component';
-import {ViewRoomInfoComponent} from "../view-room-info/view-room-info.component";
-import {RoomsViewed} from "../clases/RoomsViewed";
+
+
 import {UserService} from "../_services/UserService.service";
 import {TokenStorageService} from "../_services/token-storage.service";
 import {UserData} from "../clases/UserData";
@@ -45,7 +45,7 @@ export class RoominfoComponent implements OnInit {
 
   reservation: MultipleReservationsHelper = new MultipleReservationsHelper();
   reservations: MultipleReservationsHelper[] = [];
-roomViewed!:RoomsViewed;
+
 
  constructor(private tokenStorage:TokenStorageService,private  userService: UserService,private  matDialog:MatDialog,private roomDetailsService: RoomDetailsService, private roomImageService: ImageService, private  roomService: RoomService, private  reservationService: ReservationService, public  snackBar: MatSnackBar) {
 
@@ -248,30 +248,11 @@ if(this.nrofClicks<=this.noofrooms){
       });
     }
   }
-  viewRooms(id: number, name: string,roomdetails:string,roomtype:string, roomimage: RoomImage[]){
-   this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(userData=>{
-     this.user =userData;
-     this.roomViewed = {
-       roomid:id,
-       userid:this.user.userid
-     };
-     this.roomService.saveViews(this.roomViewed).subscribe();
-     this.matDialog.open(ViewRoomInfoComponent,{
-       data:
-         {
-           roomid: id,
-           roomname:name,
-           roomdetails:roomdetails,
-           roomtype:roomtype,
-           images:roomimage,
-
-         }
-     });
-   });
 
 
 
-  }
+
+
 
   finishreservation(): void {
 

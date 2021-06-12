@@ -1,4 +1,3 @@
-import {FormControl} from '@angular/forms';
 
 
 import {RoomService} from './../_services/RoomService.service';
@@ -24,7 +23,7 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {NrOfViewsHelper} from "../clases/NrOfViewsHelper";
+
 
 
 export interface ReservationData {
@@ -55,7 +54,7 @@ export class RoomReservationComponent implements OnInit {
   userData: UserData = new UserData();
   reservations!: ReservationsHelper;
   form: any = {};
-nrOfViews:NrOfViewsHelper=new NrOfViewsHelper();
+
 
   ngOnInit(): void {
 
@@ -68,9 +67,7 @@ console.log(this.data.reservation.length);
         console.log(this.reviews);
 
       });
-      this.roomService.getNrOfViewsById(this.data.reservation[i].roomid).subscribe(nrOfViewsValues=>{
-        this.nrOfViews=nrOfViewsValues;
-      });
+
        this.roomService.getPrice(this.data.reservation[0].checkin, this.data.reservation[0].checkout, this.data.reservation[i].roomid).subscribe(priceInfo => {
         this.price = priceInfo;
         this.finalprice += this.price.finalprice;

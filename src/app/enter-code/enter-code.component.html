@@ -1,0 +1,17 @@
+
+<form  [formGroup]="users" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <h2>Introduceti codul</h2>
+<div class="inputs">
+  <mat-form-field appearance="outline" hideRequiredMarker>
+    <mat-label>Cod</mat-label>
+    <input matInput  formControlName="code" required [(ngModel)]="form.code" >
+    <mat-error *ngIf="checkError('code','required')">
+      Introduceti codul
+    </mat-error>
+
+  </mat-form-field>
+</div>
+<div class="inputs">
+  <button mat-raised-button color="primary">Modifica parola</button>
+</div>
+</form>

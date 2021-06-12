@@ -61,10 +61,13 @@ import {EditUser} from './edit-user/edit-user.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ViewRoomImagesComponent} from './view-room-images/view-room-images.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {ViewRoomInfoComponent} from './view-room-info/view-room-info.component';
+
 
 import {StaticsticsComponent} from './staticstics/staticstics.component';
 import {ChartsModule} from 'ng2-charts';
+import { CodeEmailComponent } from './code-email/code-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { EnterCodeComponent } from './enter-code/enter-code.component';
 
 @NgModule({
   declarations: [
@@ -106,8 +109,11 @@ import {ChartsModule} from 'ng2-charts';
     DeleteRoom,
     PageNotFoundComponent,
     ViewRoomImagesComponent,
-    ViewRoomInfoComponent,
+
     StaticsticsComponent,
+      CodeEmailComponent,
+      ForgotPasswordComponent,
+      EnterCodeComponent,
 
 
   ],

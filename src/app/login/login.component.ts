@@ -9,7 +9,7 @@ import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
-
+import { CodeEmailComponent } from '../code-email/code-email.component';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -120,5 +120,14 @@ export class LoginComponent implements OnInit {
     }
     public checkError = (controlName: string, errorName: string) => {
       return this.users.controls[controlName].hasError(errorName);
+    }
+    forgotPassword(){
+      this.closeModal();
+      this.matDialog.open(CodeEmailComponent,{
+        data:{
+          username:this.form.username
+        }
+      });
+
     }
 }

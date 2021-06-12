@@ -60,7 +60,7 @@ hide=true;
 
         this.authService.register(name, email, username, password).subscribe(
             data => {
-                console.log(data);
+
                 this.navbarService.updateLoginStatus(true);
                 this.isSuccessful = true;
                 this.isSignUpFailed = false;
