@@ -97,10 +97,11 @@ export class RoominfoComponent implements OnInit {
             }
             for (let i = 0; i < this.roomInformation.length; i++) {
               this.roomDetails.push(this.roomInformation[i]);
+              console.log(this.roomDetails);
             }
           });
         }
-        console.log(this.roomDetails);
+
       });
     });
   }
