@@ -18,8 +18,11 @@
           Numele trebuie sa contina minim 3 caractere
         </mat-error>
         <mat-error *ngIf="checkError('name','maxlength')">
-          Numele trebuie sa contina maxim 50 de caractere
-        </mat-error>
+       Numele trebuie sa contina maxim 50 de caractere
+     </mat-error>
+       <mat-error *ngIf="checkError('name','pattern')">
+         Numele trebuie doar litere
+       </mat-error>
      </mat-form-field>
    </div>
    <div class="inputs">
@@ -52,8 +55,19 @@
    <div class="inputs">
     <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Parola</mat-label>
-      <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="form.password" required>
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <input matInput  formControlName="password" [(ngModel)]="form.password" required [type]="hide ? 'password' : 'text'" >
+<div  matSuffix *ngIf="hide===false">
+  <div  (click)="hide=!hide">
+<img class="img-fluid visibility"  src="assets/Images/visibility_off.png" alt="nu exista">
+  </div>
+</div>
+
+      <div matSuffix *ngIf="hide===true">
+        <div (click)="hide=!hide">
+          <img class="img-fluid visibility" src="assets/Images/visibility.png" alt="nu exista">
+        </div>
+      </div>
+
 
       </mat-form-field>
    </div>

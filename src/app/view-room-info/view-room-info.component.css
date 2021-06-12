@@ -1,0 +1,118 @@
+.info{
+  text-align: center;
+  font-size: 25px;
+
+}
+mat-form-field {
+  margin-top: 12px;
+}
+.reviews{
+  background-color: #4169E1; ;
+  color: white;
+}
+
+mat-card{
+  width: 310px;
+  border:3px solid;
+
+}
+.infoform{
+  padding-left: 3px;
+}
+.imgcar{
+  width: 300px;
+  height: 300px;
+}
+.carousel{
+  width: 1000px;
+
+}
+.finalinfo{
+
+  text-align: center;
+}
+.buttonclose{
+  padding-left: 400px;
+
+}
+.warning{
+color: #e62727;
+  text-align: center;
+
+}
+.good{
+color: #ed8d1f;
+  text-align: center;
+
+}
+.ok{
+  color: #18b848;
+  text-align: center;
+}
+.reviewmesage{
+  text-align: center;
+  padding-right:20px;
+
+}
+.reviewtext{
+  text-align: center;
+  color: white;
+}
+.finalinfo:after{
+  box-sizing: border-box;
+  content: "";
+  display: table;
+  clear: both;
+}
+.colinfo{
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+.rooms{
+  overflow-x: hidden;
+}
+.booking{
+  background-color:#ebf3f5;
+  width: 100%;
+
+
+}
+.col {
+  float: left;
+  width: 10%;
+  padding: 10px;
+
+}
+
+.carouseltext{
+  text-align: center;
+  color: white;
+}
+.slick-slider {
+  width: 88%;
+  margin: auto;
+
+}
+
+body .slick-prev,
+body .slick-next {
+  height: 45px;
+  width: 40px;
+  background: grey !important;
+  z-index: 100;
+}
+.booking:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .col {
+    width: 100%;
+  }
+  .colinfo{
+    width: 100%;
+  }
+}

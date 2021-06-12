@@ -1,34 +1,35 @@
 
 
-/*.room{*/
-/*    width: 300px;*/
-/*    height: 200px;*/
-/*}*/
-/*.imgcar{*/
-/*    width: 450px;*/
-/*    height: 350px;*/
-/*}*/
-/*.carousel{*/
-/*    width: 450px;*/
+.room{
+    width: 300px;
+    height: 200px;
+}
+.imgcar{
+    width: 450px;
+    height: 350px;
+}
+.carousel{
+    width: 450px;
 
-/*}*/
-/*.button{*/
-/*  padding-left: 30px;*/
-/*}*/
-/*.info:after{*/
-/*  box-sizing: border-box;*/
-/*  content: "";*/
-/*  display: table;*/
-/*  clear: both;*/
-/*}*/
-/*.col{*/
-/*  float: left;*/
-/*  width: 25%;*/
-/*  padding: 10px;*/
-/*}*/
-/*@media screen and (max-width: 1800px) {*/
+}
+.button{
+  padding-left: 30px;
+}
+.info:after{
+  box-sizing: border-box;
+  content: "";
+  display: table;
+  clear: both;
+}
+.col{
+  float: left;
+  width: 20%;
+  padding: 10px;
+}
 
-/*  .col{*/
-/*    width: 100%;*/
-/*  }*/
-/*}*/
+@media screen and (max-width: 1800px) {
+
+  .col{
+    width: 100%;
+  }
+}

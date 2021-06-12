@@ -4,6 +4,10 @@ import {Observable} from "rxjs";
 import {UserData} from "../clases/UserData";
 import {Users} from "../clases/Users";
 import {HotelReviewHelper} from '../clases/HotelReviewHelper';
+import {UserRoomsHelpers} from "../clases/UserRoomsHelpers";
+import {NrOfUsersHelper} from "../clases/NrOfUsersHelper";
+import {UserByType} from "../clases/UserByType";
+import {NrOfUserReservations} from "../clases/NrOfUserReservations";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +24,9 @@ getUserData(username:string):Observable<Users>
 updateUserDetails(id:number, user:Users):Observable<Users>{
     return  this.httpClient.patch<Users>(`${this.baseURL}/${id}`,user);
 }
-
+  updateUserDetailswithoutType(id:number, user:Users):Observable<Users>{
+    return  this.httpClient.patch<Users>(`${this.baseURL}/${id}/type`,user);
+  }
   setHotelReview(id: number, user: Users):Observable<Users>{
     return  this.httpClient.patch<Users>(`${this.baseURL}/updatehotelreview/${id}`,user)
 }
@@ -35,6 +41,21 @@ deleteUsers(id:number):void {
 }
 getHotelReviews():Observable<HotelReviewHelper[]>
 {
-  return  this.httpClient.get<HotelReviewHelper[]>(`${this.baseURL}/hotelreview`)
+  return  this.httpClient.get<HotelReviewHelper[]>(`${this.baseURL}/hotelreview`);
+}
+getUserRooms(id:number):Observable<UserRoomsHelpers[]>
+{
+  return this.httpClient.get<UserRoomsHelpers[]>(`${this.baseURL}/rooms/${id}`);
+}
+getNrOfUsers():Observable<NrOfUsersHelper>
+{
+  return  this.httpClient.get<NrOfUsersHelper>(`${this.baseURL}/nrofusers`)
+}
+getNrOfUsersByType():Observable<UserByType[]>
+{
+    return this.httpClient.get<UserByType[]>(`${this.baseURL}/usersbytype`);
+}
+getUserReservations():Observable<NrOfUserReservations[]>{
+    return  this.httpClient.get<NrOfUserReservations[]>(`${this.baseURL}/userreservations`);
 }
 }

@@ -6,6 +6,10 @@ import {RoomReservation} from "../clases/RoomReservation";
 
 import {Reservation} from "../clases/Reservation";
 import {UserReservationHelper} from "../clases/UserReservationHelper";
+import {NrOfReservationsHelper} from "../clases/NrOfReservationsHelper";
+import {NrOfFreeRoomsHelper} from "../clases/NrOfFreeRoomsHelper";
+import {ReservationsByType} from "../clases/ReservationsByType";
+import {FreeRoomsByType} from "../clases/FreeRoomsByType";
 
 
 @Injectable({
@@ -37,5 +41,15 @@ modifyRezervation(id:number,reservation:Reservation):Observable<Reservation>{
   }
   getRezervation():Observable<Reservation[]>{
     return  this.httpClient.get<Reservation[]>(`${this.baseURL}/all`)
+  }
+  getNrOfReservations():Observable<NrOfReservationsHelper>{
+    return  this.httpClient.get<NrOfReservationsHelper>(`${this.baseURL}/nrofreservations`);
+  }
+getNrOfFreeRooms():Observable<FreeRoomsByType[]>{
+    return  this.httpClient.get<FreeRoomsByType[]>(`${this.baseURL}/freeroomsbytype`);
+
+}
+  getNrOfReservedRooms():Observable<ReservationsByType[]>{
+    return  this.httpClient.get<ReservationsByType[]>(`${this.baseURL}/roomsbytype`);
   }
 }

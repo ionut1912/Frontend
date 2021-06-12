@@ -41,30 +41,30 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 import {MatTabsModule} from '@angular/material/tabs';
-import { ViewReservationsComponent} from './view-reservations/view-reservations.component';
-import  {EditRezervationComponent} from './edit-rezervation/edit-rezervation.component';
+import {ViewReservationsComponent} from './view-reservations/view-reservations.component';
+import {EditRezervationComponent} from './edit-rezervation/edit-rezervation.component';
 import {RoomReviewComponent} from './room-review/room-review.component';
 import {HotelReviewComponent} from './hotel-review/hotel-review.component';
-import  {DialogDataExampleDialog} from './dialog-data-example-dialog/dialog-data-example-dialog.component';
+
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import  {EditRoom} from './edit-room/edit-room.component';
-import  {DeleteRezervationComponent} from './delete-rezervation/delete-rezervation.component';
+import {EditRoom} from './edit-room/edit-room.component';
+import {DeleteRezervationComponent} from './delete-rezervation/delete-rezervation.component';
 import {ViewUsersComponent} from './view-users/view-users.component';
 import {ViewRoomsComponent} from './view-rooms/view-rooms.component';
-import  {AddRoom} from './add-room/add-room.component';
-import  {DeleteUser} from './delete-user/delete-user.component';
-import  {AddUser} from './add-user/add-user.component';
-import { ViewAllReservationsComponent } from './view-all-reservations/view-all-reservations.component';
+import {AddRoom} from './add-room/add-room.component';
+import {DeleteUser} from './delete-user/delete-user.component';
+
+import {ViewAllReservationsComponent} from './view-all-reservations/view-all-reservations.component';
 import {DeleteRoom} from './delete-room/delete-room.component';
 import {EditUser} from './edit-user/edit-user.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ViewRoomImagesComponent } from './view-room-images/view-room-images.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {ViewRoomImagesComponent} from './view-room-images/view-room-images.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {ViewRoomInfoComponent} from './view-room-info/view-room-info.component';
 
-
-
-
+import {StaticsticsComponent} from './staticstics/staticstics.component';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -88,17 +88,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ViewReservationsComponent,
     RoomReviewComponent,
     HotelReviewComponent,
-    DialogDataExampleDialog,
+
     EditRezervationComponent,
     DeleteRezervationComponent,
     ViewUsersComponent,
     ViewRoomsComponent,
     AddRoom,
-    AddUser,
+
     EditUser,
     DeleteUser,
 
-DialogDataExampleDialog,
+
     ViewAllReservationsComponent,
 
 
@@ -106,9 +106,8 @@ DialogDataExampleDialog,
     DeleteRoom,
     PageNotFoundComponent,
     ViewRoomImagesComponent,
-
-
-
+    ViewRoomInfoComponent,
+    StaticsticsComponent,
 
 
   ],
@@ -145,8 +144,8 @@ DialogDataExampleDialog,
     MatPaginatorModule,
 
     MatSortModule,
-
-MatSnackBarModule
+    ChartsModule,
+    MatSnackBarModule
   ],
 
   providers: [MatDatepickerModule],

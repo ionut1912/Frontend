@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Users} from '../clases/Users';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../_services/UserService.service';
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
 import {ViewUsersComponent} from '../view-users/view-users.component';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 export  interface EditUserInterface {
   userid:number,
@@ -23,7 +24,7 @@ export  class EditUser {
 
   user: Users = new Users();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: EditUserInterface, private builder: FormBuilder, public  userService: UserService, public dialogRef: MatDialogRef<ViewUsersComponent>, public dialog: MatDialog) {
+  constructor(private  snackBar:MatSnackBar,@Inject(MAT_DIALOG_DATA) public data: EditUserInterface, private builder: FormBuilder, public  userService: UserService, public dialogRef: MatDialogRef<ViewUsersComponent>, public dialog: MatDialog) {
     this.users = this.builder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -55,16 +56,13 @@ export  class EditUser {
       type: this.data.type
     }).subscribe(() => {
 
-      this.dialogRef.close();
-      this.dialog.open(DialogDataExampleDialog, {
-        data: {
-          text: 'Utilizatorul',
-          text2: 'modificat',
-          text3: 'a'
-        }
-      });
+
     });
 
+    this.dialogRef.close();
+    this.snackBar.open('Datele utilizatorului au fost modificate cu succes','Inchide',{
+      duration: 3000
+    });
 
   }
 }

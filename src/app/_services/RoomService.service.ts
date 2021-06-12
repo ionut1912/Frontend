@@ -7,6 +7,11 @@ import {ReviewHelper} from '../clases/ReviewHelper';
 import {throwPortalOutletAlreadyDisposedError} from '@angular/cdk/portal/portal-errors';
 import {RoomDetails} from '../clases/RoomDetails';
 import {TotalPrice} from '../clases/TotalPrice';
+import {RoomsViewed} from "../clases/RoomsViewed";
+import {NrOfViewsHelper} from "../clases/NrOfViewsHelper";
+import {NrOfFreeRoomsHelper} from "../clases/NrOfFreeRoomsHelper";
+import {NrOfRoomsHelper} from "../clases/NrOfRoomsHelper";
+import {NrRoomsByType} from "../clases/NrRoomsByType";
 @Injectable({
     providedIn: 'root'
   })
@@ -39,7 +44,20 @@ getPrice(checkin:Date,checkout:Date,id:number):Observable<TotalPrice>
 {
   return  this.httpclient.get<TotalPrice>(`${this.baseURL}/${checkin}/${checkout}/${id}`)
 }
-
-
-
+saveViews(roomViewed:RoomsViewed):Observable<RoomsViewed>{
+  return  this.httpclient.post<RoomsViewed>(`${this.baseURL}/views`,roomViewed)
+}
+  getNrOfViewsById(id:number):Observable<NrOfViewsHelper>{
+    return  this.httpclient.get<NrOfViewsHelper>(`${this.baseURL}/views/${id}`);
+  }
+  getNrOfFreeRooms(type:string):Observable<NrOfFreeRoomsHelper>
+  {
+    return  this.httpclient.get<NrOfFreeRoomsHelper>(`${this.baseURL}/freerooms/${type}`);
+  }
+getNrOfRooms():Observable<NrOfRoomsHelper>{
+  return  this.httpclient.get<NrOfRoomsHelper>(`${this.baseURL}/nrofrooms`);
+}
+getNrOfRoomsByType():Observable<NrRoomsByType[]>{
+  return  this.httpclient.get<NrRoomsByType[]>(`${this.baseURL}/nrroomsbytype`);
+}
 }

@@ -21,7 +21,7 @@ export class BoardAdminComponent implements OnInit {
 
     if(this.group.selectedIndex ===4) {
 
-      this.router.navigate(['']);
+        this.router.navigate(['']);
 
     }
 

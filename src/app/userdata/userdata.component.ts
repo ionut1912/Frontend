@@ -5,9 +5,10 @@ import {TokenStorageService} from "../_services/token-storage.service";
 
 
 import {Users} from "../clases/Users";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
-import {DialogDataExampleDialog} from '../dialog-data-example-dialog/dialog-data-example-dialog.component';
+
 
 export interface DialogData {
   hidden: boolean;
@@ -28,7 +29,7 @@ export class UserdataComponent implements OnInit {
   users: Users[] = [];
 
 
-  constructor(public userService: UserService, public  tokenStorage: TokenStorageService, public  dialog: MatDialog) {
+  constructor(private  matSnackbar:MatSnackBar,public userService: UserService, public  tokenStorage: TokenStorageService, public  dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -53,26 +54,20 @@ export class UserdataComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.userService.updateUserDetails(this.users[0].userid, this.users[0]).subscribe(data => {
+    this.userService.updateUserDetailswithoutType(this.users[0].userid, this.users[0]).subscribe(data => {
 
     });
-    this.tokenStorage.saveUser(this.users[0]);
+
     this.openDialog();
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogDataExampleDialog, {
-      data: {
-        hidden: this.hidden,
-        text: 'Datele',
-        text2: 'modificate',
-        text3: 'au'
-      }
-    });
-    dialogRef.afterClosed().subscribe(result => {
 
-      this.hidden = result;
-    });
+this.matSnackbar.open('Datele au fost modificate cu succes' , 'Inchide' ,{
+  duration: 3000
+});
+this.hidden=false;
+
   }
 
 }

@@ -1,17 +1,69 @@
+<div class="container">
+  <form [formGroup]="search"
+        (ngSubmit)="f.form.valid"
+        #f="ngForm"
+        novalidate>
+    <p>Filtrare field-uri</p>
+
+      <div >
+        <mat-form-field appearance="outline">
+          <mat-label>Cauta dupa id-ul rezervarii</mat-label>
+          <input matInput formControlName="reservationid" [(ngModel)]="form.reservationid" >
+          <mat-icon matSuffix (click)="searchByReservationId()">search</mat-icon>
+
+        </mat-form-field>
+      </div>
 
 
-  <div class="example-container mat-elevation-z8">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Cauta dupa id-ul camerei</mat-label>
+
+          <input matInput formControlName="roomid" [(ngModel)]="form.roomid">
+          <mat-icon matSuffix (click)="searchByRoomId()">search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field appearance="outline">
+          <mat-label>Cauta dupa nume</mat-label>
+          <input matInput formControlName="name" [(ngModel)]="form.name" >
+          <mat-icon matSuffix (click)="searchByName()">search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Cauta dupa email</mat-label>
+          <input matInput formControlName="email" [(ngModel)]="form.email" >
+          <mat-icon matSuffix (click)="searchByEmail()" >search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field appearance="outline">
+          <mat-label>Cauta dupa tipul camerei</mat-label>
+          <input matInput formControlName="roomtype" [(ngModel)]="form.roomtype">
+          <mat-icon matSuffix (click)="searchByRoomType()" >search</mat-icon>
+        </mat-form-field>
+      </div>
+
+
+
+  </form>
+
+</div>
+
+
+<div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="dataSource"  matSort>
       <ng-container matColumnDef="reservationid">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> ReservationId</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id Rezervare</mat-header-cell>
         <mat-cell *matCellDef="let element" data-label="reservationid"> {{element.reservationid}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="roomid">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> RoomId</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id camera </mat-header-cell>
         <mat-cell *matCellDef="let element" data-label="roomid"> {{element.roomid}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nume</mat-header-cell>
         <mat-cell *matCellDef="let element" data-label="name"> {{element.name}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="email">
@@ -20,7 +72,7 @@
       </ng-container>
 
       <ng-container matColumnDef="roomtype">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> RoomType</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipul camerei</mat-header-cell>
         <mat-cell *matCellDef="let element" data-label="roomtype"> {{element.roomtype}} </mat-cell>
       </ng-container>
 

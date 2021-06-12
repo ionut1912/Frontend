@@ -6,7 +6,8 @@ import {UserData} from '../clases/UserData';
 import {ReviewHelper} from '../clases/ReviewHelper';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
-import {THIS_EXPR} from "@angular/compiler/src/output/output_ast";
+
+import {UserRoomsHelpers} from "../clases/UserRoomsHelpers";
 
 @Component({
   selector: 'app-room-review',
@@ -22,8 +23,12 @@ formErors:any;
     roomid: null,
 
   };
+
   user:UserData=new UserData();
-  reviewHelper:ReviewHelper=new ReviewHelper();
+  userRooms:UserRoomsHelpers[]=[];
+  roomReviewed:UserRoomsHelpers[]=[];
+foundRoom=false;
+foundReview=false;
   constructor(public matSnackbar:MatSnackBar,private builder: FormBuilder,public  userService:UserService,public reviewService:ReviewService,public  tokenStorage:TokenStorageService) {
 
     this.reviews = this.builder.group({
@@ -45,8 +50,16 @@ formErors:any;
 
 this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(info=>{
   this.user=info;
+  this.userService.getUserRooms(this.user.userid).subscribe(userRooomsInformation=>{
+    this.userRooms = userRooomsInformation;
+  });
+  this.reviewService.getRoomReviewed(this.user.userid).subscribe(roomReviewedInfo=>{
+this.roomReviewed =roomReviewedInfo;
+
+  });
 
 });
+
   }
 onSubmit():void{
 this.saveReview();
@@ -55,14 +68,50 @@ this.saveReview();
 }
 saveReview()
 {
-  this.reviewService.saveReview({
-    reviewTitle:this.form.reviewtitle,
-    reviewText:this.form.reviewtext,
-    userId:this.user.userid,
-    roomId:this.form.roomid
-  });
-  this.matSnackbar.open('Review-ul a fost adaugat cu succes','Inchide',{
-    duration: 3000
-  });
+console.log(this.userRooms);
+console.log(this.roomReviewed);
+  for(let i=0;i<this.userRooms.length;i++){
+    if(this.form.roomid==this.userRooms[i].roomid)
+    {
+      this.foundRoom=true;
+    }
+  }
+  for(let i=0;i<this.roomReviewed.length;i++){
+    if(this.form.roomid==this.roomReviewed[i].roomid){
+      this.foundReview=true;
+    }
+
+  }
+  if(this.foundRoom==false){
+    this.matSnackbar.open('Camera cu id-ul ' + `${this.form.roomid}` +" nu exista","Inchide", {
+      duration:3000
+    })
+  }
+else if(this.foundReview==true)
+{
+
+    this.matSnackbar.open('Camera cu id-ul ' + `${this.form.roomid}` +" are deja un review","Inchide", {
+      duration:3000
+    })
 }
+else if(this.foundRoom==true)
+{
+
+
+      if(this.foundReview==false){
+        this.reviewService.saveReview({
+          reviewTitle:this.form.reviewtitle,
+          reviewText:this.form.reviewtext,
+          userId:this.user.userid,
+          roomId:this.form.roomid
+        });
+        this.matSnackbar.open('Review-ul a fost adaugat cu succes','Inchide',{
+          duration: 3000
+        });
+      }
+    }
+  }
+
+
 }
+

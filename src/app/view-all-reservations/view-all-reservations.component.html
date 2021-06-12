@@ -1,7 +1,50 @@
 
+<div class="container">
+  <form [formGroup]="search"
+        (ngSubmit)="f.form.valid"
+        #f="ngForm"
+        novalidate>
+    <p>Filtrare field-uri</p>
 
-  <div class="example-container mat-elevation-z8">
-    <mat-table [dataSource]="dataSource"  matSort >
+    <div >
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa id-ul rezervarii</mat-label>
+        <input matInput formControlName="reservationid" [(ngModel)]="form.reservationid" >
+        <mat-icon matSuffix (click)="searchByReservationId()">search</mat-icon>
+
+      </mat-form-field>
+    </div>
+
+
+
+    <div >
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa nume</mat-label>
+        <input matInput formControlName="name" [(ngModel)]="form.name" >
+        <mat-icon matSuffix (click)="searchByName()">search</mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa email</mat-label>
+        <input matInput formControlName="email" [(ngModel)]="form.email" >
+        <mat-icon matSuffix (click)="searchByEmail()" >search</mat-icon>
+      </mat-form-field>
+    </div>
+    <div >
+      <mat-form-field appearance="outline">
+        <mat-label>Cauta dupa tipul camerei</mat-label>
+        <input matInput formControlName="roomtype" [(ngModel)]="form.roomtype">
+        <mat-icon matSuffix (click)="searchByRoomType()" >search</mat-icon>
+      </mat-form-field>
+    </div>
+
+
+
+  </form>
+</div>
+<div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource"  matSort>
       <ng-container matColumnDef="reservationid">
         <mat-header-cell *matHeaderCellDef mat-sort-header> RezervationId</mat-header-cell>
         <mat-cell *matCellDef="let element" data-label="reservationid"> {{element.rezervationid}} </mat-cell>
