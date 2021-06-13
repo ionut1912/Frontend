@@ -1,3 +1,5 @@
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavbarService } from '../_services/navbar.service';
 
 import { Router } from '@angular/router';
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     constructor(public matDialog: MatDialog, public dialogRef: MatDialogRef<LoginComponent>,
                 private authService: AuthService, private tokenStorage: TokenStorageService,
-                private route: Router, private navbarService: NavbarService,private builder:FormBuilder) {
+                private route: Router, private navbarService: NavbarService,private builder:FormBuilder,public matSnackBar:MatSnackBar) {
         this.isLoggedIn = tokenStorage.isLoggedIn();
         this.users = this.builder.group({
 
@@ -78,13 +80,16 @@ export class LoginComponent implements OnInit {
                 this.reloadPage();
             },
             err => {
-                this.errorMessage = err.error.message;
+                this.matSnackBar.open(err.error.message,"Inchide",{
+                  duration:3000
+                });
             }
         );
 
         if ( this.form.invalid ) {
             return;
         }
+
 
 
     }

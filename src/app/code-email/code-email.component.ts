@@ -45,7 +45,7 @@ this.userInfo=<UserData>
 {
   email:this.form.email
 };
-console.log(this.userByCode.userid);
+
 this.userService.sentCode(this.userByCode.userid,this.userInfo).subscribe(data=>{
 
 },

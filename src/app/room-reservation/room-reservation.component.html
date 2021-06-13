@@ -40,36 +40,35 @@
   </div>
 </div>
 
-<!--<div *ngIf="reviews.length!=0">-->
-<!--<div *ngIf="data.reservation.length===1">-->
-<!--  <p>Parerile utilizatorilor despre aceasta camera</p>-->
-<!--</div>-->
-<!--  <div *ngIf="data.reservation.length>1">-->
-<!--    <p>Parerile utilizatorilor despre aceaste camere</p>-->
-<!--  </div>-->
+<div >
+<div *ngIf="data.reservation.length===1">
+  <p>Parerile utilizatorilor despre aceasta camera</p>
+</div>
+  <div *ngIf="data.reservation.length>1">
+    <p>Parerile utilizatorilor despre aceaste camere</p>
+  </div>
 
 
-<!--    <div class="container reviews">-->
-<!--    <ngb-carousel class="carousel">-->
+    <div class="container reviews">
+    <ngb-carousel class="carousel">
 
-<!--      <ng-template *ngFor="let review of reviews"  ngbSlide>-->
-<!--        <div class="reviewcard">-->
-<!--          <p class="textinfocard">Numele utilizatorului:{{review.name}} </p>-->
+      <ng-template *ngFor="let review of reviews"  ngbSlide>
+        <div class="reviewcard">
+          <p class="textinfocard">Numele utilizatorului:{{review.name}} </p>
 
-<!--        </div>-->
-<!--        <div class="reviewcard">-->
-<!--          <p class="textinfocard">Titlul parerii:{{review.reviewtitle}} </p>-->
+        </div>
+       <div class="reviewcard">
+          <p class="textinfocard">Titlul parerii:{{review.reviewtitle}} </p>
 
-<!--        </div>-->
+        </div>
+        <div class="reviewcard">
+         <p class="textinfocard">Parere:{{review.reviewtext}} </p>
+ </div>
+      </ng-template>
 
-<!--        <div class="reviewcard">-->
-<!--          <p class="textinfocard">Parere:{{review.reviewtext}} </p>-->
-<!--        </div>-->
-<!--      </ng-template>-->
-
-<!--    </ngb-carousel>-->
-<!--  </div>-->
-<!--  </div>-->
+  </ngb-carousel>
+ </div>
+ </div>
 
 
   <form name="form" class="infoform">

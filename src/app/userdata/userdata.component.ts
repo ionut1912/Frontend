@@ -6,6 +6,9 @@ import {TokenStorageService} from "../_services/token-storage.service";
 
 import {Users} from "../clases/Users";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { CodeEmailComponent } from '../code-email/code-email.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarService } from '../_services/navbar.service';
 
 
 
@@ -29,7 +32,8 @@ export class UserdataComponent implements OnInit {
   users: Users[] = [];
 
 
-  constructor(private  matSnackbar:MatSnackBar,public userService: UserService, public  tokenStorage: TokenStorageService, public  dialog: MatDialog) {
+
+  constructor(public navbarService: NavbarService,public tokenStorageService:TokenStorageService,public matDialog:MatDialog,private  matSnackbar:MatSnackBar,public userService: UserService, public  tokenStorage: TokenStorageService, public  dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -67,6 +71,17 @@ this.matSnackbar.open('Datele au fost modificate cu succes' , 'Inchide' ,{
   duration: 3000
 });
 this.hidden=false;
+
+  }
+  modifyPassword(){
+    this.logout();
+    this.matDialog.open(CodeEmailComponent);
+
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+
+    this.navbarService.updateLoginStatus(false);
 
   }
 

@@ -32,7 +32,12 @@ body {
     width: 1px;
   }
   */
-
+  .forgot{
+    text-decoration: none;
+    text-align: center;
+    color: red;
+    cursor: pointer;
+  }
   .mat-table .mat-row {
     border-bottom: 5px solid #ddd;
     display: block;

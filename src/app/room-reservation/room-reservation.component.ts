@@ -62,7 +62,10 @@ console.log(this.data.reservation.length);
     for (let i = 0; i < this.data.reservation.length; i++) {
       this.reviews = [];
       this.reviewService.getReviews(this.data.reservation[i].roomid).subscribe(reviewsInformation => {
-        this.reviews = reviewsInformation;
+       for(let i=0;i<reviewsInformation.length;i++)
+       {
+         this.reviews.push(reviewsInformation[i]);
+       }
 
         console.log(this.reviews);
 

@@ -132,9 +132,10 @@ if(this.nrofClicks<=this.noofrooms){
 
             });
           }
-          this.roomInfo = this.rooms.filter(x => x.roomid === id)[0];
+          this.roomInfo = this.rooms.filter(x => x.roomid == id)[0];
 
           this.ids = this.rooms.indexOf(this.roomInfo);
+          console.log(this.ids);
           this.reservation = <MultipleReservationsHelper> {
             roomid: id,
             name: this.rooms[this.ids].name,
@@ -150,6 +151,7 @@ if(this.nrofClicks<=this.noofrooms){
             noofchildrens: this.noofchildrens
           };
           this.reservations.push(this.reservation);
+          console.log(this.reservations);
         });
       } else if (this.roomDetails.length === 0 && this.roomReservation.length > 0) {
         this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
@@ -162,9 +164,10 @@ if(this.nrofClicks<=this.noofrooms){
             });
 
           }
-          this.roomDetail = this.roomInformation.filter(x => x.roomid === id)[0];
+          this.roomDetail = this.roomInformation.filter(x => x.roomid == id)[0];
 
-          this.ids = this.roomDetails.indexOf(this.roomDetail);
+          this.ids = this.roomInformation.indexOf(this.roomDetail);
+          console.log(this.ids);
           this.reservation = <MultipleReservationsHelper> {
             roomid: id,
             name: this.roomInformation[this.ids].name,
@@ -180,6 +183,7 @@ if(this.nrofClicks<=this.noofrooms){
             noofchildrens: this.noofchildrens
           };
           this.reservations.push(this.reservation);
+          console.log(this.reservations);
         });
       } else if (this.roomDetails.length > 0) {
 
@@ -201,8 +205,8 @@ if(this.nrofClicks<=this.noofrooms){
             this.roomDetails.push(this.roomInformation[i]);
 
           }
-          console.log(this.roomDetails);
-          this.roomDetail = this.roomDetails.filter(x => x.roomid === id)[0];
+
+          this.roomDetail = this.roomDetails.filter(x => x.roomid == id)[0];
 
           this.ids = this.roomDetails.indexOf(this.roomDetail);
 
