@@ -23,7 +23,15 @@ export  class ReservationService {
   }
 
   saveReservation(reservation: ReservationsHelper): void {
-    this.httpClient.post<ReservationsHelper>(`${this.baseURL}`, reservation).subscribe();
+    console.log(reservation);
+
+    this.httpClient.post<ReservationsHelper>(`${this.baseURL}`, reservation).subscribe((data)=>{
+console.log(data);
+    },
+      err=>{
+      console.log(err.error.mesage);
+      }
+      );
 
   }
 

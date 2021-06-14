@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-rezervation',
@@ -13,10 +14,16 @@ export class RezervationComponent implements OnInit {
 
 
   };
+  group!:FormGroup;
   submitted = false;
   diplay = false;
 
-  constructor(private  matSnackbar:MatSnackBar) {
+  constructor(private  matSnackbar:MatSnackBar,public  builder:FormBuilder) {
+ this.group= this.builder.group({
+    checkin: [''],
+    checkout: ['']
+  });
+
   }
 
   ngOnInit() {
@@ -31,7 +38,7 @@ export class RezervationComponent implements OnInit {
   }
 
   myfunc() {
-
+console.log(this.form.checkin);
     if(this.form.checkin >this.form.checkout){
 this.matSnackbar.open("Checkin-ul trebuie sa fie mai mic decat checkout-ul","Inchide",{
   duration: 3000

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { UserData } from '../clases/UserData';
 import { UserService } from '../_services/UserService.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 export interface ForgotPassword{
   email:string;
 }
@@ -22,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
 userById:UserCode=new UserCode();
 userInfo:UserData=new UserData();
   hide=true;
-  constructor(public userService:UserService,@Inject(MAT_DIALOG_DATA) public data: ForgotPassword,public builder: FormBuilder,public dialogRef:MatDialogRef<ForgotPasswordComponent>,public dialog:MatDialog) {
+  constructor(public  snackBar:MatSnackBar,public userService:UserService,@Inject(MAT_DIALOG_DATA) public data: ForgotPassword,public builder: FormBuilder,public dialogRef:MatDialogRef<ForgotPasswordComponent>,public dialog:MatDialog) {
   this.users = this.builder.group({
 
 
@@ -41,7 +42,12 @@ this.userService.getIdByEmail(this.data.email).subscribe(emailData=>{
   this.userService.savePassword(this.userById.userid,this.userInfo).subscribe(()=>{
 this.dialogRef.close();
 this.dialog.open(LoginComponent);
-  });
+  },
+    err => {
+this.snackBar.open(err.error.message,"Inchide",{
+  duration: 3000
+});
+    });
 });
 }
 public checkError = (controlName: string, errorName: string) => {

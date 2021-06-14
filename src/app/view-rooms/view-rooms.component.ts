@@ -8,7 +8,7 @@ import {RoomService} from '../_services/RoomService.service';
 import {DeleteRoom} from '../delete-room/delete-room.component';
 import {EditRoom} from '../edit-room/edit-room.component';
 import {AddRoom} from '../add-room/add-room.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ViewRoomImagesComponent} from '../view-room-images/view-room-images.component';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";

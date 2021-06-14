@@ -1,93 +1,89 @@
-
 <div>
-	<app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 
-	<div class="col-md-12 col-md-pull-7">
-		<div class="booking-form">
-			<form
-			name="form"
-			(ngSubmit)="f.form.valid && onSubmit()"
-			#f="ngForm"
-			novalidate>
+  <div class="col-md-12 col-md-pull-7">
+    <div class="booking-form">
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate>
 
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<span class="form-label">Check In</span>
-							<input class="form-control" type="date" name="checkin"   [(ngModel)]="form.checkin"  #checkin="ngModel"  required >
-							<div class="alert-danger" *ngIf="checkin.errors && f.submitted">
-								<div *ngIf="checkin.errors.required">Introduceti data de sosire.</div>
-					</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<span class="form-label">Check out</span>
-							<input class="form-control" type="date" name="checkout"   [(ngModel)]="form.checkout"  #checkout="ngModel"  required >
-							<div class="alert-danger" *ngIf="checkout.errors && f.submitted">
-								<div *ngIf="checkout.errors.required">Introduceti data de plecare.</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-3">
-						<div class="form-group">
-							<span  class="form-label">Camere</span>
-							<select name="noofrooms" class="form-control" [(ngModel)]="form.noofrooms">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <span class="form-label">Check In</span>
+              <input class="form-control" type="date" name="checkin"   [(ngModel)]="form.checkin"  #checkin="ngModel"   required >
+              <div class="alert-danger" *ngIf="checkin.errors && f.submitted">
+                <div *ngIf="checkin.errors.required">Introduceti data de sosire.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <span class="form-label">Check out</span>
+              <input class="form-control" type="date" name="checkout"   [(ngModel)]="form.checkout"  #checkout="ngModel"  required >
+              <div class="alert-danger" *ngIf="checkout.errors && f.submitted">
+                <div *ngIf="checkout.errors.required">Introduceti data de plecare.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <span  class="form-label">Camere</span>
+              <select name="noofrooms" class="form-control" [(ngModel)]="form.noofrooms">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
                 <option value="7">7</option>
-							</select>
-							<span class="select-arrow"></span>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="form-group">
-							<span class="form-label">Adulti</span>
-							<select name="noofadults" class="form-control" [(ngModel)]="form.noofadults">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select>
-							<span class="select-arrow"></span>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="form-group">
-							<span  class="form-label">Copii</span>
-							<select name="noofchildrens" class="form-control" [(ngModel)]="form.noofchildrens">
-								<option value="0">0</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
+              </select>
+              <span class="select-arrow"></span>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <span class="form-label">Adulti</span>
+              <select name="noofadults" class="form-control" [(ngModel)]="form.noofadults">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <span class="select-arrow"></span>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <span  class="form-label">Copii</span>
+              <select name="noofchildrens" class="form-control" [(ngModel)]="form.noofchildrens">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-							</select>
-							<span class="select-arrow"></span>
-						</div>
-					</div>
+              </select>
+              <span class="select-arrow"></span>
+            </div>
+          </div>
 
-				</div>
+        </div>
 
 
 
-				<div class="form-btn">
-					<button mat-raised-button color="primary" (click)="myfunc()">Verifica dispoibilitatea</button>
-				</div>
+        <div class="form-btn">
+          <button mat-raised-button color="primary" (click)="myfunc()">Verifica dispoibilitatea</button>
+        </div>
 
-			</form>
-		</div>
-	</div>
-	<div *ngIf="diplay&&submitted===true">
-		<app-roominfo [checkin]="form.checkin" [checkout]="form.checkout" [noofrooms]="form.noofrooms" [noofadults]="form.noofadults"  [noofchildrens]="form.noofchildrens"></app-roominfo>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="diplay&&submitted===true">
+    <app-roominfo [checkin]="form.checkin" [checkout]="form.checkout" [noofrooms]="form.noofrooms" [noofadults]="form.noofadults"  [noofchildrens]="form.noofchildrens"></app-roominfo>
 
-		</div>
+  </div>
 </div>
-
-
-

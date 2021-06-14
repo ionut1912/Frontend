@@ -19,10 +19,11 @@ import {UserService} from '../_services/UserService.service';
 import {UserData} from '../clases/UserData';
 import {ReservationsHelper} from '../clases/ReservationsHelper';
 import {TotalPrice} from '../clases/TotalPrice';
-import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
 import {MatSnackBar} from "@angular/material/snack-bar";
+
 
 
 
@@ -36,7 +37,7 @@ export interface ReservationData {
   styleUrls: ['./room-reservation.component.css']
 })
 export class RoomReservationComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ReservationData, private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService, public  matSnackBar:MatSnackBar) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ReservationData, private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService, public  matSnackBar: MatSnackBar) {
   }
 
   roomid!: number;
@@ -49,35 +50,35 @@ export class RoomReservationComponent implements OnInit {
   noofchildrens!: number;
 
   reviews!: ReviewDetails[];
-  finalprice: number = 0;
+  finalprice = 0;
   price: TotalPrice = new TotalPrice();
   userData: UserData = new UserData();
   reservations!: ReservationsHelper;
   form: any = {};
 
+  checkin1!: Date;
+  checkout1!: Date;
 
   ngOnInit(): void {
 
-console.log(this.data.reservation.length);
+    console.log(this.data.reservation.length);
     for (let i = 0; i < this.data.reservation.length; i++) {
       this.reviews = [];
       this.reviewService.getReviews(this.data.reservation[i].roomid).subscribe(reviewsInformation => {
-       for(let i=0;i<reviewsInformation.length;i++)
-       {
-         this.reviews.push(reviewsInformation[i]);
-       }
+        for (let i = 0; i < reviewsInformation.length; i++) {
+          this.reviews.push(reviewsInformation[i]);
+        }
 
         console.log(this.reviews);
 
       });
 
-       this.roomService.getPrice(this.data.reservation[0].checkin, this.data.reservation[0].checkout, this.data.reservation[i].roomid).subscribe(priceInfo => {
+      this.roomService.getPrice(this.data.reservation[0].checkin, this.data.reservation[0].checkout, this.data.reservation[i].roomid).subscribe(priceInfo => {
         this.price = priceInfo;
         this.finalprice += this.price.finalprice;
 
       });
     }
-
 
 
     this.userService.getUserData(this.tokenStorageService.getUsername()).subscribe(userInfo => {
@@ -89,13 +90,15 @@ console.log(this.data.reservation.length);
 
   onClick(): void {
     console.log(this.userData.username);
+    console.log(this.data.reservation[0].checkin);
     for (let i = 0; i < this.data.reservation.length; i++) {
-      this.reservations = <ReservationsHelper>{
+
+      this.reservations = <ReservationsHelper> {
         name: this.userData.name,
         email: this.userData.email,
         roomtype: this.data.reservation[i].roomtype,
-        checkin: this.data.reservation[i].checkin,
-        checkout: this.data.reservation[i].checkout,
+        checkin: new Date(this.data.reservation[i].checkin),
+        checkout: new Date(this.data.reservation[i].checkout),
         deleted: false,
         userid: this.userData.userid,
         roomid: this.data.reservation[i].roomid,
@@ -104,23 +107,14 @@ console.log(this.data.reservation.length);
         noofchildrens: this.data.reservation[i].noofchildrens
 
       };
+
       this.reservationService.saveReservation(this.reservations);
     }
-    this.matSnackBar.open('Rezervarea a fost creata cu succes','Inchide',{
-      duration:3000
+    this.matSnackBar.open('Rezervarea a fost creata cu succes', 'Inchide', {
+      duration: 3000
     });
 
 
   }
 
 }
-
-
-
-
-
-
-
-
-
-

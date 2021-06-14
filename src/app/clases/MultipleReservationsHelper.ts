@@ -1,4 +1,4 @@
-import {RoomImage} from './RoomImage';
+
 
 export  class MultipleReservationsHelper {
 roomid!:number;
@@ -8,9 +8,9 @@ roomdetails!:string;
 roomprice!:number;
 pricecurency!:string;
 
-checkin!:Date;
+checkin!: Date;
 checkout!:Date;
 noofrooms!:number;
 noofadults!:number;
-noofchildrens!:number
+noofchildrens!: number;
 }
