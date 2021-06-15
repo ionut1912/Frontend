@@ -39,9 +39,10 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(): void {
-    this.tokenStorageService.signOut();
+   this.tokenStorageService.signOut();
 
     this.navbarService.updateLoginStatus(false);
+
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
     this.snackBar.open('Delogare realizata cu succes','Inchide',{

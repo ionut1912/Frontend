@@ -9,7 +9,15 @@
         <p>Tipul camerei:{{item.roomtype}}</p>
         <p>Detalii camera:{{item.roomdetails}}</p>
 
-
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms===0" class="container-fluid">
+          <p class="notfound">Ne pare rau!Nu mai avem camere in stoc</p>
+        </div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>=1&&freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms<5" class="container-fluid">
+          <p class="notenough">Grabeste-te!Mai sunt {{freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms}} camere disponibile</p>
+        </div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>5" class="container-fluid">
+          <p class="enough">Stoc suficient</p>
+        </div>
 
 </div>
 
@@ -31,9 +39,15 @@
         <p>Numele camerei:{{item.name}} </p>
         <p>Tipul camerei:{{item.roomtype}}</p>
         <p>Detalii camera:{{item.roomdetails}}</p>
-
-
-
+<div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms===0" class="container-fluid">
+<p class="notfound">Ne pare rau!Nu mai avem camere in stoc</p>
+</div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>=1&&freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms<5" class="container-fluid">
+          <p class="notenough">Grabeste-te!Mai sunt {{freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms}} camere disponibile</p>
+        </div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>5" class="container-fluid">
+          <p class="enough">Stoc suficient</p>
+        </div>
       </div>
 
     </div>

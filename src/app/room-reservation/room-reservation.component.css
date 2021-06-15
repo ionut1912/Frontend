@@ -10,7 +10,18 @@ mat-form-field {
   background-color: #4169E1; ;
   color: white;
 }
-
+.notfound{
+  color: #e60000;
+  text-align: center;
+}
+.notenough{
+  color: #e8a209;
+  text-align: center;
+}
+.enough{
+  color:#24bf4b;
+  text-align: center;
+}
 mat-card{
   width: 310px;
   border:3px solid;

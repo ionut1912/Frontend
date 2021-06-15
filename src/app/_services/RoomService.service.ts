@@ -12,6 +12,9 @@ import {NrOfViewsHelper} from "../clases/NrOfViewsHelper";
 import {NrOfFreeRoomsHelper} from "../clases/NrOfFreeRoomsHelper";
 import {NrOfRoomsHelper} from "../clases/NrOfRoomsHelper";
 import {NrRoomsByType} from "../clases/NrRoomsByType";
+import {FreeRoomsByType} from '../clases/FreeRoomsByType';
+import {fdatasync} from 'fs';
+import {FreeRoomsByTypeHelper} from '../clases/FreeRoomsByTypeHelper';
 @Injectable({
     providedIn: 'root'
   })
@@ -54,5 +57,12 @@ getNrOfRooms():Observable<NrOfRoomsHelper>{
 }
 getNrOfRoomsByType():Observable<NrRoomsByType[]>{
   return  this.httpclient.get<NrRoomsByType[]>(`${this.baseURL}/nrroomsbytype`);
+}
+getFreeRoomsByTypeAfterReservation(roomtype:string,checkin:Date,checkout:Date):Observable<FreeRoomsByTypeHelper>
+{
+  return  this.httpclient.get<FreeRoomsByTypeHelper>(`${this.baseURL}/roomsbytype/${roomtype}/${checkin}/${checkout}`);
+}
+getFreeRoomsByTyoe(roomtype:string):Observable<FreeRoomsByTypeHelper>{
+  return  this.httpclient.get<FreeRoomsByTypeHelper>(`${this.baseURL}/freerooms/${roomtype}`);
 }
 }

@@ -23,6 +23,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {FreeRoomsByType} from '../clases/FreeRoomsByType';
+import {FreeRoomsByTypeHelper} from '../clases/FreeRoomsByTypeHelper';
 
 
 
@@ -40,7 +42,8 @@ export class RoomReservationComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: ReservationData, private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService, public  matSnackBar: MatSnackBar) {
   }
 
-  roomid!: number;
+freeRoomsAfterReservations:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
+freRoomsByType:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
   rooms: Room = new Room();
   checkin!: Date;
   checkout!: Date;
@@ -72,7 +75,12 @@ export class RoomReservationComponent implements OnInit {
         console.log(this.reviews);
 
       });
-
+ this.roomService.getFreeRoomsByTypeAfterReservation(this.data.reservation[i].roomtype,this.data.reservation[i].checkin,this.data.reservation[i].checkout).subscribe(data=>{
+   this.freeRoomsAfterReservations=data;
+ });
+ this.roomService.getFreeRoomsByTyoe(this.data.reservation[i].roomtype).subscribe(data=>{
+   this.freRoomsByType=data;
+ })
       this.roomService.getPrice(this.data.reservation[0].checkin, this.data.reservation[0].checkout, this.data.reservation[i].roomid).subscribe(priceInfo => {
         this.price = priceInfo;
         this.finalprice += this.price.finalprice;
