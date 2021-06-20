@@ -1,9 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {RoomService} from '../_services/RoomService.service';
-import { ViewRoomsComponent} from '../view-rooms/view-rooms.component';
 
-import {MatSnackBar} from "@angular/material/snack-bar";
+
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 export interface DeleteRoomInterface {
   roomid: number,
 }
@@ -12,7 +13,7 @@ export interface DeleteRoomInterface {
   templateUrl: 'delete-room.component.html',
 })
 export class DeleteRoom {
-  constructor(private  matSnackbar: MatSnackBar,@Inject(MAT_DIALOG_DATA) public data: DeleteRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, public  roomService: RoomService) {
+  constructor(private  matSnackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: DeleteRoomInterface, public dialogRef: MatDialogRef<DeleteRoom>, public  dialog: MatDialog, public  roomService: RoomService) {
 
   }
 

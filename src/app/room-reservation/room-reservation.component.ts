@@ -1,9 +1,7 @@
-
-
 import {RoomService} from './../_services/RoomService.service';
 
 import {ImageService} from './../_services/ImageService.service';
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Room} from '../clases/Room';
 import {RoomImage} from '../clases/RoomImage';
@@ -19,14 +17,11 @@ import {UserService} from '../_services/UserService.service';
 import {UserData} from '../clases/UserData';
 import {ReservationsHelper} from '../clases/ReservationsHelper';
 import {TotalPrice} from '../clases/TotalPrice';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {FreeRoomsByType} from '../clases/FreeRoomsByType';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {FreeRoomsByTypeHelper} from '../clases/FreeRoomsByTypeHelper';
-
-
 
 
 export interface ReservationData {
@@ -80,7 +75,7 @@ freRoomsByType:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
  });
  this.roomService.getFreeRoomsByTyoe(this.data.reservation[i].roomtype).subscribe(data=>{
    this.freRoomsByType=data;
- })
+ });
       this.roomService.getPrice(this.data.reservation[0].checkin, this.data.reservation[0].checkout, this.data.reservation[i].roomid).subscribe(priceInfo => {
         this.price = priceInfo;
         this.finalprice += this.price.finalprice;

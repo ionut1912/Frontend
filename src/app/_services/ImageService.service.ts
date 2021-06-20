@@ -1,14 +1,13 @@
-
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
-import { RoomImage } from '../clases/RoomImage';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {RoomImage} from '../clases/RoomImage';
 
 @Injectable({
     providedIn: 'root'
   })
   export class ImageService{
-private baseURL = "http://localhost:8081/room";
+  private baseURL = 'http://localhost:8082/room';
 
 constructor(private httpclient:HttpClient){
 

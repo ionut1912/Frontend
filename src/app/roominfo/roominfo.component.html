@@ -1,93 +1,87 @@
-<div class="container-fluid" *ngIf="rooms.length==0&&roomInformation.length==0&&roomDetails.length==0">
+<div *ngIf="rooms.length==0&&roomInformation.length==0&&roomDetails.length==0" class="container-fluid">
   Nu avem camere in perioada {{checkin}}/{{checkout}}
 </div>
 
 
-  <div *ngIf="roomDetails.length===0&&roomReservation.length===0">
+<div *ngIf="roomDetails.length===0&&roomReservation.length===0">
 
-    <div class="info" *ngFor="let room of rooms" >
-      <div class="col">
-
-
-
-        <img class="img-fluid imgcar" src="{{room.roomImage[0].imagepath}}" >
+  <div *ngFor="let room of rooms" class="info">
+    <div class="col">
 
 
-
-      </div>
-      <div class="col ">
-        {{room.name}}
-      </div>
-
-      <div class="col">
-
-        {{room.roomdetails}}
-      </div>
+      <img class="img-fluid imgcar" src="{{room.roomImage[0].imagepath}}">
 
 
-      <div class="col">
-        <button mat-raised-button color="primary"  (click)="reserveRoom(room.roomid)"   type="button"  >Rezerva</button>
-      </div>
+    </div>
+    <div class="col ">
+      {{room.name}}
+    </div>
+
+    <div class="col">
+
+      {{room.roomdetails}}
+    </div>
+
+
+    <div class="col">
+      <button (click)="reserveRoom(room.roomid)" color="primary" mat-raised-button type="button">Rezerva</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="roomDetails.length===0&&roomReservation.length>0">
+
+  <div *ngFor="let room of roomInformation" class="info">
+    <div class="col">
+
+
+      <img class="img-fluid imgcar" src="{{room.images[0].imagepath}}">
+
+
+    </div>
+    <div class="col">
+      {{room.name}}
+    </div>
+
+    <div class="col">
+
+      {{room.roomdetails}}
+    </div>
+
+    <div class="col">
+      <button (click)="reserveRoom(room.roomid)" color="primary" mat-raised-button type="button">Rezerva</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="roomDetails.length>0">
+
+  <div *ngFor="let room of roomDetails" class="info">
+    <div class="col">
+
+
+      <img class="img-fluid imgcar" src="{{room.images[0].imagepath}}">
+
+
+    </div>
+    <div class="col">
+      {{room.name}}
+    </div>
+
+    <div class="col">
+
+      {{room.roomdetails}}
+    </div>
+
+    <div class="col">
+      <button (click)="reserveRoom(room.roomid)" color="primary" mat-raised-button type="button">Rezerva</button>
+
     </div>
   </div>
 
-
-  <div *ngIf="roomDetails.length===0&&roomReservation.length>0">
-
-    <div class="info" *ngFor="let room of roomInformation">
-      <div class="col">
-
-
-
-        <img class="img-fluid imgcar" src="{{room.images[0].imagepath}}" >
-
-
-
-      </div>
-      <div class="col">
-        {{room.name}}
-      </div>
-
-      <div class="col">
-
-        {{room.roomdetails}}
-      </div>
-
-      <div class="col">
-        <button mat-raised-button color="primary" (click)="reserveRoom(room.roomid)" type="button"  >Rezerva</button>
-      </div>
-    </div>
-  </div>
-
-
-  <div *ngIf="roomDetails.length>0">
-
-    <div class="info" *ngFor="let room of roomDetails">
-      <div class="col">
-
-
-
-        <img class="img-fluid imgcar" src="{{room.images[0].imagepath}}" >
-
-
-
-      </div>
-      <div class="col">
-        {{room.name}}
-      </div>
-
-      <div class="col">
-
-        {{room.roomdetails}}
-      </div>
-
-      <div class="col">
-        <button mat-raised-button color="primary" (click)="reserveRoom(room.roomid)"  type="button" >Rezerva</button>
-
-      </div>
-    </div>
-
-  </div>
+</div>
 
 
 <div *ngIf="nrofClicks>=noofrooms">

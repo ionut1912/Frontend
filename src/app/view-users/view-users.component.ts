@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -9,9 +9,8 @@ import {MatDialog} from '@angular/material/dialog';
 
 import {EditUser} from '../edit-user/edit-user.component';
 import {DeleteUser} from '../delete-user/delete-user.component';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {element} from "protractor";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -69,7 +68,7 @@ export class ViewUsersComponent implements OnInit, AfterViewInit {
 
 
   edit(userid: number, name: string, email: string, username: string, type: string) {
-    this.dialog.open(EditUser, {
+    const dialogRef = this.dialog.open(EditUser, {
       data: {
         userid: userid,
         name: name,
@@ -78,13 +77,19 @@ export class ViewUsersComponent implements OnInit, AfterViewInit {
         type: type
       }
     });
+    dialogRef.afterClosed().subscribe(info => {
+      this.ngAfterViewInit();
+    });
   }
 
   delete(userid: number) {
-    this.dialog.open(DeleteUser, {
+    const dialogRef = this.dialog.open(DeleteUser, {
       data: {
         userid: userid
       }
+    });
+    dialogRef.afterClosed().subscribe(info => {
+      this.ngAfterViewInit();
     });
   }
 

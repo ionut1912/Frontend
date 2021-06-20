@@ -1,25 +1,18 @@
-
-import { Room} from '../clases/Room';
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {ReviewHelper} from '../clases/ReviewHelper';
-import {throwPortalOutletAlreadyDisposedError} from '@angular/cdk/portal/portal-errors';
-import {RoomDetails} from '../clases/RoomDetails';
+import {Room} from '../clases/Room';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {TotalPrice} from '../clases/TotalPrice';
-
-import {NrOfViewsHelper} from "../clases/NrOfViewsHelper";
-import {NrOfFreeRoomsHelper} from "../clases/NrOfFreeRoomsHelper";
-import {NrOfRoomsHelper} from "../clases/NrOfRoomsHelper";
-import {NrRoomsByType} from "../clases/NrRoomsByType";
-import {FreeRoomsByType} from '../clases/FreeRoomsByType';
-import {fdatasync} from 'fs';
+import {NrOfFreeRoomsHelper} from '../clases/NrOfFreeRoomsHelper';
+import {NrOfRoomsHelper} from '../clases/NrOfRoomsHelper';
+import {NrRoomsByType} from '../clases/NrRoomsByType';
 import {FreeRoomsByTypeHelper} from '../clases/FreeRoomsByTypeHelper';
+
 @Injectable({
     providedIn: 'root'
   })
   export class RoomService{
-private baseURL = "http://localhost:8081/room";
+  private baseURL = 'http://localhost:8082/room';
 constructor(private httpclient:HttpClient){}
 findAll():Observable<Room[]>
 {

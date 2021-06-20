@@ -1,22 +1,21 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {ReservationsHelper} from "../clases/ReservationsHelper";
-import {Observable} from "rxjs";
-import {RoomReservation} from "../clases/RoomReservation";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {ReservationsHelper} from '../clases/ReservationsHelper';
+import {Observable} from 'rxjs';
+import {RoomReservation} from '../clases/RoomReservation';
 
-import {Reservation} from "../clases/Reservation";
-import {UserReservationHelper} from "../clases/UserReservationHelper";
-import {NrOfReservationsHelper} from "../clases/NrOfReservationsHelper";
-import {NrOfFreeRoomsHelper} from "../clases/NrOfFreeRoomsHelper";
-import {ReservationsByType} from "../clases/ReservationsByType";
-import {FreeRoomsByType} from "../clases/FreeRoomsByType";
+import {Reservation} from '../clases/Reservation';
+import {UserReservationHelper} from '../clases/UserReservationHelper';
+import {NrOfReservationsHelper} from '../clases/NrOfReservationsHelper';
+import {ReservationsByType} from '../clases/ReservationsByType';
+import {FreeRoomsByType} from '../clases/FreeRoomsByType';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export  class ReservationService {
-  private baseURL = "http://localhost:8081/reservations";
+  private baseURL = 'http://localhost:8082/reservations';
 
   constructor(private httpClient: HttpClient) {
 

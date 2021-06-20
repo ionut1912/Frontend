@@ -1,8 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../_services/UserService.service';
-import {ViewUsersComponent} from '../view-users/view-users.component';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 export  interface DeleteUserInterface {
@@ -14,7 +13,7 @@ export  interface DeleteUserInterface {
   templateUrl: 'delete-user.component.html',
 })
 export  class DeleteUser {
-  constructor(private  matSnackBar:MatSnackBar,@Inject(MAT_DIALOG_DATA) public data: DeleteUserInterface, public dialogRef: MatDialogRef<ViewUsersComponent>,public  userService:UserService,public  dialog:MatDialog){
+  constructor(private  matSnackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: DeleteUserInterface, public dialogRef: MatDialogRef<DeleteUser>, public  userService: UserService, public  dialog: MatDialog) {
 
   }
 

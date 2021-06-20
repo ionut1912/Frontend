@@ -1,11 +1,12 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {RoomService} from '../_services/RoomService.service';
 import {Room} from '../clases/Room';
 import {ViewRoomsComponent} from '../view-rooms/view-rooms.component';
 
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 export interface EditRoomInterface {
   roomid: number,
   name: string,
@@ -17,12 +18,13 @@ export interface EditRoomInterface {
 @Component({
   selector: 'edit-room',
   templateUrl: 'edit-room.component.html',
+  styleUrls: ['edit-room.component.css']
 })
 export class EditRoom {
   rooms!: FormGroup;
   formErors: any;
 
-  constructor(private matSnackBar:MatSnackBar ,@Inject(MAT_DIALOG_DATA) public data: EditRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, private builder: FormBuilder, public  roomService: RoomService) {
+  constructor(public dialogRef2: MatDialogRef<EditRoom>, private matSnackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: EditRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, private builder: FormBuilder, public  roomService: RoomService) {
 
     this.rooms = this.builder.group({
       name: ['', Validators.required],
@@ -67,6 +69,8 @@ export class EditRoom {
 
   }
 
-
+  close() {
+    this.dialogRef2.close();
+  }
 
 }

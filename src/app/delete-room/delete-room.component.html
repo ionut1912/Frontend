@@ -1,6 +1,15 @@
 <h1 mat-dialog-title>Sunteti sigur ca doriti sa stergeti aceasta camera?</h1>
-<div mat-dialog-content>
-  <button mat-raised-button  color="accent" (click)="da()">Da</button>
-  <button mat-raised-button  color="accent" (click)="nu()">Nu</button>
+<div class mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-lg-6">
+        <button (click)="da()" color="accent" mat-raised-button>Da</button>
+      </div>
+      <button (click)="nu()" class="no" color="accent" mat-raised-button>Nu</button>
+    </div>
+  </div>
+
+
 </div>
+
 

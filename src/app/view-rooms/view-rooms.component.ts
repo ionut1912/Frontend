@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -8,15 +8,10 @@ import {RoomService} from '../_services/RoomService.service';
 import {DeleteRoom} from '../delete-room/delete-room.component';
 import {EditRoom} from '../edit-room/edit-room.component';
 import {AddRoom} from '../add-room/add-room.component';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {ViewRoomImagesComponent} from '../view-room-images/view-room-images.component';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {throwUnknownPortalTypeError} from "@angular/cdk/portal/portal-errors";
-
-
-
-
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -41,8 +36,8 @@ export class ViewRoomsComponent implements OnInit,AfterViewInit {
   roomdetails:null,
   roomprice:null
 
-}
-search!: FormGroup
+  };
+  search!: FormGroup;
   constructor(public  matSnackbar:MatSnackBar,public  roomService: RoomService, public  dialog: MatDialog,private  formbuilder:FormBuilder) {
     this.search = this.formbuilder.group({
       roomid: [''],
@@ -71,11 +66,14 @@ search!: FormGroup
   }
 
   addRoom() {
-    this.dialog.open(AddRoom);
+    const dialogRef = this.dialog.open(AddRoom);
+    dialogRef.afterClosed().subscribe(information => {
+      this.ngAfterViewInit();
+    });
   }
 
   edit(roomid: number, name: string, roomtype: string, roomdetails: string, roomprice: number, pricecurency: number) {
-    this.dialog.open(EditRoom, {
+    const dialogref = this.dialog.open(EditRoom, {
       data: {
         roomid: roomid,
         name: name,
@@ -86,13 +84,19 @@ search!: FormGroup
 
       }
     });
+    dialogref.afterClosed().subscribe(info => {
+      this.ngAfterViewInit();
+    });
   }
 
   delete(roomid: number) {
-    this.dialog.open(DeleteRoom, {
+    const dialogRef = this.dialog.open(DeleteRoom, {
       data: {
         roomid: roomid
       }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngAfterViewInit();
     });
   }
 

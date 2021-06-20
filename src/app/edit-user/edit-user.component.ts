@@ -5,7 +5,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 import {UserService} from '../_services/UserService.service';
 
 import {ViewUsersComponent} from '../view-users/view-users.component';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export  interface EditUserInterface {
   userid:number,
@@ -17,6 +17,7 @@ export  interface EditUserInterface {
 @Component({
   selector: 'edit-user',
   templateUrl: 'edit-user.component.html',
+  styleUrls: ['edit-user.component.css']
 })
 export  class EditUser {
   users!: FormGroup;
@@ -24,7 +25,7 @@ export  class EditUser {
 
   user: Users = new Users();
 
-  constructor(private  snackBar:MatSnackBar,@Inject(MAT_DIALOG_DATA) public data: EditUserInterface, private builder: FormBuilder, public  userService: UserService, public dialogRef: MatDialogRef<ViewUsersComponent>, public dialog: MatDialog) {
+  constructor(public dialogRef2: MatDialogRef<EditUser>, private  snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: EditUserInterface, private builder: FormBuilder, public  userService: UserService, public dialogRef: MatDialogRef<ViewUsersComponent>, public dialog: MatDialog) {
     this.users = this.builder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -65,4 +66,9 @@ export  class EditUser {
     });
 
   }
+
+  close() {
+    this.dialogRef2.close();
+  }
+
 }

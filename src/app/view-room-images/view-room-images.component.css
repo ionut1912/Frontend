@@ -5,6 +5,11 @@
   width: 280px;
 }
 .roomimage{
-  width: 60%;
+  width: 100px;
 height: 100px;
+}
+
+.closebtn {
+  padding-top: 30px;
+
 }

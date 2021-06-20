@@ -1,22 +1,21 @@
-import { UserdataComponent } from './../userdata/userdata.component';
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {UserData} from "../clases/UserData";
-import {Users} from "../clases/Users";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {UserData} from '../clases/UserData';
+import {Users} from '../clases/Users';
 import {HotelReviewHelper} from '../clases/HotelReviewHelper';
-import {UserRoomsHelpers} from "../clases/UserRoomsHelpers";
-import {NrOfUsersHelper} from "../clases/NrOfUsersHelper";
-import {UserByType} from "../clases/UserByType";
-import {NrOfUserReservations} from "../clases/NrOfUserReservations";
-import { UserCode } from "../clases/UserCode";
-import { FindCodeHelper } from '../clases/FindCodeHelper';
+import {UserRoomsHelpers} from '../clases/UserRoomsHelpers';
+import {NrOfUsersHelper} from '../clases/NrOfUsersHelper';
+import {UserByType} from '../clases/UserByType';
+import {NrOfUserReservations} from '../clases/NrOfUserReservations';
+import {UserCode} from '../clases/UserCode';
+import {FindCodeHelper} from '../clases/FindCodeHelper';
 
 @Injectable({
   providedIn: 'root'
 })
 export  class UserService {
-  private baseURL = "http://localhost:8081/user";
+  private baseURL = 'http://localhost:8082/user';
   constructor(private httpClient:HttpClient){
 
   }

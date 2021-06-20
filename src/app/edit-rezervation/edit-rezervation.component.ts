@@ -7,10 +7,8 @@ import {UserService} from '../_services/UserService.service';
 import {ReservationService} from '../_services/ReservationService.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 
-import {MatTableDataSource} from '@angular/material/table';
-import {ViewReservationsComponent} from '../view-reservations/view-reservations.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
-import {MatSnackBar} from "@angular/material/snack-bar";
 export interface EditRezervationData {
   rezervationId:number,
   name:string;
@@ -24,6 +22,7 @@ export interface EditRezervationData {
 @Component({
   selector: 'edit-rezervation',
   templateUrl: 'edit-rezervation.component.html',
+  styleUrls: ['edit-rezervation.component.css']
 })
 
 export class EditRezervationComponent {
@@ -32,7 +31,8 @@ export class EditRezervationComponent {
   rezervation: Reservation=new Reservation();
   rezervations:Reservation[]=[];
   user:UserData=new UserData();
-  constructor(private  snackBar:MatSnackBar,public dialogRef: MatDialogRef<ViewReservationsComponent>, @Inject(MAT_DIALOG_DATA) public data: EditRezervationData,public userService:UserService, public  rezervationService: ReservationService, public dialog: MatDialog,public  tokenStorage:TokenStorageService) {
+
+  constructor(private  snackBar: MatSnackBar, public dialogRef: MatDialogRef<EditRezervationComponent>, @Inject(MAT_DIALOG_DATA) public data: EditRezervationData, public userService: UserService, public  rezervationService: ReservationService, public dialog: MatDialog, public  tokenStorage: TokenStorageService) {
     this.date1 = new FormControl(new Date(data.checkin));
     this.date2 = new FormControl(new Date(data.checkout));
 
@@ -61,4 +61,7 @@ export class EditRezervationComponent {
 
   }
 
+  close() {
+    this.dialogRef.close();
+  }
 }

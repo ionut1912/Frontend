@@ -1,9 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ImageService} from '../_services/ImageService.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {ViewRoomsComponent} from '../view-rooms/view-rooms.component';
 import {RoomImage} from '../clases/RoomImage';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 export  interface ViewImages {
@@ -15,9 +14,10 @@ export  interface ViewImages {
   styleUrls: ['./view-room-images.component.css']
 })
 export class ViewRoomImagesComponent implements OnInit {
-  private selectedFiles!:File;
 
-  constructor(public matSnackbar:MatSnackBar,public  imageService:ImageService,@Inject(MAT_DIALOG_DATA) public data:ViewImages, public dialogRef: MatDialogRef<ViewRoomsComponent>,public dialog:MatDialog){ }
+
+  constructor(public matSnackbar: MatSnackBar, public  imageService: ImageService, @Inject(MAT_DIALOG_DATA) public data: ViewImages, public dialogRef: MatDialogRef<ViewRoomImagesComponent>, public dialog: MatDialog) {
+  }
 display:boolean=false;
 images:RoomImage[]=[];
 imageSrc:string[]=[];
@@ -28,8 +28,7 @@ this.imageService.getRoomImageById(this.data.roomid).subscribe(images=>{
   }
 
 
-
-
-
-
+  close() {
+    this.dialogRef.close();
+  }
 }

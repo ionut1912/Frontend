@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ReservationService} from '../_services/ReservationService.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {UserService} from '../_services/UserService.service';
@@ -8,13 +8,13 @@ import {Reservation} from '../clases/Reservation';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
 
 import {EditRezervationComponent} from '../edit-rezervation/edit-rezervation.component';
 import {DeleteRezervationComponent} from '../delete-rezervation/delete-rezervation.component';
-import {UserReservationHelper} from "../clases/UserReservationHelper";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserReservationHelper} from '../clases/UserReservationHelper';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 export interface EditRezervationData {
@@ -110,7 +110,7 @@ export class ViewReservationsComponent implements OnInit {
       checkin: checkin,
       checkout: checkout
     };
-    console.log(this.reservation);
+
     const dialogRef = this.dialog.open(EditRezervationComponent, {
       data: {
         rezervationId: id,
@@ -124,9 +124,8 @@ export class ViewReservationsComponent implements OnInit {
       }
 
     });
-    dialogRef.afterClosed().subscribe(information => {
-
-      this.dataSource = new MatTableDataSource(information);
+    dialogRef.afterClosed().subscribe(data => {
+      this.ngOnInit();
     });
 
 
@@ -141,9 +140,8 @@ export class ViewReservationsComponent implements OnInit {
       }
 
     });
-    dialogRef.afterClosed().subscribe(information => {
-
-      this.dataSource = new MatTableDataSource(information);
+    dialogRef.afterClosed().subscribe(data => {
+      this.ngOnInit();
     });
   }
 
