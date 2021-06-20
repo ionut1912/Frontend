@@ -1,202 +1,202 @@
+<div *ngIf="data.reservation.length===1">
+  <div class="rooms">
+    <div class="container-fluid">
+      <h3>Detaliile camerei rezervate</h3>
+      <div *ngFor="let item of data.reservation" class="info">
 
-  <div *ngIf="data.reservation.length===1">
-    <div class="rooms">
-      <div class="container-fluid">
-        <h3>Detaliile camerei rezervate</h3>
-        <div *ngFor="let item of data.reservation" class="info">
+        <p>Numele camerei:{{item.name}} </p>
+        <p>Tipul camerei:{{item.roomtype}}</p>
+        <p>Detalii camera:{{item.roomdetails}}</p>
 
-          <p>Numele camerei:{{item.name}} </p>
-          <p>Tipul camerei:{{item.roomtype}}</p>
-          <p>Detalii camera:{{item.roomdetails}}</p>
-
-          <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms===0" class="container-fluid">
-            <p class="notfound">Ne pare rau!Nu mai avem camere in stoc</p>
-          </div>
-          <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms==1">
-            <p class="notenough">Grabeste-te!Mai este doar o  camera disponibila cu tipul {{item.roomtype}}</p>
-          </div>
-                  <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>=2&&freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms<5" class="container-fluid">
-                    <p class="notenough">Grabeste-te!Mai sunt {{freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms}} camere disponibile cu tipul {{item.roomtype}}</p>
-                  </div>
-          <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>5" class="container-fluid">
-            <p class="enough">Stoc suficient</p>
-          </div>
-
-  </div>
-
-
-
-
-
-
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms===0" class="container-fluid">
+          <p class="notfound">Ne pare rau!Nu mai avem camere in stoc</p>
         </div>
-  </div>
-  </div>
-
-  <div *ngIf="data.reservation.length>1">
-    <div class="rooms">
-      <div class="container-fluid">
-        <h3>Detaliile camerelor rezervate</h3>
-        <div *ngFor="let item of data.reservation" class="info">
-
-          <p>Numele camerei:{{item.name}} </p>
-          <p>Tipul camerei:{{item.roomtype}}</p>
-          <p>Detalii camera:{{item.roomdetails}}</p>
-  <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms===0" class="container-fluid">
-  <p class="notfound">Ne pare rau!Nu mai avem camere in stoc</p>
-  </div>
-  <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms==1">
-    <p class="notenough">Grabeste-te!Mai este doar o  camera disponibila cu tipul {{item.roomtype}}</p>
-  </div>
-          <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>=2&&freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms<5" class="container-fluid">
-            <p class="notenough">Grabeste-te!Mai sunt {{freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms}} camere disponibile cu tipul {{item.roomtype}}</p>
-          </div>
-          <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>5" class="container-fluid">
-            <p class="enough">Stoc suficient</p>
-          </div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms==1">
+          <p class="notenough">Grabeste-te!Mai este doar o camera disponibila cu tipul {{item.roomtype}}</p>
+        </div>
+        <div
+          *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>=2&&freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms<5"
+          class="container-fluid">
+          <p class="notenough">Grabeste-te!Mai
+            sunt {{freeRoomsAfterReservations.nroffreerooms + freRoomsByType.nroffreerooms}} camere disponibile cu
+            tipul {{item.roomtype}}</p>
+        </div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>5" class="container-fluid">
+          <p class="enough">Stoc suficient</p>
         </div>
 
       </div>
+
+
     </div>
   </div>
+</div>
 
-  <div class="container-fluid">
+<div *ngIf="data.reservation.length>1">
+  <div class="rooms">
+    <div class="container-fluid">
+      <h3>Detaliile camerelor rezervate</h3>
+      <div *ngFor="let item of data.reservation" class="info">
+
+        <p>Numele camerei:{{item.name}} </p>
+        <p>Tipul camerei:{{item.roomtype}}</p>
+        <p>Detalii camera:{{item.roomdetails}}</p>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms===0" class="container-fluid">
+          <p class="notfound">Ne pare rau!Nu mai avem camere in stoc</p>
+        </div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms==1">
+          <p class="notenough">Grabeste-te!Mai este doar o camera disponibila cu tipul {{item.roomtype}}</p>
+        </div>
+        <div
+          *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>=2&&freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms<5"
+          class="container-fluid">
+          <p class="notenough">Grabeste-te!Mai
+            sunt {{freeRoomsAfterReservations.nroffreerooms + freRoomsByType.nroffreerooms}} camere disponibile cu
+            tipul {{item.roomtype}}</p>
+        </div>
+        <div *ngIf="freeRoomsAfterReservations.nroffreerooms+freRoomsByType.nroffreerooms>5" class="container-fluid">
+          <p class="enough">Stoc suficient</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
   <div *ngIf="data.reservation.length===1">
     <p>Parerile utilizatorilor despre aceasta camera</p>
   </div>
-    <div *ngIf="data.reservation.length>1">
-      <p>Parerile utilizatorilor despre aceaste camere</p>
-    </div>
+  <div *ngIf="data.reservation.length>1">
+    <p>Parerile utilizatorilor despre aceaste camere</p>
+  </div>
 
 
-      <div class="container reviews">
-      <ngb-carousel class="carousel">
+  <div class="container reviews">
+    <ngb-carousel class="carousel">
 
-        <ng-template *ngFor="let review of reviews"  ngbSlide>
-          <div class="reviewcard">
-            <p class="textinfocard">Numele utilizatorului:{{review.name}} </p>
+      <ng-template *ngFor="let review of reviews" ngbSlide>
+        <div class="reviewcard">
+          <p class="textinfocard">Numele utilizatorului:{{review.name}} </p>
 
-          </div>
-         <div class="reviewcard">
-            <p class="textinfocard">Titlul parerii:{{review.reviewtitle}} </p>
+        </div>
+        <div class="reviewcard">
+          <p class="textinfocard">Titlul parerii:{{review.reviewtitle}} </p>
 
-          </div>
-          <div class="reviewcard">
-           <p class="textinfocard">Parere:{{review.reviewtext}} </p>
-   </div>
-        </ng-template>
+        </div>
+        <div class="reviewcard">
+          <p class="textinfocard">Parere:{{review.reviewtext}} </p>
+        </div>
+      </ng-template>
 
     </ngb-carousel>
-   </div>
-   </div>
+  </div>
+</div>
 
 <div>
-      <form name="form" class="infoform">
+  <form class="infoform" name="form">
 
-  <mat-card>
-    <h3>Datele rezervarii</h3>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Checkin</mat-label>
-        <input matInput readonly value="{{data.reservation[0].checkin}}">
+    <mat-card>
+      <h3>Datele rezervarii</h3>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Checkin</mat-label>
+          <input matInput readonly value="{{data.reservation[0].checkin}}">
 
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Checkout</mat-label>
-        <input matInput readonly value="{{data.reservation[0].checkout}}">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Checkout</mat-label>
+          <input matInput readonly value="{{data.reservation[0].checkout}}">
 
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Numar de camere</mat-label>
-        <input matInput readonly value="{{data.reservation[0].noofrooms}}">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Numar de adulti</mat-label>
-        <input matInput readonly value="{{data.reservation[0].noofadults}}">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Numar de copii</mat-label>
-        <input matInput readonly value="{{data.reservation[0].noofchildrens}}">
-      </mat-form-field>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Numar de camere</mat-label>
+          <input matInput readonly value="{{data.reservation[0].noofrooms}}">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Numar de adulti</mat-label>
+          <input matInput readonly value="{{data.reservation[0].noofadults}}">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Numar de copii</mat-label>
+          <input matInput readonly value="{{data.reservation[0].noofchildrens}}">
+        </mat-form-field>
 
-    </div>
-  </mat-card>
-</form>
+      </div>
+    </mat-card>
+  </form>
 </div>
 
 
+<div class="booking container-fluid">
+  <h2>Beneficii:</h2>
+  <div class="col">
+    <mat-icon>
+      wifi
+    </mat-icon>
+    <p class="text">wi-fi</p>
+  </div>
+  <div class="col">
+    <mat-icon> local_parking</mat-icon>
+    <p class="text">Parcare gratuita</p>
+  </div>
+  <div class="col">
+    <mat-icon> restaurant</mat-icon>
+    <p class="text">Acces la restaurant</p>
+  </div>
+  <div class="col">
+    <mat-icon>tv</mat-icon>
+    <p class="text">Televizor</p>
+  </div>
+  <div class="col">
+    <mat-icon>room_service</mat-icon>
+    <p class="text">Room-service</p>
+  </div>
+  <div class="col">
+    <mat-icon>smoking_rooms</mat-icon>
+    <p class="text">Camera pentru fumatori</p>
+  </div>
+  <div class="col">
+    <mat-icon>spa</mat-icon>
+    <p class="text"> Acces la spa</p>
+
+  </div>
+  <div class="col">
+    <mat-icon>pool</mat-icon>
+    <p class="text">Acces la piscina</p>
+  </div>
+</div>
 
 
-    <div class="booking container-fluid">
-      <h2>Beneficii:</h2>
-      <div class="col">
-        <mat-icon>
-          wifi
-        </mat-icon>
-        <p class="text">wi-fi</p>
-      </div>
-      <div class="col">
-        <mat-icon> local_parking</mat-icon>
-        <p class="text">Parcare gratuita</p>
-      </div>
-      <div class="col">
-        <mat-icon> restaurant</mat-icon>
-        <p class="text">Acces la restaurant</p>
-      </div>
-      <div class="col">
-        <mat-icon>tv</mat-icon>
-        <p class="text">Televizor</p>
-      </div>
-      <div class="col">
-        <mat-icon>room_service</mat-icon>
-        <p class="text">Room-service</p>
-      </div>
-      <div class="col">
-        <mat-icon>smoking_rooms</mat-icon>
-        <p class="text">Camera pentru fumatori</p>
-      </div>
-      <div class="col">
-        <mat-icon>spa</mat-icon>
-        <p class="text"> Acces la spa</p>
-
-      </div>
-      <div class="col">
-        <mat-icon>pool</mat-icon>
-        <p class="text">Acces la piscina</p>
-      </div>
-    </div>
-
-
-    <form (ngSubmit)="onClick()" class="finalinfo">
-    <h2>Date finale despre rezervare:</h2>
+<form (ngSubmit)="onClick()" class="finalinfo">
+  <h2>Date finale despre rezervare:</h2>
 
   <div class="colinfo">
-      <h2>Checkin: {{data.reservation[0].checkin}}</h2>
-     </div>
-    <div class="colinfo">
-     <h2>Checkout: {{data.reservation[0].checkout}}</h2>
-     </div>
-     <div class="colinfo" >
-       <h2>Pret final: {{finalprice}}  {{price.pricecurency}}  </h2>
+    <h2>Checkin: {{data.reservation[0].checkin}}</h2>
+  </div>
+  <div class="colinfo">
+    <h2>Checkout: {{data.reservation[0].checkout}}</h2>
+  </div>
+  <div class="colinfo">
+    <h2>Pret final: {{finalprice}}  {{price.pricecurency}}  </h2>
 
 
-      </div>
-      <div class="colinfo">
-        <button mat-raised-button color="warn" type="submit">Finalizeaza rezervarea</button>
+  </div>
+  <div class="colinfo">
+    <button color="warn" mat-raised-button type="submit">Finalizeaza rezervarea</button>
 
-     </div>
+  </div>
 
 
-   </form>
+</form>
 <div class="closebtn">
   <button mat-raised-button color="warn" type="submit" (click)="close()">Inchide</button>
 </div>
-

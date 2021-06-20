@@ -97,8 +97,7 @@ freRoomsByType:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
 
 
   onClick(): void {
-    console.log(this.userData.username);
-    console.log(this.data.reservation[0].checkin);
+
     for (let i = 0; i < this.data.reservation.length; i++) {
 
       this.reservations = <ReservationsHelper> {
