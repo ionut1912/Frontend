@@ -23,7 +23,7 @@ mat-form-field {
   text-align: center;
 }
 mat-card{
-  width: 310px;
+  width: 100%;
   border:3px solid;
 
 }
@@ -110,4 +110,8 @@ body .slick-next {
   .colinfo{
     width: 100%;
   }
+}
+.closebtn{
+  padding-top: 30px;
+  padding-left: 60px;
 }

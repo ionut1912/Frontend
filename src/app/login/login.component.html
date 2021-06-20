@@ -1,47 +1,63 @@
+<div class="container">
+  <div class="title">Logare</div>
+  <div class="content">
+    <form *ngIf="!isLoggedIn||!submitted" [formGroup]="users" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate autocomplete="off">
 
-  <div class="container">
-    <div class="title">Logare</div>
-    <div class="content">
-      <form *ngIf="!isLoggedIn||!submitted" [formGroup]="users" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate autocomplete="off">
-      <div class="inputs" >
-        <mat-form-field appearance="outline" hideRequiredMarker>
-          <mat-label>Numele de utilizator</mat-label>
-          <input matInput required formControlName="username" [(ngModel)]="form.username" minlength="3" maxlength="20" >
+    <div class="input">
 
-        </mat-form-field>
+      <mat-form-field appearance="outline" hideRequiredMarker>
+        <mat-label>Numele de utilizator</mat-label>
+        <input matInput required formControlName="username" [(ngModel)]="form.username" minlength="3" maxlength="20" >
+        <mat-error *ngIf="checkError('username','required')">
+          Introduceti numele de utilizator
+        </mat-error>
+        <mat-error *ngIf="checkError('username','minlength')">
+        Numele de utilizator trebuie sa aiba minim 3 caractere
+       </mat-error>
+       <mat-error *ngIf="checkError('username','maxlength')">
+         Numele de utilizator trebuie sa aiba maxim 20 caractere
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input" >
+     <mat-form-field appearance="outline" hideRequiredMarker>
+       <mat-label>Parola</mat-label>
+       <input matInput  formControlName="password" [(ngModel)]="form.password" required [type]="hide ? 'password' : 'text'" minlength="8" maxlength="32" >
+ <div  matSuffix *ngIf="hide===false">
+   <div  (click)="hide=!hide">
+ <img class="img-fluid visibility"  src="assets/Images/visibility_off.png" alt="nu exista">
+   </div>
+ </div>
+
+
+         <div matSuffix *ngIf="hide===true" (click)="hide=!hide">
+           <img class="img-fluid visibility" src="assets/Images/visibility.png" alt="nu exista">
+
+       </div>
+
+       <mat-error *ngIf="checkError('password','required')">
+         Introduceti parola
+       </mat-error>
+       <mat-error *ngIf="checkError('password','minlength')">
+       Parola trebuie sa aiba minim 8 caractere
+      </mat-error>
+      <mat-error *ngIf="checkError('password','maxlength')">
+        Parola trebuie sa aiba maxim 32 caractere
+       </mat-error>
+       </mat-form-field>
+    </div>
+
+
+      <div class="button">
+        <input type="submit" value="LogIn">
       </div>
-      <div class="inputs">
-       <mat-form-field appearance="outline" hideRequiredMarker>
-         <mat-label>Parola</mat-label>
-         <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="form.password" required minlength="8" maxlength="32">
-         <div  matSuffix *ngIf="hide===false">
-           <div  (click)="hide=!hide">
-             <img class="img-fluid visibility"  src="assets/Images/visibility_off.png" alt="nu exista">
+      <p>Nu aveti cont? <a class="create" (click)="openRegister()">Creati unul</a></p>
+      <button mat-flat-button color="warn"(click)="closeModal()" >Iesire</button>
 
-           </div>
-
-         </div>
-
-         <div matSuffix *ngIf="hide===true">
-           <div (click)="hide=!hide">
-             <img class="img-fluid visibility" src="assets/Images/visibility.png" alt="nu exista">
-           </div>
-         </div>
-
-         </mat-form-field>
-         </div>
-
-
-        <div class="button">
-          <input type="submit" value="LogIn">
-        </div>
-        <p>Nu aveti cont? <a class="create" (click)="openRegister()">Creati unul</a></p>
-        <button mat-flat-button color="warn"(click)="closeModal()" >Iesire</button>
-
-        <div>
-          <a class="forgot" (click)="forgotPassword()" >Am uitat parola</a>
-        </div>
+      <div>
+        <a class="forgot" (click)="forgotPassword()" >Am uitat parola</a>
+      </div>
 
 
 
-      </form>
+    </form>

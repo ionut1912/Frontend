@@ -6,7 +6,7 @@
       <form *ngIf="!isSuccessful" [formGroup]="users" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
 
-   <div class="inputs">
+   <div class="input">
      <mat-form-field appearance="outline" hideRequiredMarker>
        <mat-label>Nume</mat-label>
        <input matInput  formControlName="name" required  [(ngModel)]="form.name" minlength="3" maxlength="50" >
@@ -25,7 +25,7 @@
        </mat-error>
      </mat-form-field>
    </div>
-   <div class="inputs">
+   <div class="input">
      <mat-form-field appearance="outline" hideRequiredMarker>
        <mat-label>Email</mat-label>
        <input matInput  formControlName="email" required [(ngModel)]="form.email" >
@@ -37,7 +37,7 @@
       </mat-error>
      </mat-form-field>
    </div>
-   <div class="inputs" >
+   <div class="input">
      <mat-form-field appearance="outline" hideRequiredMarker>
        <mat-label>Numele de utilizator</mat-label>
        <input matInput required formControlName="username" [(ngModel)]="form.username" minlength="3" maxlength="20" >
@@ -52,23 +52,31 @@
        </mat-error>
      </mat-form-field>
    </div>
-   <div class="inputs">
+   <div class="input">
     <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Parola</mat-label>
-      <input matInput  formControlName="password" [(ngModel)]="form.password" required [type]="hide ? 'password' : 'text'" >
+      <input matInput  formControlName="password" [(ngModel)]="form.password" required [type]="hide ? 'password' : 'text'" minlength="8" maxlength="32" >
 <div  matSuffix *ngIf="hide===false">
   <div  (click)="hide=!hide">
 <img class="img-fluid visibility"  src="assets/Images/visibility_off.png" alt="nu exista">
   </div>
 </div>
 
-      <div matSuffix *ngIf="hide===true">
-        <div (click)="hide=!hide">
+
+        <div matSuffix *ngIf="hide===true" (click)="hide=!hide">
           <img class="img-fluid visibility" src="assets/Images/visibility.png" alt="nu exista">
-        </div>
+
       </div>
 
-
+      <mat-error *ngIf="checkError('password','required')">
+        Introduceti parola
+      </mat-error>
+      <mat-error *ngIf="checkError('password','minlength')">
+      Parola trebuie sa aiba minim 8 caractere
+     </mat-error>
+     <mat-error *ngIf="checkError('password','maxlength')">
+       Parola trebuie sa aiba maxim 32 caractere
+      </mat-error>
       </mat-form-field>
    </div>
         <div class="button">

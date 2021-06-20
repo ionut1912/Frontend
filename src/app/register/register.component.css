@@ -1,29 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
-}
-body{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
 
-}
-.inputs{
-  align-items: center;
-  padding-top: 20px;
-  padding-left: 60px;
+.input{
+
+  padding-top: 50px;
+
 }
 .visibility{
   width:30px;
   height: 30px;
 }
 .containerform{
-  max-width: 700px;
+
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;

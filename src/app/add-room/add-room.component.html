@@ -9,7 +9,7 @@
         novalidate>
 
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Nume</mat-label>
         <input matInput formControlName="name" required [(ngModel)]="form.name">
         <mat-error>
@@ -18,7 +18,7 @@
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>RoomType</mat-label>
         <input matInput formControlName="roomtype" required [(ngModel)]="form.roomtype">
         <mat-error>
@@ -27,7 +27,7 @@
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>RoomDetails</mat-label>
         <input matInput required formControlName="roomdetails" [(ngModel)]="form.roomdetails">
         <mat-error>
@@ -36,7 +36,7 @@
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Pret</mat-label>
         <input matInput required formControlName="roomprice" [(ngModel)]="form.roomprice">
         <mat-error>
@@ -46,7 +46,7 @@
     </div>
     <div>
       <div>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Moneda</mat-label>
           <input matInput required formControlName="pricecurency" [(ngModel)]="form.pricecurency">
           <mat-error>

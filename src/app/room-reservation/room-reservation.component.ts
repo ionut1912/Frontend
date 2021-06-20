@@ -19,7 +19,7 @@ import {UserService} from '../_services/UserService.service';
 import {UserData} from '../clases/UserData';
 import {ReservationsHelper} from '../clases/ReservationsHelper';
 import {TotalPrice} from '../clases/TotalPrice';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import {MultipleReservationsHelper} from '../clases/MultipleReservationsHelper';
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -39,7 +39,7 @@ export interface ReservationData {
   styleUrls: ['./room-reservation.component.css']
 })
 export class RoomReservationComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ReservationData, private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService, public  matSnackBar: MatSnackBar) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ReservationData, public dialogRef:MatDialogRef<RoomReservationComponent>,private route: ActivatedRoute, private roomService: RoomService, private imageService: ImageService, private  reviewService: ReviewService, private userService: UserService, private  reservationService: ReservationService, private  tokenStorageService: TokenStorageService, public  matSnackBar: MatSnackBar) {
   }
 
 freeRoomsAfterReservations:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
@@ -124,5 +124,7 @@ freRoomsByType:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
 
 
   }
-
+close(){
+  this.dialogRef.close();
+}
 }
