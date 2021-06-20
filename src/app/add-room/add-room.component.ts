@@ -10,6 +10,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
   selector: 'add-room',
   templateUrl: 'add-room.component.html',
+  styleUrls: ['add-room.component.css']
 })
 export class AddRoom {
   rooms!: FormGroup;
@@ -27,7 +28,7 @@ export class AddRoom {
   selectedFiles!: FileList;
   imagesrc: string[] = [];
 
-  constructor(private  matSnackbar:MatSnackBar,private builder: FormBuilder, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, public  roomService: RoomService) {
+  constructor(private  matSnackbar:MatSnackBar,private builder: FormBuilder, public dialogRef: MatDialogRef<AddRoom>, public  dialog: MatDialog, public  roomService: RoomService) {
     this.rooms = this.builder.group({
       name: ['', Validators.required],
       roomtype: ['', Validators.required],
@@ -88,5 +89,8 @@ export class AddRoom {
     let reader = e.target;
     this.imagesrc.push(reader.result);
 
+  }
+  close(){
+    this.dialogRef.close();
   }
 }
