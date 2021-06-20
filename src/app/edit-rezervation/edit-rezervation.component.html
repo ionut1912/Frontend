@@ -2,7 +2,7 @@
 
 </h1>
 <div mat-dialog-content>
-{{data.rezervationId}}
+
 
   <form name="form" class="formuser"
         (ngSubmit)="f.form.valid && onSubmit()"
@@ -10,25 +10,25 @@
         novalidate>
     <p>Modificati rezervarea</p>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Nume</mat-label>
         <input matInput  name="name" required  [(ngModel)]="data.name"  >
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput  name="email" required  [(ngModel)]="data.email" >
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>RoomType</mat-label>
         <input matInput required name="username" [(ngModel)]="data.roomType" >
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Checkin</mat-label>
         <input matInput [matDatepicker]="picker1"  [formControl]="date1">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -36,9 +36,9 @@
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>Checkout</mat-label>
-        <input matInput [matDatepicker]="picker2" placeholder="Angular forms" [formControl]="date2">
+        <input matInput [matDatepicker]="picker2"  [formControl]="date2">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
