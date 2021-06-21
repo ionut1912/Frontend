@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class HomeComponent implements  OnInit{
-  hotelReview:HotelReviewHelper[]=[];
+
   slideIndex = 1;
   parent = document.getElementsByClassName("mySlides");
 
@@ -22,10 +22,9 @@ export class HomeComponent implements  OnInit{
   }
 
   ngOnInit(): void {
-    this.userService.getHotelReviews().subscribe(reviews=>{
-      this.hotelReview=reviews;
 
-    });
+
+
 
   }
 
