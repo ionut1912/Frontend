@@ -34,9 +34,28 @@ float: left;
 width: 50%;
 
 text-align: center;
-padding-left: 15px;
+padding-left: 30px;
 
 
 
 
+}
+.intro {
+  width: 95%;
+  height: 95%;
+}
+@media screen and (max-width:1000px){
+  .column1 {
+    width: 100%;
+  }
+  .column2 {
+    width: 100%;
+  }
+  .textinfo{
+
+    padding-right: 100px;
+    padding-bottom: 70px;
+  font-size:15px;
+
+  }
 }

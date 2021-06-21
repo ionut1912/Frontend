@@ -1,0 +1,49 @@
+#reviews {
+  background-color: #4169E1;
+  width: 100%;
+
+}
+
+#reviews .container{
+  padding: 50px 50px;
+}
+.textinfocardheading{
+  text-align: center;
+  color: whitesmoke;
+font-size: 30px;
+  margin-bottom: 50px;
+}
+.carousel{
+
+  height: 100px;
+}
+.textinfocard{
+  text-align: center;
+  color: whitesmoke;
+  font-size: 25px;
+
+}
+@media screen and (max-width:1000px){
+
+.textinfo{
+
+  padding-right: 100px;
+  padding-bottom: 70px;
+font-size:15px;
+
+}
+
+.textinfocard{
+  text-align: center;
+  font-size: 20px;
+  padding-left: 30px;
+}
+.carousel{
+  width: 100%;
+}
+}
+@media screen and (max-width:700px){
+  .textinfocard{
+    font-size: 10px;
+  }
+}

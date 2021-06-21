@@ -68,6 +68,9 @@ import {ChartsModule} from 'ng2-charts';
 import { CodeEmailComponent } from './code-email/code-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { EnterCodeComponent } from './enter-code/enter-code.component';
+import { HomeIntroComponent } from './home-intro/home-intro.component';
+import { HomeReviewsComponent } from './home-reviews/home-reviews.component';
+import { HomeImagesComponent } from './home-images/home-images.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +117,9 @@ import { EnterCodeComponent } from './enter-code/enter-code.component';
       CodeEmailComponent,
       ForgotPasswordComponent,
       EnterCodeComponent,
+      HomeIntroComponent,
+      HomeReviewsComponent,
+      HomeImagesComponent,
 
 
   ],

@@ -1,0 +1,22 @@
+<div  id="reviews" *ngIf="hotelReview.length!=0">
+  <div class="container">
+
+    <p class="textinfocardheading">Parerile clientilor despre noi.</p>
+    <ngb-carousel class="carousel">
+
+      <ng-template ngbSlide *ngFor="let review of hotelReview">
+        <div class="reviewcard">
+          <p class="textinfocard">{{review.name}} </p>
+
+
+        </div>
+        <div class="reviewcard">
+          <p class="textinfocard">{{review.hotelreview}} </p>
+
+
+        </div>
+      </ng-template>
+
+    </ngb-carousel>
+  </div>
+</div>
