@@ -75,7 +75,12 @@ this.hidden=false;
   }
   modifyPassword(){
     this.logout();
-    this.matDialog.open(CodeEmailComponent);
+    this.matDialog.open(CodeEmailComponent,{
+      data: {
+        email:this.users[0].email,
+        login:true
+      }
+    });
 
   }
   logout(): void {

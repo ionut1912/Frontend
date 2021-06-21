@@ -9,6 +9,7 @@ import { FindCodeHelper } from '../clases/FindCodeHelper';
 import { MatSnackBar } from '@angular/material/snack-bar';
 export interface ForgotPassword{
   email:string;
+  login:boolean;
 }
 @Component({
   selector: 'app-enter-code',
@@ -51,7 +52,8 @@ else{
   this.matDialogRef.close();
 this.matDialog.open(ForgotPasswordComponent,{
   data:{
-    email:this.info.email
+    email:this.info.email,
+    login:this.info.login
   }
 });
 }

@@ -10,7 +10,8 @@ import { UserCode } from '../clases/UserCode';
 import { UserData } from '../clases/UserData';
 import { MatSnackBar } from '@angular/material/snack-bar';
 export interface EmailData{
-  username:string
+login:boolean;
+email:string;
 }
 @Component({
   selector: 'app-code-email',
@@ -61,7 +62,8 @@ this.matSnackBar.open(err.error.message,"Inchide",{
 this.dialogRef.close();
 this.dialog.open(EnterCodeComponent,{
   data:{
-    email:this.form.email
+    email:this.form.email,
+    login:this.data.login
   }
 });
 }

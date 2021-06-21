@@ -8,6 +8,7 @@ import { UserService } from '../_services/UserService.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 export interface ForgotPassword{
   email:string;
+  login:boolean;
 }
 @Component({
   selector: 'app-forgot-password',
@@ -40,8 +41,17 @@ this.userService.getIdByEmail(this.data.email).subscribe(emailData=>{
      password:this.form.password
   }
   this.userService.savePassword(this.userById.userid,this.userInfo).subscribe(()=>{
-this.dialogRef.close();
-this.dialog.open(LoginComponent);
+ if(this.data.login==true) {
+   this.dialogRef.close();
+   this.snackBar.open('Parola schimbata cu succes','Inchide',{
+     duration:3000
+   });
+ }
+ else{
+  this.dialogRef.close();
+  this.dialog.open(LoginComponent);
+ }
+
   },
     err => {
 this.snackBar.open(err.error.message,"Inchide",{
