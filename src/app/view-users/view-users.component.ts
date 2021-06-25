@@ -11,6 +11,7 @@ import {EditUser} from '../edit-user/edit-user.component';
 import {DeleteUser} from '../delete-user/delete-user.component';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class ViewUsersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public  formBuilder: FormBuilder, public  userService: UserService, public  dialog: MatDialog, public  matSnackBar: MatSnackBar) {
+  constructor(public  tokenStorage:TokenStorageService,public  formBuilder: FormBuilder, public  userService: UserService, public  dialog: MatDialog, public  matSnackBar: MatSnackBar) {
     this.search = this.formBuilder.group({
       userid: [''],
       name: [''],
@@ -79,7 +80,9 @@ export class ViewUsersComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(info => {
       this.ngAfterViewInit();
+
     });
+
   }
 
   delete(userid: number) {

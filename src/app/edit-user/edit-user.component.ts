@@ -6,6 +6,7 @@ import {UserService} from '../_services/UserService.service';
 
 import {ViewUsersComponent} from '../view-users/view-users.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 export  interface EditUserInterface {
   userid:number,
@@ -25,7 +26,8 @@ export  class EditUser {
 
   user: Users = new Users();
 
-  constructor(public dialogRef2: MatDialogRef<EditUser>, private  snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: EditUserInterface, private builder: FormBuilder, public  userService: UserService, public dialogRef: MatDialogRef<ViewUsersComponent>, public dialog: MatDialog) {
+
+  constructor(private  tokenStorage:TokenStorageService,public dialogRef2: MatDialogRef<EditUser>, private  snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: EditUserInterface, private builder: FormBuilder, public  userService: UserService, public dialogRef: MatDialogRef<ViewUsersComponent>, public dialog: MatDialog) {
     this.users = this.builder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -49,13 +51,16 @@ export  class EditUser {
   }
 
   editUser(): void {
+this.user= <Users>{
+  name: this.data.name,
+  email: this.data.email,
+  username: this.data.username,
+  type: this.data.type
+}
 
-    this.userService.updateUserDetails(this.data.userid, <Users> {
-      name: this.data.name,
-      email: this.data.email,
-      username: this.data.username,
-      type: this.data.type
-    }).subscribe(() => {
+    this.userService.updateUserDetails(this.data.userid, this.user)
+
+    .subscribe(() => {
 
 
     });
