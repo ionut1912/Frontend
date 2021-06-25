@@ -14,3 +14,10 @@ p{
 .cardsinfo{
   padding-top: 30px;
 }
+@media screen and (max-width:1000px) {
+  .chartinfo{
+    width: 100%;
+    height: 100%;
+
+  }
+}

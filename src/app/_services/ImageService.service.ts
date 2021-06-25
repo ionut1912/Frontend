@@ -12,11 +12,11 @@ import {RoomImage} from '../clases/RoomImage';
 constructor(private httpclient:HttpClient){
 
 }
-getRoomImageById(id:number):Observable<RoomImage[]>
+getRoomImageById(id: number):Observable<RoomImage[]>
 {
     return this.httpclient.get<RoomImage[]>(`${this.baseURL}/images/${id}`);
 }
-modifyImage(id:number,image:RoomImage):Observable<RoomImage>
+modifyImage(id: number, image: RoomImage): Observable<RoomImage>
 {
   return  this.httpclient.patch<RoomImage>(`${this.baseURL}/images/${id}`,image)
 }

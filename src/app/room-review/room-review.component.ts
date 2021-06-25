@@ -68,8 +68,7 @@ this.saveReview();
 }
 saveReview()
 {
-console.log(this.userRooms);
-console.log(this.roomReviewed);
+
   for(let i=0;i<this.userRooms.length;i++){
     if(this.form.roomid==this.userRooms[i].roomid)
     {

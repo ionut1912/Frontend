@@ -71,6 +71,7 @@ import { EnterCodeComponent } from './enter-code/enter-code.component';
 import { HomeIntroComponent } from './home-intro/home-intro.component';
 import { HomeReviewsComponent } from './home-reviews/home-reviews.component';
 import { HomeImagesComponent } from './home-images/home-images.component';
+import {authInterceptorProviders} from './_helpers/auth_interceptor';
 
 @NgModule({
   declarations: [
@@ -160,7 +161,7 @@ import { HomeImagesComponent } from './home-images/home-images.component';
     MatSnackBarModule
   ],
 
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, authInterceptorProviders],
 
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
