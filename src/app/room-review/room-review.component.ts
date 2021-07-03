@@ -46,7 +46,9 @@ export class RoomReviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+this.userService.getUserData(this.tokenStorage.getUsername()).subscribe(data=>{
+  this.user=data;
+})
 
 
 
