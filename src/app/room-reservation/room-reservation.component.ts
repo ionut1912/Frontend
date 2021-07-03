@@ -59,7 +59,7 @@ freRoomsByType:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
 
   ngOnInit(): void {
 
-    console.log(this.data.reservation.length);
+
     for (let i = 0; i < this.data.reservation.length; i++) {
       this.reviews = [];
       this.reviewService.getReviews(this.data.reservation[i].roomid).subscribe(reviewsInformation => {
@@ -67,7 +67,7 @@ freRoomsByType:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
           this.reviews.push(reviewsInformation[i]);
         }
 
-        console.log(this.reviews);
+
 
       });
  this.roomService.getFreeRoomsByTypeAfterReservation(this.data.reservation[i].roomtype,this.data.reservation[i].checkin,this.data.reservation[i].checkout).subscribe(data=>{
@@ -111,13 +111,13 @@ freRoomsByType:FreeRoomsByTypeHelper=new FreeRoomsByTypeHelper();
       };
 
       this.reservationService.saveReservation(this.reservations);
-    }
-    this.matSnackBar.open('Rezervarea a fost creata cu succes', 'Inchide', {
-      duration: 3000
-    });
+}
+this.matSnackBar.open('Rezervarea a fost creata cu succes', 'Inchide', {
+  duration: 3000
+});
 
 
-  }
+}
 close(){
   this.dialogRef.close();
 }

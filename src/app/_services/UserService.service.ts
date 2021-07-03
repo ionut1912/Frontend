@@ -45,10 +45,7 @@ getHotelReviews():Observable<HotelReviewHelper[]>
 {
   return  this.httpClient.get<HotelReviewHelper[]>(`${this.baseURL}/hotelreview`);
 }
-getUserRooms(id:number):Observable<UserRoomsHelpers[]>
-{
-  return this.httpClient.get<UserRoomsHelpers[]>(`${this.baseURL}/rooms/${id}`);
-}
+
 getNrOfUsers():Observable<NrOfUsersHelper>
 {
   return  this.httpClient.get<NrOfUsersHelper>(`${this.baseURL}/nrofusers`)

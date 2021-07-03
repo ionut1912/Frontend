@@ -1,8 +1,3 @@
-<div *ngIf="rooms.length==0&&roomInformation.length==0&&roomDetails.length==0" class="container-fluid">
-  Nu avem camere in perioada {{checkin}}/{{checkout}}
-</div>
-
-
 <div *ngIf="roomDetails.length===0&&roomReservation.length===0">
 
   <div *ngFor="let room of rooms" class="info">
@@ -90,5 +85,3 @@
   </div>
 
 </div>
-
-

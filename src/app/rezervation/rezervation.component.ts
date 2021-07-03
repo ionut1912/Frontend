@@ -38,7 +38,7 @@ export class RezervationComponent implements OnInit {
   }
 
   myfunc() {
-console.log(this.form.checkin);
+
     if(this.form.checkin >this.form.checkout){
 this.matSnackbar.open("Checkin-ul trebuie sa fie mai mic decat checkout-ul","Inchide",{
   duration: 3000

@@ -41,7 +41,7 @@ this.userService.getIdByEmail(this.info.email).subscribe(info=>{
 this.userIdByEmail=info;
 this.userService.getCode(this.userIdByEmail.userid).subscribe(code=>{
 this.codeInfo=code;
-console.log(this.codeInfo);
+
 if(this.codeInfo.usercode!=this.form.code){
   this.matSnackBar.open("Cod invalid","Inchide",{
     duration:3000

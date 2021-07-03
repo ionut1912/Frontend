@@ -47,7 +47,7 @@ export class RoominfoComponent implements OnInit {
   reservations: MultipleReservationsHelper[] = [];
 
 
- constructor(private tokenStorage:TokenStorageService,private  userService: UserService,private  matDialog:MatDialog,private roomDetailsService: RoomDetailsService, private roomImageService: ImageService, private  roomService: RoomService, private  reservationService: ReservationService, public  snackBar: MatSnackBar) {
+  constructor(private tokenStorage:TokenStorageService,private  userService: UserService,private  matDialog:MatDialog,private roomDetailsService: RoomDetailsService, private roomImageService: ImageService, private  roomService: RoomService, private  reservationService: ReservationService, public  snackBar: MatSnackBar) {
 
   }
 
@@ -71,7 +71,7 @@ export class RoominfoComponent implements OnInit {
 
               });
             }
-            console.log(this.rooms);
+
           });
         } else if (this.roomDetails.length === 0 && this.roomReservation.length > 0) {
           this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
@@ -80,10 +80,10 @@ export class RoominfoComponent implements OnInit {
             for (let i = 0; i < this.roomInformation.length; i++) {
               this.roomImageService.getRoomImageById(this.roomInformation[i].roomid).subscribe(image => {
                 this.roomInformation[i].images = image;
-                console.log(this.roomInformation);
+
               });
             }
-            console.log(this.roomInformation);
+
           });
         } else if (this.roomDetails.length > 0) {
 
@@ -102,7 +102,7 @@ export class RoominfoComponent implements OnInit {
             }
             for (let i = 0; i < this.roomInformation.length; i++) {
               this.roomDetails.push(this.roomInformation[i]);
-              console.log(this.roomDetails);
+
             }
           });
         }
@@ -114,135 +114,135 @@ export class RoominfoComponent implements OnInit {
   reserveRoom(id: number) {
     this.nrofClicks++;
 
-if(this.nrofClicks<=this.noofrooms){
-  this.reservationService.getAll().subscribe(info => {
-    this.roomReservation = info;
-    this.roomDetailsService.getRoomInfo(this.checkin, this.checkout).subscribe(info => {
-      this.roomDetails = info;
+    if(this.nrofClicks<=this.noofrooms){
+      this.reservationService.getAll().subscribe(info => {
+        this.roomReservation = info;
+        this.roomDetailsService.getRoomInfo(this.checkin, this.checkout).subscribe(info => {
+          this.roomDetails = info;
 
 
-      if (this.roomDetails.length === 0 && this.roomReservation.length === 0) {
-        this.roomService.findAll().subscribe(room => {
-          this.rooms = room;
+          if (this.roomDetails.length === 0 && this.roomReservation.length === 0) {
+            this.roomService.findAll().subscribe(room => {
+              this.rooms = room;
 
-          for (let i = 0; i < this.rooms.length; i++) {
-            this.roomImageService.getRoomImageById(this.rooms[i].roomid).subscribe(image => {
+              for (let i = 0; i < this.rooms.length; i++) {
+                this.roomImageService.getRoomImageById(this.rooms[i].roomid).subscribe(image => {
 
-              this.rooms[i].roomImage = image;
+                  this.rooms[i].roomImage = image;
 
-            });
-          }
-          this.roomInfo = this.rooms.filter(x => x.roomid == id)[0];
+                });
+              }
+              this.roomInfo = this.rooms.filter(x => x.roomid == id)[0];
 
-          this.ids = this.rooms.indexOf(this.roomInfo);
-          console.log(this.ids);
-          this.reservation = <MultipleReservationsHelper> {
-            roomid: id,
-            name: this.rooms[this.ids].name,
-            roomtype: this.rooms[this.ids].roomtype,
-            roomdetails: this.rooms[this.ids].roomdetails,
-            roomprice: this.rooms[this.ids].roomprice,
-            pricecurency: this.rooms[this.ids].pricecurency,
+              this.ids = this.rooms.indexOf(this.roomInfo);
 
-            checkin: this.checkin,
-            checkout: this.checkout,
-            noofrooms: this.noofrooms,
-            noofadults: this.noofadults,
-            noofchildrens: this.noofchildrens
-          };
-          this.reservations.push(this.reservation);
-          console.log(this.reservations);
-        });
-      } else if (this.roomDetails.length === 0 && this.roomReservation.length > 0) {
-        this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
-          this.roomInformation = roomDetailss;
+              this.reservation = <MultipleReservationsHelper> {
+                roomid: id,
+                name: this.rooms[this.ids].name,
+                roomtype: this.rooms[this.ids].roomtype,
+                roomdetails: this.rooms[this.ids].roomdetails,
+                roomprice: this.rooms[this.ids].roomprice,
+                pricecurency: this.rooms[this.ids].pricecurency,
 
-          for (let i = 0; i < this.roomInformation.length; i++) {
-            this.roomImageService.getRoomImageById(this.roomInformation[i].roomid).subscribe(image => {
-              this.roomInformation[i].images = image;
+                checkin: this.checkin,
+                checkout: this.checkout,
+                noofrooms: this.noofrooms,
+                noofadults: this.noofadults,
+                noofchildrens: this.noofchildrens
+              };
+              this.reservations.push(this.reservation);
 
             });
+          } else if (this.roomDetails.length === 0 && this.roomReservation.length > 0) {
+            this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
+              this.roomInformation = roomDetailss;
 
-          }
-          this.roomDetail = this.roomInformation.filter(x => x.roomid == id)[0];
+              for (let i = 0; i < this.roomInformation.length; i++) {
+                this.roomImageService.getRoomImageById(this.roomInformation[i].roomid).subscribe(image => {
+                  this.roomInformation[i].images = image;
 
-          this.ids = this.roomInformation.indexOf(this.roomDetail);
-          console.log(this.ids);
-          this.reservation = <MultipleReservationsHelper> {
-            roomid: id,
-            name: this.roomInformation[this.ids].name,
-            roomtype: this.roomInformation[this.ids].roomtype,
-            roomdetails: this.roomInformation[this.ids].roomdetails,
-            roomprice: this.roomInformation[this.ids].roomprice,
-            pricecurency: this.roomInformation[this.ids].pricecurency,
+                });
 
-            checkin: this.checkin,
-            checkout: this.checkout,
-            noofrooms: this.noofrooms,
-            noofadults: this.noofadults,
-            noofchildrens: this.noofchildrens
-          };
-          this.reservations.push(this.reservation);
-          console.log(this.reservations);
-        });
-      } else if (this.roomDetails.length > 0) {
+              }
+              this.roomDetail = this.roomInformation.filter(x => x.roomid == id)[0];
 
-        for (let i = 0; i < this.roomDetails.length; i++) {
-          this.roomImageService.getRoomImageById(this.roomDetails[i].roomid).subscribe(images => {
-            this.roomDetails[i].images = images;
-          });
-        }
+              this.ids = this.roomInformation.indexOf(this.roomDetail);
 
-        this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
-          this.roomInformation = roomDetailss;
+              this.reservation = <MultipleReservationsHelper> {
+                roomid: id,
+                name: this.roomInformation[this.ids].name,
+                roomtype: this.roomInformation[this.ids].roomtype,
+                roomdetails: this.roomInformation[this.ids].roomdetails,
+                roomprice: this.roomInformation[this.ids].roomprice,
+                pricecurency: this.roomInformation[this.ids].pricecurency,
 
-          for (let i = 0; i < this.roomInformation.length; i++) {
-            this.roomImageService.getRoomImageById(this.roomInformation[i].roomid).subscribe(image => {
-              this.roomInformation[i].images = image;
+                checkin: this.checkin,
+                checkout: this.checkout,
+                noofrooms: this.noofrooms,
+                noofadults: this.noofadults,
+                noofchildrens: this.noofchildrens
+              };
+              this.reservations.push(this.reservation);
+
             });
-          }
-          for (let i = 0; i < this.roomInformation.length; i++) {
-            this.roomDetails.push(this.roomInformation[i]);
+          } else if (this.roomDetails.length > 0) {
+
+            for (let i = 0; i < this.roomDetails.length; i++) {
+              this.roomImageService.getRoomImageById(this.roomDetails[i].roomid).subscribe(images => {
+                this.roomDetails[i].images = images;
+              });
+            }
+
+            this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
+              this.roomInformation = roomDetailss;
+
+              for (let i = 0; i < this.roomInformation.length; i++) {
+                this.roomImageService.getRoomImageById(this.roomInformation[i].roomid).subscribe(image => {
+                  this.roomInformation[i].images = image;
+                });
+              }
+              for (let i = 0; i < this.roomInformation.length; i++) {
+                this.roomDetails.push(this.roomInformation[i]);
+
+              }
+
+              this.roomDetail = this.roomDetails.filter(x => x.roomid == id)[0];
+
+              this.ids = this.roomDetails.indexOf(this.roomDetail);
+
+
+
+
+
+              this.reservation = <MultipleReservationsHelper> {
+                roomid: id,
+
+                name: this.roomDetails[this.ids].name,
+                roomtype: this.roomDetails[this.ids].roomtype,
+                roomdetails: this.roomDetails[this.ids].roomdetails,
+                roomprice: this.roomDetails[this.ids].roomprice,
+                pricecurency: this.roomDetails[this.ids].pricecurency,
+
+                checkin: this.checkin,
+                checkout: this.checkout,
+                noofrooms: this.noofrooms,
+                noofadults: this.noofadults,
+                noofchildrens: this.noofchildrens
+              };
+
+              this.reservations.push(this.reservation);
+
+
+
+
+            });
 
           }
-
-          this.roomDetail = this.roomDetails.filter(x => x.roomid == id)[0];
-
-          this.ids = this.roomDetails.indexOf(this.roomDetail);
-
-          console.log(this.ids);
-
-
-
-          this.reservation = <MultipleReservationsHelper> {
-            roomid: id,
-
-            name: this.roomDetails[this.ids].name,
-            roomtype: this.roomDetails[this.ids].roomtype,
-            roomdetails: this.roomDetails[this.ids].roomdetails,
-            roomprice: this.roomDetails[this.ids].roomprice,
-            pricecurency: this.roomDetails[this.ids].pricecurency,
-
-            checkin: this.checkin,
-            checkout: this.checkout,
-            noofrooms: this.noofrooms,
-            noofadults: this.noofadults,
-            noofchildrens: this.noofchildrens
-          };
-
-          this.reservations.push(this.reservation);
-
-          console.log(this.reservations);
-
 
         });
+      });
 
-      }
-
-    });
-  });
-
-}
+    }
 
 
 
@@ -260,14 +260,14 @@ if(this.nrofClicks<=this.noofrooms){
 
   finishreservation(): void {
 
-this.matDialog.open(RoomReservationComponent,{
+    this.matDialog.open(RoomReservationComponent,{
 
-  data:
-    {
-      reservation: this.reservations
-    },
-  height: '800px',
-  width: '800px'
-});
+      data:
+        {
+          reservation: this.reservations
+        },
+      height: '800px',
+      width: '800px'
+    });
   }
 }

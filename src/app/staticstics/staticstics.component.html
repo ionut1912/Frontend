@@ -21,11 +21,11 @@
 
 
 
-   <div class="container-fluid info ">
+   <div  class="container-fluid info ">
 
 
-         <div class="chartinfo">
-           <p>Useri dupa tip</p>
+         <div *ngIf="userByType.length>0" class="chartinfo">
+           <p >Useri dupa tip</p>
            <canvas baseChart
                    [data]="pieChartDataUsers"
                    [labels]="pieChartLabelsUsers"
@@ -36,8 +36,8 @@
                    [legend]="pieChartLegend">
            </canvas>
          </div>
-<div class="chartinfo">
-  <p>Rezervari dupa tipul camerei</p>
+<div *ngIf="nrOfReservationsByType.length>0" class="chartinfo">
+  <p >Rezervari dupa tipul camerei</p>
   <canvas baseChart
           [data]="pieChartDataReservations"
           [labels]="pieChartLabelsReservations"
@@ -48,7 +48,7 @@
           [legend]="pieChartLegend">
   </canvas>
 </div>
-<div class="chartinfo">
+<div *ngIf="nrOfRoomsByType.length>0" class="chartinfo">
   <p>Camere dupa tip</p>
   <canvas baseChart
           [data]="pieChartDataRoommsByType"
@@ -60,7 +60,7 @@
           [legend]="pieChartLegend">
   </canvas>
 </div>
-         <div class="chartinfo">
+         <div *ngIf="nrOfUserReservations.length>0" class="chartinfo">
            <p>Rezervari user</p>
            <canvas baseChart
                    [data]="pieChartDataUserReservations"
@@ -73,7 +73,7 @@
            </canvas>
          </div>
 
-<div class="chartinfo">
+<div *ngIf="freeRoomsByType.length>0" class="chartinfo">
   <p>Camere nerezervate dupa tip</p>
   <canvas baseChart
           [data]="pieChartDataFreeRooms"

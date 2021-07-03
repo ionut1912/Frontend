@@ -45,11 +45,21 @@ export class EditRezervationComponent {
       checkin: new Date(this.date1.value),
       checkout: new Date(this.date2.value)
     });
-
+  if(this.rezervation.checkin>this.rezervation.checkout)
+  {
+    this.snackBar.open("Data de sosire nu poate fi mai mare ca data de plecare","Inchide",{
+      duration:3000
+    });
+  }
 
     this.rezervationService.modifyRezervation(this.data.rezervationId, this.rezervation).subscribe(rezdata=>{
 
 
+      },
+      error => {
+      this.snackBar.open(error.error.message,"Inchide",{
+        duration: 3000
+      });
       });
 
     this.dialogRef.close();
