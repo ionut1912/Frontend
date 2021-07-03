@@ -42,7 +42,9 @@ export class RoominfoComponent implements OnInit {
   ids!: number;
   display = false;
   user!:UserData;
-
+roomsEmpty:boolean=false;
+roomsInformationEmpty:boolean=false;
+roomDetailEmpty:boolean=false;
   reservation: MultipleReservationsHelper = new MultipleReservationsHelper();
   reservations: MultipleReservationsHelper[] = [];
 
@@ -71,7 +73,9 @@ export class RoominfoComponent implements OnInit {
 
               });
             }
-
+if(room.length==0){
+  this.roomsEmpty=true;
+}
           });
         } else if (this.roomDetails.length === 0 && this.roomReservation.length > 0) {
           this.roomDetailsService.getRoomDetails().subscribe(roomDetailss => {
@@ -83,7 +87,9 @@ export class RoominfoComponent implements OnInit {
 
               });
             }
-
+if(this.roomInformation.length==0){
+  this.roomsInformationEmpty=true;
+}
           });
         } else if (this.roomDetails.length > 0) {
 
@@ -104,13 +110,20 @@ export class RoominfoComponent implements OnInit {
               this.roomDetails.push(this.roomInformation[i]);
 
             }
+
           });
+          if(this.roomDetails.length==0){
+            this.roomDetailEmpty=true;
+          }
         }
 
       });
     });
-  }
 
+if(this.roomsEmpty&&this.roomsInformationEmpty&&this.roomDetailEmpty){
+this.snackBar.open("Nu exista camere disponibile in perioada " + this.checkin + this.checkout);
+}
+  }
   reserveRoom(id: number) {
     this.nrofClicks++;
 
