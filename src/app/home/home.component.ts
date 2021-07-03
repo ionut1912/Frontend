@@ -1,8 +1,5 @@
+import {Component, OnInit} from '@angular/core';
 
-import {Component, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {UserService} from '../_services/UserService.service';
-import {HotelReviewHelper} from '../clases/HotelReviewHelper';
-import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -12,23 +9,11 @@ import {HttpClient} from '@angular/common/http';
 
 export class HomeComponent implements  OnInit{
 
-  slideIndex = 1;
-  parent = document.getElementsByClassName("mySlides");
-
-
-  arrayUpdated: boolean = false;
-
-  constructor(public  userService:UserService) {
-  }
 
   ngOnInit(): void {
 
 
-
-
   }
-
-
 
 
 }

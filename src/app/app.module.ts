@@ -1,7 +1,7 @@
 import {NavbarComponent} from './navbar/navbar.component';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
@@ -15,7 +15,6 @@ import {ServiciiComponent} from './servicii/servicii.component';
 import {FooterComponent} from './footer/footer.component';
 import {ModalComponent} from './modal/modal.component';
 import {Modal2Component} from './modal2/modal2.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {VideoModule} from './video/video.module';
 import {RegisterComponent} from './register/register.component';
@@ -65,12 +64,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {StaticsticsComponent} from './staticstics/staticstics.component';
 import {ChartsModule} from 'ng2-charts';
-import { CodeEmailComponent } from './code-email/code-email.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { EnterCodeComponent } from './enter-code/enter-code.component';
-import { HomeIntroComponent } from './home-intro/home-intro.component';
-import { HomeReviewsComponent } from './home-reviews/home-reviews.component';
-import { HomeImagesComponent } from './home-images/home-images.component';
+import {CodeEmailComponent} from './code-email/code-email.component';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {EnterCodeComponent} from './enter-code/enter-code.component';
+import {HomeIntroComponent} from './home-intro/home-intro.component';
+import {HomeReviewsComponent} from './home-reviews/home-reviews.component';
+import {HomeImagesComponent} from './home-images/home-images.component';
 import {authInterceptorProviders} from './_helpers/auth_interceptor';
 
 @NgModule({
@@ -165,7 +164,8 @@ import {authInterceptorProviders} from './_helpers/auth_interceptor';
 
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-  entryComponents: [ModalComponent]
+  entryComponents: [ModalComponent],
+  exports: [NavbarComponent]
 })
 export class AppModule {
 
