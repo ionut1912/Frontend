@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 
 
 import {EditUser} from '../edit-user/edit-user.component';
-import {DeleteUser} from '../delete-user/delete-user.component';
+
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokenStorageService} from '../_services/token-storage.service';
@@ -85,16 +85,7 @@ export class ViewUsersComponent implements OnInit, AfterViewInit {
 
   }
 
-  delete(userid: number) {
-    const dialogRef = this.dialog.open(DeleteUser, {
-      data: {
-        userid: userid
-      }
-    });
-    dialogRef.afterClosed().subscribe(info => {
-      this.ngAfterViewInit();
-    });
-  }
+
 
   searchByUserId() {
     this.usersById = this.users.filter(x => x.userid == this.form.userid);

@@ -43,6 +43,7 @@ getRezervationByUserId(id:number):Observable<UserReservationHelper[]>{
 }
 modifyRezervation(id:number,reservation:Reservation):Observable<Reservation>{
     return  this.httpClient.patch<Reservation>(`${this.baseURL}/${id}`,reservation);
+
 }
   deleteRezervation(id:number,reservation:Reservation):Observable<Reservation>{
     return  this.httpClient.patch<Reservation>(`${this.baseURL}/delete/${id}`,reservation);

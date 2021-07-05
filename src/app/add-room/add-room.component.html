@@ -39,8 +39,11 @@
       <mat-form-field appearance="outline">
         <mat-label>Pret</mat-label>
         <input matInput required formControlName="roomprice" [(ngModel)]="form.roomprice">
-        <mat-error>
+        <mat-error *ngIf="checkError('roomprice','required')">
           Introduceti pretul
+        </mat-error>
+        <mat-error *ngIf="checkError('roomprice','pattern')">
+          Pretul nu poate contine litere
         </mat-error>
       </mat-form-field>
     </div>

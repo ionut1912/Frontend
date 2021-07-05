@@ -52,7 +52,6 @@ import {DeleteRezervationComponent} from './delete-rezervation/delete-rezervatio
 import {ViewUsersComponent} from './view-users/view-users.component';
 import {ViewRoomsComponent} from './view-rooms/view-rooms.component';
 import {AddRoom} from './add-room/add-room.component';
-import {DeleteUser} from './delete-user/delete-user.component';
 
 import {ViewAllReservationsComponent} from './view-all-reservations/view-all-reservations.component';
 import {DeleteRoom} from './delete-room/delete-room.component';
@@ -100,34 +99,25 @@ import {authInterceptorProviders} from './_helpers/auth_interceptor';
     ViewUsersComponent,
     ViewRoomsComponent,
     AddRoom,
-
     EditUser,
-    DeleteUser,
-
-
     ViewAllReservationsComponent,
-
-
     EditRoom,
     DeleteRoom,
     PageNotFoundComponent,
     ViewRoomImagesComponent,
-
     StaticsticsComponent,
-      CodeEmailComponent,
-      ForgotPasswordComponent,
-      EnterCodeComponent,
-      HomeIntroComponent,
-      HomeReviewsComponent,
-      HomeImagesComponent,
-
-
+    CodeEmailComponent,
+    ForgotPasswordComponent,
+    EnterCodeComponent,
+    HomeIntroComponent,
+    HomeReviewsComponent,
+    HomeImagesComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
@@ -154,7 +144,6 @@ import {authInterceptorProviders} from './_helpers/auth_interceptor';
     MatTooltipModule,
     MatTabsModule,
     MatPaginatorModule,
-
     MatSortModule,
     ChartsModule,
     MatSnackBarModule

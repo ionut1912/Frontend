@@ -3,31 +3,11 @@
 </h1>
 <div mat-dialog-content>
 
-  <form  [formGroup]="users"
-         (ngSubmit)="f.form.valid && onSubmit()"
-         #f="ngForm"
-         novalidate>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Nume</mat-label>
-        <input matInput name="name" formControlName="name" required  [(ngModel)]="data.name">
+  <form [formGroup]="users"
+        (ngSubmit)="f.form.valid &&editUser()"
+        #f="ngForm"
+        novalidate>
 
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput name="email"  formControlName="email" required [(ngModel)]="data.email" >
-
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
-        <input matInput name="username" formControlName="username"  required [(ngModel)]="data.username">
-
-      </mat-form-field>
-    </div>
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Role</mat-label>
@@ -40,16 +20,16 @@
         </select>
       </mat-form-field>
     </div>
-    <div>
-      <button mat-raised-button color="accent">Modificati datele utilizatorul</button>
 
-    </div>
   </form>
 
 
 </div>
 
+<div>
+  <button (click)="editUser()" color="accent" mat-raised-button>Modificati datele utilizatorul</button>
 
+</div>
 <div class="closebtn">
   <button (click)="close()" color="accent" mat-raised-button>Inchideti</button>
 </div>

@@ -34,6 +34,10 @@
         <mat-label>Pret</mat-label>
         <input matInput required formControlName="roomprice"  [(ngModel)]="data.roomprice">
 
+
+        <mat-error *ngIf="checkError('roomprice','pattern')">
+          Pretul nu poate contine litere
+        </mat-error>
       </mat-form-field>
     </div>
     <div>

@@ -3,9 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Room} from '../clases/Room';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {RoomService} from '../_services/RoomService.service';
-
-import {ViewRoomsComponent} from '../view-rooms/view-rooms.component';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'add-room',
@@ -27,13 +25,13 @@ export class AddRoom {
 
   selectedFiles!: FileList;
   imagesrc: string[] = [];
-
+  pattern = '[a-zA-Z ]*';
   constructor(private  matSnackbar:MatSnackBar,private builder: FormBuilder, public dialogRef: MatDialogRef<AddRoom>, public  dialog: MatDialog, public  roomService: RoomService) {
     this.rooms = this.builder.group({
       name: ['', Validators.required],
       roomtype: ['', Validators.required],
       roomdetails: ['', Validators.required],
-      roomprice: ['', Validators.required],
+      roomprice: ['', [Validators.required, Validators.pattern(this.pattern)]],
       pricecurency: ['', Validators.required],
     });
 
@@ -93,4 +91,8 @@ export class AddRoom {
   close(){
     this.dialogRef.close();
   }
+
+  public checkError = (controlName: string, errorName: string) => {
+    return this.rooms.controls[controlName].hasError(errorName);
+  };
 }

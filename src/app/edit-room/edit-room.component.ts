@@ -23,14 +23,14 @@ export interface EditRoomInterface {
 export class EditRoom {
   rooms!: FormGroup;
   formErors: any;
-
+  pattern = '[a-zA-Z ]*';
   constructor(public dialogRef2: MatDialogRef<EditRoom>, private matSnackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: EditRoomInterface, public dialogRef: MatDialogRef<ViewRoomsComponent>, public  dialog: MatDialog, private builder: FormBuilder, public  roomService: RoomService) {
 
     this.rooms = this.builder.group({
       name: ['', Validators.required],
       roomtype: ['', Validators.required],
       roomdetails: ['', Validators.required],
-      roomprice: ['', Validators.required],
+      roomprice: ['', [Validators.required, Validators.pattern(this.pattern)]],
       pricecurency: ['', Validators.required],
     });
 
@@ -73,4 +73,7 @@ export class EditRoom {
     this.dialogRef2.close();
   }
 
+  public checkError = (controlName: string, errorName: string) => {
+    return this.rooms.controls[controlName].hasError(errorName);
+  };
 }

@@ -46,17 +46,15 @@ export  class EditUser {
     };
   }
 
-  onSubmit() {
-    this.editUser();
-  }
+  // onSubmit() {
+  //   this.editUser();
+  // }
 
   editUser(): void {
-this.user= <Users>{
-  name: this.data.name,
-  email: this.data.email,
-  username: this.data.username,
+    this.user = <Users> {
+
   type: this.data.type
-}
+    };
 
     this.userService.updateUserDetails(this.data.userid, this.user)
 
